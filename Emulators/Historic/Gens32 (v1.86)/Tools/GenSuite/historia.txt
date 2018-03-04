@@ -1,0 +1,157 @@
+Historial de versiones de GenRomSuite
+=====================================
+-2.8.2- (05/03/2005);
+[Convertidor de ROMs]: Corrección menor al convertidor de SMD a BIN: algunas ROMs binarias vienen con la extension SMD. Cualquier intento de conversion terminaría en error, o corrompia la ROM. Ahora se revisa si la ROM es binaria buscando la palabra "SEGA" en el primer kilobyte del archivo, si se encuentra, no se realiza ninguna conversión, y se renombra la ROM.
+
+-2.8.1- (28/01/2005):
+[General]: El arreglo al vinculo entre la Lanzadera y el Editor de encabezados causaba que el boton Ejecutar no funcionara... Corregido.
+[General]: Arreglado un fallo cuando el usuario no ha configurado el directorio de ROMs: el programa salia con un error #76 (No se puede encontrar la ruta) en algunos de los dialogos/ventanas. Ahora el directorio por defecto es C:\ si no se ha configurado nada.
+
+-2.8- (21/01/2005):
+[Convertidor de ROMs]: Arreglos mayores al convertidor de BIN a SMD: si se convertian 2 ROMs o mas, se guardaban ROMs vacias (llenas de ceros) a partir de la segunda ROM, debido a un indicador de posición no reinicializado despues de cada conversion.
+[Convertidor de ROMs]: BIN a SMD parte 2: Arreglada la división en bloques: se generaba un numero incorrecto de bloques para ROMs cuyos tamaños no eran factores de 16KB, quedando la ROM de destino truncada.
+[Convertidor de ROMs]: BIN a SMD parte 3: Arreglo menor a un error estupido en el GUI: si se cambiaba el directorio de las ROMs de destino, se generaba un error #5 (Llamada a procedimiento no válida). Era una variable que no habia sido cambiada... desde la versión 1.7!.
+[General]: Cambios y optimizaciones diversas en el código.
+[General]: Creditos: arreglos a la rutina para generar el directorio temporal, si este esta en la raíz de una unidad, en vez de una carpeta.
+[General]: Arreglado un fallo en el vínculo entre el Editor de Encabezados y la Lanzadera: si esta no habia sido configurada y el usuario hacia clic en el boton "Ejecutar", si se cancelaba el dialogo de configuración, salia un error #364 (El objeto ha sido descargado).
+
+-2.7.5- (05/01/2005):
+[Lanzadera]: Arreglos menores al código de ejecucion de emuladores, se ha mejorado el soporte para Fusion.
+[Lanzadera]: Nuevo icono para el boton de Xega (lastima que no tiene uno oficial...).
+[Editor de encabezados]: Arreglos al código de lectura de los codigos de dispositivos y de regiones, en caso de que estos esten almacenados en la ROM en minusculas, evitando que fuesen listados los campos correspondientes.
+
+-2.7- (20/07/2004):
+Desde esta version GenRomSuite sera publicado bajo la licencia GNU General Public License. Si quieres saber mas, la licencia esta en COPYING.TXT.
+
+[Lanzadera]: Añadido soporte para lanzar ROMs en Kega Fusion mediante la linea de comandos (requiere Fusion 0.1c o superior).
+[Editor de encabezados]: Recortado el campo "Comentarios" a 28 bytes, debido a que sobreescribia otra información no correspondiente a dicho campo.
+[Editor de encabezados]: Arreglos menores al código.
+[Convertidor de ROMs]: Arreglado un fallo menor al convertir una ROM y guardarla en el mismo archivo de origen, lo que causaba que se eliminaran o sobraran algunos bytes, causando falloes en algunos emuladores (hasta ahora, Fusion). Ahora se elimina el archivo original JUSTO ANTES de guardar la ROM convertida.
+
+-2.6- (07/04/2004):
+[General]: Arregladas las funciones para mostrar los dialogos de "Abrir ROM" en el convertidor y en la lanzadera que no se ejecutaban bajo Windows NT/2K/XP debido a una diferencia de 1 byte en el tamaño del búfer para el nombre del archivo. (gracias a Fabian por la PC con XP y VB6 que me permitio detectar este maldito bug).
+[General]: Arreglada la etiqueta de información de la pantalla de inicio.
+[General]: Ampliados los búferes de todos los dialogos de "Abrir" y "Guardar" a 4KB.
+[General]: Mejoras internas al código.
+[Lanzadera]: Creado un pequeño arreglo para saltar ese molesto error 5 bajo XP/2K/NT, hasta que pueda descubrir que es lo que lo causa (el emulador se ejecuta, pero sale un error, asi que esto resulta extraño).
+[Lanzadera]: Finalmente, arreglados los iconos de los botones para que se muestren correctamente bajo escritorios de 32 bits de color.
+
+-2.5.1- (08/03/2004):
+[General]: Arreglados los iconos y los logos para evitar que las runtimes de VB carguen el icono incorrecto si el programa se ejecuta en 32 bits de color.
+
+-2.5- (04/03/2004):
+[General]: Añadidas opciones para linea de comandos. Mas detalles en Leeme.txt
+[General]: Ahora los botones de la barra de herramientas tienen un aspecto 100% Outlook (por ejemplo, ahora solo se necesita un solo clic).
+[General]: Añadido un "mutex" y otras comprobaciones de seguridad para evitar mas de una instancia del programa a la vez.
+[General]: Arreglado un fallo extraño que provocaba que al salir del programa saliera un error de "operación no valida" en algunos equipos con Windows XP.
+[Lanzadera]: Añadidas un par de opciones en la ventana de configuración para alternar entre linea de comandos y enviar las teclas de acceso directo si se esta usando un emulador externo, en caso de que este no soporte linea de comandos, como Kega. Ahora GenRomSuite deberia funcionar con emuladores "poco convencionales" como retroDrive.
+
+-2.2.0- (27/02/2004):
+[General]: Función sorpresa implementada ;) (CONSEJO: Pulsa 10 veces CONTROL en la ventana "Acerca de" y ya veras...).
+[General]: Arreglos menores al código de deteccion de la versión de Windows. Ahora es mas rápido, y deberia reconocer cualquier Windows de 32 bits existente.
+[General]: ...y sigue la limpieza del código. Mas variables y otras cosas innecesarias removidas.
+[Lanzadera]: Arreglo menor al código de ejecución de Kega. Ahora deberia funcionar con casi cualquier versión (incluidas las traducidas).
+
+-2.1.1- (16/02/2004):
+[Convertidor de ROMs]: Arreglado varios fallos menores en el boton para seleccionar la carpeta de ROMs de destino: fallos al trabajar con una sola ROM, y arreglos generales a los procedimientos involucrados.
+
+-2.1.0- (05/02/2004):
+[Lanzadera]: Añadido soporta para lanzar ROMs en Kega!. En lugar de utilizar la linea de comandos, se utiliza una función interna de VB (SendKeys) para "enviar las teclas" al emulador.
+[Lanzadera]: Corregido un fallo menor en la ventana de configuración: si el usuario arrancaba la lanzadera por primera vez y si hacia clic en "Cancelar", le aparecia la lanzadera con todos los botones desactivados. Ahora ya no aparece la lanzadera si el usuario elige "Cancelar" en la ventana de configuración.
+[Idioma]: Removida una API incompatible con Windows 95 (SendInput). Ahora el primer idioma de la lista es marcado usando funciones internas de VB. Esto deberia hacer a GenRomSuite 100% compatible con Windows 95 (ya que dicha API, al no existir en Win95, debia provocar un error en el programa que evitaba su ejecución).
+[Parcheador IPS]: Arreglado el orden de tabulación de los controles.
+[General]: Mas arreglos (pequeños) al GUI.
+[General]: Limpieza interna en el código, de nuevo...
+
+-2.0.0- (04/02/2004):
+[General]: Nuevo parcheador IPS de ROMs! Mas detalles en Leeme.txt.
+[General]: Mas basura innecesaria removida.
+[General]: Ligeros cambios al logo.
+
+-1.7.56- (24/01/2004):
+[General]: Aparentemente, el haber integrado el archivo .MANIFEST en el ejecutable causaba que no se ejecutara bajo Windows XP (devolvia un error de "aplicación mal configurada"). El archivo .MANIFEST ha sido extraido (gracias por nada, M$).
+
+-1.7.55- (24/01/2004):
+NOTA: A partir de esta versión, el programa sera distribuido en forma de instalador multilingue (compilado con Inno Setup 4.1.1), para mayor comodidad, pero el ZIP seguira alli.
+[General]: Mas arreglos al GUI.
+[General]: Removidas algunas variables en desuso.
+[General]: Ahora el archivo .MANIFEST (de los estilos visuales de XP) esta compilado dentro del ejecutable.
+[Idioma]: Arreglado un fallo "extraño" del guardado del nombre del archivo de idioma en uso, donde uno de los caracteres era reemplazado. Se cambio el nombre de la variable.
+
+-1.7.5- (13/01/2004):
+[General]: Cambios y arreglos menores al GUI.
+[Lanzadera]: Arreglado el manejador de errores.
+[Editor de encabezados]: Expandido el tamaño del campo "Código del juego" a 14 bytes, ya que esa es su longitud real.
+[Idioma]: Corregido el soporte de idiomas. Ya no es necesario reiniciar la aplicación para usar otro idioma, ya que el programa automáticamente se reinicia solo.
+
+-1.7.25- (25/12/2003):
+Edición especial de Navidad ;-)
+[Convertidor de ROMs]: Ampliado el búfer de nombres de archivo del selector de archivos a 4KB.
+[Convertidor de ROMs]: Arreglado un pequeño bug en el selector de directorios de destino.
+[Editor de encabezados]: Fusionados los campos de "Tipo de producto" y "Código del producto" en uno solo (a fin de cuentas, ambos son lo mismo).
+[Editor de encabezados]: Ampliado el tamaño del campo de comentarios a 64 bytes, y tambien se cambio el offset desde el cual es leido el comentario de la ROM (si lo hay).
+[General]: Restaurados algunos mensajes de información.
+[General]: Pequeños cambios en el código.
+
+-1.7- (14/12/2003)
+[Convertidor de ROMs]: Reescrita parte del GUI, ahora el convertidor puede convertir varias ROMs a la vez. Se pueden seleccionar varios ficheros desde el dialogo de "Abrir", y se puede cambiar la ubicación de los ficheros convertidos.
+[Convertidor de ROMs]: Convertidor SMD2BIN: Arreglado el código de deteccion de bloques SMD: si el encabezado no devuelve nada, el numero de bloques es calculado a partir del tamaño del archivo de la ROM.
+[Idioma]: Cambiados los nombres de los archivos de idioma que se incluyen, ahora tienen una barra ("_") al comienzo para que se ubiquen en el tope del selector de idioma.
+[Idioma]: Arreglado el codigo de carga del idioma: si no se puede leer desde un archivo de idioma porque no existe, entonces, se le pide al usuario que seleccione otro idioma.
+[Editor de encabezados]: Arreglado un fallo que consistia en que si el usuario hacia clic en "Guardar como", y luego hacia clic en Cancelar, se devolvia un nombre de archivo nulo.
+
+-1.6.6- (30/11/2003)
+[Idioma]: Traduccion al chino(simplifcado por ÅíÀÚ inlcuida. (gracias ÅíÀÚ)
+[Convertidor de ROMs]: Arreglado un pequeño fallo estúpido en el convertidor de SMD a BIN: si el usuario convertia una segunda ROM, se guardaba un bloque lleno de ceros.
+
+-1.6.5- (27/11/2003)
+[Editor de encabezados]: Arreglado un fallo en el comprobador de checksums: si el tamaño de la rom era un número impar, provocaba un error de VB que cerraba el programa.
+[Convertidor de ROMs]: Añadido soporte para ROMs de 32MBits. Es posible que algunas ROMs SMD con encabezados incorrectos terminen pesando 4MB, pero funcionaran igualmente.
+
+-1.6.1107- (22/11/2003)
+[Editor de encabezados]: Arreglado (otra vez) el soporte de los estilos visuales de XP en esta ventana (Esto deberia eliminar el "parpadeo" de las etiquetas y los titulos "corrompidos" de los cuadros internos). (gracias fataku).
+[Acerca de]: Corregido el código de detección de la versión de Windows. Ahora los que usan XP ya les debe salir "Windows XP" y no "Windows 2000". (gracias fataku).
+[General]: Añadidas imagenes a los menues :-).
+
+-1.6- (21/11/2003)
+[General]: Añadida una "barra de progreso" en la parte inferior de la ventana. Muy util para ver el progreso de cualquier operación.
+[Convertidor de ROMs]: (SMD->BIN): Corregido el código para crear el búfer temporal para la ROM SMD convertida. Ahora se pueden convertir ROMs cuyo tamaño no sea divisible entre 16KBytes (por ejemplo, una ROM de 835KB).
+[Convertidor de ROMs]: Ahora se puede enviar directamante la ROM convertida a la Lanzadera para ejecutarla desde alli.
+[Editor de encabezados]; Añadido un botón para enviar la ROM activa a la Lanzadera para ejecutarla desde alli.
+
+-1.5- (15/11/2003)
+[Editor de encabezados]: Añadido un "corrector de checksums", para comprobar si el checksum de la ROM es el correcto. (gracias Saga).
+[Editor de encabezados]: Cambiado el selector de zonas para adaptarse a los códigos regionales de Sega de 1994 (gracias a Genesis Collective por la tabla de los códigos de region)
+[Editor de encabezados]: Arreglado un pequeño (y estupido) fallo en la rutina para cargar ROM. Los datos de los dispositivos se cargaban dos bytes antes de lo debido (y al guardar se estropeaba el checksum de la ROM). Corregido.
+
+-1.4- (13/11/2003)
+[Lanzadera]: Añadido soporte para cargar archivos ZIP, y mostrar todos los tipos de ROMs soportados en el dialogo "Seleccionar ROM"
+[Convertidor de ROMs]: Corregido un pequeño defecto en el dialogo "Guardar ROM convertida": se habia desactivado accidentalmente el selector del indice de los tipos de ROM. Ahora se muestra el tipo correcto de acuerdo al convertidor usado.
+[Idioma]: Corregido el selector de idioma (de nuevo...): si el usuario seleccionaba otro idioma, no se le informaba que debia reiniciar GenRomSuite. Se cambio el código del selector para arreglar eso.
+
+-1.3- (06/11/2003)
+[Lanzadera]: Arreglado el soporte para emuladores en MS-DOS: ahora la el nombre de archivo de la ROM seleccionada es convertida al formato 8.3 para que pueda ser reconocida por el emulador.
+[Configuración]: Arreglado el soporte de los estilos visuales de XP en esta ventana
+[Configuración]: Añadida una casilla de verificación para indicar si el emulador personalizado (el marcado como "Otro") es un programa de MS-DOS.
+
+-1.2- (27/10/2003)
+[General]: Añadidas rutinas para mostrar las ventanas y controles con la fuente de los mensajes del sistema operativo (gracias Morgan)
+[Lanzadera]: Arreglado el código de desactivacióm: ahora si no hay ningun emulador configurado, el selector de ROMs se desactiva
+[Idioma]: Ligeras ediciones y añadidos
+[Idioma]: Arreglado el selector de idioma: si el usuario selecciona otro idioma y presiona "Cancelar", ya no se le informara que debe reiniciar la aplicación.
+
+-1.1.5125- (25/10/2003)
+[Convertidor de ROMs]: Corregido el soporte de los estilos visuales de XP en los botones para convertir (gracias fataku)
+[Editor de encabezados]: Corregido el codigo para colocar el titulo de la ventana: el titulo aparecia pegado del nombre de la ROM. Se añadio un separador
+
+-1.1- (23/10/2003)
+[Lanzadera]: Arreglado el orden de tabulación de los controles
+[Lanzadera]: Arreglado el código para iniciar KEGA: si no hay ninguna ROM seleccionada, no saldra ninguna advertencia
+[Editor de encabezados]: Arreglado el orden de tabulación de los controles
+[Editor de encabezados]: Arreglado el código de "desactivación" de la ventana: ahora el boton "Cerrar" esta disponible aunque no haya ninguna ROM cargada, ahora el cuadro de texto con el nombre del archivo no es editable.
+[Configuración]: Arreglado el orden de tabulación de los controles
+[Convertidor de ROMS]: Arreglado el orden de tabulación de los controles
+
+-1.0- (22/10/2003)
+
+Versión inicial

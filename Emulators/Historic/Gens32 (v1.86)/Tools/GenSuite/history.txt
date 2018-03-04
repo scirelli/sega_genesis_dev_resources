@@ -1,0 +1,157 @@
+GenRomSuite version history
+===========================
+-2.8.2- (05/03/2005): 
+[ROM Converter]: Minor check added to SMD2BIN converter: some BINary ROMs were released with SMD file extension. Any attempt to "deinterleave" such ROMs would either throw an error, or corrupt ROM. Now ROM is checked in search of the word "SEGA" in the 1st KByte of the file, if search results OK, ROM will not be converted, but will be renamed.
+
+-2.8.1- (28/01/2005):
+[General]: The link bugfix between Launcher and Header editor caused that the Run button to not work... Fixed.
+[General]: Fixed a program crash (error #76, Path not found) if the user has not set your ROM path. Now default path is C:\ if such dir is not set.
+
+-2.8- (21/01/2005):
+[ROM Converter]: Major fixes to BIN2SMD converter: if the user converted 2 or more ROMs, these were saved as blanks (zero-filled), starting with the second ROM, due to a not-reseted position marker.
+[ROM Converter]: BIN2SMD part 2: Fixed block splitting: if the ROM filesize was not a 16KB factor, the converted images were truncated.
+[ROM Converter]: BIN2SMD part 3: GUI minor bugfix to a stupid error: if user clicked in "Change folder" button, program exits with a #5 error (Invalid procedure call). That bug was related with a unrenamed variable... since v1.7!.
+[General]: Assorted code fixes/optimizations.
+[General]: CreditShow: fixed temp dir detection, if that was in the root of a drive, rather in a folder.
+[General]: Fixed a bug in the link between Header Editor and Launcher: with the Launcher not configured, if user clicked in "Run" button, and cancelled the Settings dialog, program exited with a #13 error (Object was unloaded).
+
+-2.7.5- (05/01/2005):
+[Launcher]: Minor fixes to emulator launcher code, better support for Fusion.
+[Launcher]: New icon for Xega button (it currently lacks an official icon).
+[Header editor]: Fixed header device and country codes reader: if that codes were on lowercase, program could not list such codes.
+
+-2.7- (20/07/2004):
+Starting with this version, GenRomSuite will now be published under the GNU General Public License. If you want to know more, read the license on COPYING.TXT.
+
+[Launcher]: Added support for launch ROMs on Kega Fusion through commandline (requires Fusion 0.1c or newer).
+[Header editor]: Trimmed "Comments" field to 28 bytes due to it was overwriting some other ROM information
+[Header editor]: Minor code fixes.
+[ROM converter]: Fixed an minor issue when converting ROMs with the same file as original and target file, causing some issues on some emulators (like Fusion) due to missing/extra bytes. Now original file is deleted JUST BEFORE writting the new ROM to disk.
+
+-2.6- (07/04/2004):
+[General]: Fixed Launcher and ROM Converter "Open file" and "Save file" dialog boxes bug under WinNT/2K/XP that prevented to show such boxes. (thanks to Fabian for the machine with XP and VB6 for trace that damn bug).
+[General]: Fixed splash screen dialog info text label.
+[General]: Enlarged "Open file" and "Save file" dialog boxes filename buffer to 4KB.
+[General]: Internal code tweaks.
+[Launcher]: Made a workaround for that strange "error 5" under WinXP/NT/2K (emulator launches, but program shows a weird "Invalid procedure call" error message).
+[Launcher]: Finally, fixed buttons icons for show correctly under 32-bit desktops.
+
+-2.5.1- (08/03/2004):
+[General]: Fixed icons and logos for avoid VB runtimes issue that loads wrong icons under 32 bit color depth desktops.
+
+-2.5- (04/03/2004):
+[General]: Added commandline switches. More details on Readme.txt
+[General]: Toolbar now with a 100% Outlook-style (for example, now items can be accesed with a single click).
+[General]: Added an mutex and some security checkings for avoid multiple instances of the program running.
+[General]: Fixed a very weird bug at exit that caused an "invalid operation" error on some Windows XP machines.
+[Launcher]: Added a couple of options on Setup window for switch between commandline ROM loading and shortcut keys for external emulators who don't support commandline ROM loading. Now it should work with almost every Genesis emulator, for example retroDrive.
+
+-2.2.0- (27/02/2004):
+[General]: Secret function implemented ;) (HINT: Tap ten times CTRL on "About" window, and look...).
+[General]: Minor fixes and improvements on Windows version detection code. Now it should detect any 32-bit Windows version.
+[General]: Again, internal code cleanup. More useless variables and trash stuff removed.
+[Launcher]: Minor fix to Kega loading code. Now it should work with almost any Kega version, including translated ones.
+
+-2.1.1- (15/02/2004):
+[ROM converter]: Fixed some minor bugs in "Select destination" function: fixed a stupid bug in single ROM conversions, and general code fixes.
+
+-2.1.0- (05/02/2004):
+[Launcher]: Added support for launch ROMs on Kega!. Instead of use commandline, it receives "keystrokes" by a internal VB function (SendKeys).
+[Lanucher]: Fixed a minor bug in setup window: if user executed launcher by first time, and cancel window without doing any change, launcher executed with no enabled buttons. Now user will not see launcher if no emulator paths are defined.
+[Lang support]: Removed an Windows 95 unsupported API (SendInput). Now, for first time users, language window automaticaly selects first language in the list using internal VB functions. This should make GenRomSuite a Win95 100% compatible application (because old API is not present in Win95, and therefore application exited with an error).
+[IPS Patcher]: Fixed controls tab order.
+[General]: Internal code cleanup, again...
+[General]: More tiny GUI fixes.
+
+-2.0.0- (04/02/2004):
+[General]: New IPS ROM patcher! More details in Readme.txt.
+[General]: More useless trash code removed.
+[General]: Slight changed logo.
+
+-1.7.56- (24/01/2004):
+[General]: It seems that integrated .MANIFEST file into exe prevented that the app runs under Windows XP (returning an "bad app setting" error). Pulled out .MANIFEST file, this shoul fix that (thanks by nothing, M$).
+
+-1.7.55- (24/01/2004):
+NOTE: Starting with this version, GenRomSuite will be distributed as an multilang installer (compiled with Inno Setup 4.1.1), for convenience. But ZIP file will remain there.
+[General]: More GUI fixes.
+[General]: Removed some unused stuff.
+[General]: Now .MANIFEST file (for XP visual styles) is compiled into executable.
+[Lang support]: Fixed a "weird" bug in lang file path saving. Changed setting name.
+
+-1.7.5- (13/01/2004):
+[General]: Slight GUI fixes and changes.
+[Launcher]: Fixed error handler.
+[Header editor]: Enlarged "Game code" field to 14 bytes, because it is their real lenght.
+[Lang support]: Fixed lang support. Now it is not needed anymore to rerun program, since the app do a self-reboot to load another lang file.
+
+-1.7.25- (25/12/2003):
+Special X-Mas edition ;-)
+[ROM Converter]: Enlarged the "Open file" dialog filename buffer to 4KB.
+[ROM Converter]: Fixed an small bug in destination path selector.
+[Header editor]: Merged "Product type" and "Product code" fields, since that fields are the same.
+[Header editor]: Enlarged comment field size to 64 bytes, and changed comment loading offset.
+[General]: Restored some information messages.
+[General]: Slight code changes.
+
+-1.7- (14/12/2003)
+[ROM Converter]: Rewrote partially the GUI allowing massive ROM conversions. Now you can select multiple files from "Open" dialog, and change the path for converted ROMs.
+[ROM Converter]: SMD2BIN converter: Changed SMD block detection code: if the header returns zero, retrieve blocks number from file size
+[Lang support]: Changed default language files name adding a line ("_") before filename, for moving it to the top of the list of the language selector. 
+[Lang support]: Fixed language loading code: if the program attempts to load from a non-existing file, user is prompted for change language.
+[Header editor]: Fixed a bug in saving code: if the user clicks in "Save as" button and then cancel save dialog, a null filename was returned.
+
+-1.6.6- (30/11/2003):
+[Lang support]: Chinese (simplified) translation by ÅíÀÚ now included. (thanks ÅíÀÚ)
+[ROM converter]: Fixed a small (and stupid) bug in SMD->BIN converter: if the user converts a second rom, then program saved a bunch of zeros.
+
+-1.6.5- (27/11/2003)
+[Header editor]: Fixed a bug in checksum validation routines: if the ROM filesize was an odd number, program crashed with a VB error.
+[ROM converter]: Added support for 32MBit ROMs. NOTE: On some SMD ROM's with corrupted headers, this may cause a 4MB ROM, but it will work OK.
+
+-1.6.1107- (22/12/2003)
+[Header editor]: Fixed (again) the XP visual styles support in this window (this should fix flickering in labels and that corrupted titles in frames. I hope that this time it works ok.). (thanks fataku). 
+[About window]: Fixed Windows detection code for XP users. Now it should appear "Windows XP" instead of Windows 2000". (thanks fataku).
+[General]: Added pictures to menu items :-).
+
+-1.6- (21/11/2003)
+[General]: Added a "progress bar" in the bottom of the main window. Very useful for check any operation progress.
+[ROM converter]: (SMD->BIN): Corrected code for build temp SMD ROM converted buffer. Now you can convert binary ROMs without a standard 16Kbyte-multiply size (i.e. a 835KB ROM).
+[ROM converter]: Now you can send a converted ROM to Launcher for run from it.
+[Header editor]; Added a button for send active ROM to Launcher for execute from it.
+
+-1.5- (15/11/2003)
+[Header editor]: Added checksum calc routines, for check if the ROM' checksum is good. (thanks Saga)
+[Header editor]: Changed zone selector for use Sega's 1994 new regional code model. (thanks to Genesis Collective by the region codes table)
+[Header editor]: Fixed a stupid bug in ROM loading code. Device I/O data was loading two bytes before real data (and when saving, the ROM checksum goes wrong). Fixed this for load data from correct offset.
+
+-1.4- (13/11/2003)
+[Launcher]: Added support for load ZIP files, and edited "Load ROM" dialog for show all comaptible ROM formats.
+[ROM converter]: Fixed a small bug in "Save converted ROM" dialog: accidentally i've disabled index selector for filetype combobox. Now this dialog shows correct filetype according with selected converter.
+[Lang support]: Fixed language selector (again...): if the user selected another language, it was not prompted for restart GenRomSuite. Changed lang selector code for fix this.
+
+-1.3- (06/11/2003)
+[Launcher]: Fixed support for DOS-based emulators: now ROM filename is converted to 8:3 format, allowing emulator to find the ROM.
+[Setup window]: Fixed XP visual styles support on this window
+[Setup window]: Added a checkbox for set if the custom emulator (the marked as "Other") is a MS-DOS application.
+
+-1.2- (27/10/2003)
+[General]: Added routines for show application windows and controls using OS messages font (thanks Morgan)
+[Launcher]: Disabler code fixed: now if no emulator is available, then ROM selector are disabled
+[Lang support]: Slight fixes&additions
+[Lang support]: Fixed language selector: now if user selects another language, and clicks "Cancel", then it does not receive the warning for reset application.
+
+-1.1.5125- (25/10/2003)
+[ROM Converter]: Fixed XP visual styles support on converter commandbuttons (thanks fataku)
+[Header editor]: Fixed window caption code: window title & ROM filename without separation. Added separator
+
+-1.1- (23/10/2003)
+[Launcher]: Fixed controls tab-order
+[Launcher]: KEGA launch code fixed: if no ROM are selected, then no warning msg is shown
+[Header editor]: Fixed controls tab-order
+[Header editor]: "Disabler" code fixed: now "Close" button is available even if no ROM is loaded, rom path textbox now is read-only
+[Setup window]: Fixed controls tab-order
+[ROM Converter]: Fixed controls tab-order
+
+-1.0- (22/10/2003)
+
+Initial public version

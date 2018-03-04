@@ -1,0 +1,19 @@
+
+ROM INFO
+=====================================
+GameID:65813710
+
+Name:  GAMEHUT TEST SHELL                              
+Console Name:  SEGA GENESIS    
+Type:  GH
+Version:   00-0001 -01
+Copyright:  GAMEHUT 2018.MAR
+Countries:  F  
+Description:                                          
+Checksum:  0
+IO Support:  J           
+Modem Infos:              
+Ram Infos:  
+Ram Start Adress:  538976288
+Rom Start Adress:  0
+Rom End Adress:  4194303

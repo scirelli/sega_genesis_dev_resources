@@ -1,0 +1,180 @@
+;English - by Tom - ver 2.x.x
+[mdMain]
+mnuArch=&File
+mnuArchIdioma=Select language...
+mnuArchQuit=&Quit
+mnuAyuda=&Help
+mnuAyudaAcerca=About...
+cmdTools=Utilities
+shConvert=ROM converter
+shEdit=Header editor
+shRun=Emulator launcher
+shIPS=IPS ROM patcher
+
+[frmSplash]
+lblPlatform=for Win32
+lblVersion=Version
+lblCompany=Coded by Tom
+lblKey=-==================>>>Press any key for continue<<<====================-
+
+[frmIdioma]
+Caption=Select language
+IDOK=&OK
+IDCANCEL=&Cancel
+Msg1=It looks that you're running GenRomSuite for first time in this computer. To begin, please select a language for use with this application.
+Msg2=Select a language for use with the application.
+
+[frmSetup]
+Caption=Setup locations
+fPath=Emulator locations
+fRoms=ROM folder
+lbOtro=Another emulator (Genecyst, Genital, Genesis Plus...)
+IDOK=&OK
+IDCANCEL=&Cancel
+chkFCmd=Load ROM through commandline
+fExtOpt=External emulator options
+chkDOSEmu=This emulator is a MS-DOS application
+optByCommand=Launch ROM through commandline
+optByKeys=Use emulator keyboard shortcuts
+
+[frmAcercaDe]
+fWeb=Recommended Websites
+fApp=App information
+lbDir=Folder
+lbRom=ROMs
+lbWin=Windows
+lbMem=Memory
+IDOK=&OK
+cmdCredits=Credits...
+lblWeb(3)=Go to my Website...
+lblWeb(4)=Forums and support
+lblPlatform=for Win32
+lblCompany=Coded by Tom
+lblTransBy=
+
+[frmHeadEdit]
+Caption=Header editor
+fRom=Select binary-formatted ROM (.bin)
+frmRhe=Header information
+fDevice=Devices
+fZone=Target zones
+cmdRec=&Save
+cmdRecComo=Save &as...
+cmdPlay=&Run
+cmdExit=&Close
+
+[frmIPSPatcher]
+fPatch=IPS ROM Patching
+lblInfo=Select a file to patch, a patch to apply, and, if needed, an extra data file. Then click "Patch" to begin process.
+lblOriginal=Original ROM:
+lblPatch=IPS Patch:
+lblPatched=Patched file:
+chkData=Use an extra data file (needed by some hacks):
+cmdPatch=Patch!
+cmdClose=Close
+
+[chkDev]
+0=Joypad
+1=6-button Joypad
+2=Keyboard
+3=Printer
+4=Control Ball
+5=Floppy Disk Drive
+6=Activator
+7=Team Play
+8=MS Joystick
+9=Serial RS232C
+10=Tablet
+11=Paddle Controller
+12=CD-ROM
+13=Mega Mouse
+
+[sName]
+0=Domestic name:
+1=Overseas name:
+2=Console name:
+3=Game code:
+4=Copyright:
+5=Comment:
+
+[frmLauncher]
+Caption=Launcher
+fEmus=Hit on an emulator for run it
+fRom=Select a ROM for execute it
+cmdOtro=Other...
+cmdSetup=Setup...
+cmdExit=&Close
+lblExternal=External emulator to use:
+
+[frmRomConv]
+Caption=ROM converter
+lbOrgBin=Original ROM:
+lbOrgSMD=Original ROM:
+lbDestBin=Target (converted) ROM:
+lbDestSMD=Target (converted) ROM:
+cmdSMD2BIN=Convert
+cmdBIN2SMD=Convert
+cmdRunOut=&Close
+
+[Msgs]
+ReRunId=You must restart GenRomSuite for apply changes
+AppMsg=GenRomSuite %v in execution
+BadChecksum=This ROM checksum value is wrong, do you want to fix it?
+WarningChecksum1=WARNING: Some games include custom checksum calculation routines.
+WarningChecksum2=If you edit this checksum, the game may not work. Continue with fix?
+ReadyToEdit=ROM %r ready for edit.
+ReadyToRun=ROM %r ready for run.
+OverwriteMSG=Are you sure for write changes?
+SavedAsMsg=ROM saved OK in %r
+ErrString=Error saving ROM!
+NoIni1=It looks that you are using for first time the Launcher, 
+NoIni2=so you need to locate at least one emulator for use it.
+NoRunMsg=Can't run %p
+SelRomErr=You must select a ROM for convert!
+SelDestErr=You must select a file for store converted ROM!
+CNVProg=Converting ROM. Please wait...
+OKCNV=Convert OK!
+ErrCNV=There are errors during convertion. Some ROMs are not converted!
+DstMsg=ROM converted stored OK in %r 
+CantCNV1=Can't convert ROM!
+CantCNV2=Error converting ROM. Please try again.
+RunApp=Running %p.
+RunRom=Running %p with ROM %r.
+WantExit=Do you really want to exit?
+Goodbye=Sayonara...
+RomFolder=Select the folder where you store your ROMs
+MainEXE=Main EXE of %p
+EXEs=Executables (*.exe)
+SelEXE=Select executable of %p 
+AllFiles=All files (*.*)
+SelOtroEmu=Select emulator
+BinFile=Binary ROM Dump (*.bin)
+SMDRom=Super Magic Drive Interleaved ROM (*.smd)
+AllRoms=All supported ROM types (*.bin, *.smd, *.zip)
+ZippedRoms=Zipped ROMs (*.zip)
+Patches=IPS Patches (*.ips)
+SelIPSBox=Select IPS patch to apply
+SelRomBox=Select ROM
+SaveRF=Save ROM
+LoadBinT=Select binary ROM
+SaveCNV=Save converted ROM
+MemStat=%t KB total, %f KB free
+SelRomPErr=You must select a ROM to patch!
+SelIPSPErr=You must select an IPS patch to apply!
+SelDstPErr=You must select a filename for patched ROM!
+SelChunkErr=You decided to use an extra data file, but you haven't choosen one to append. Continue anyway?
+CantPatch=Cannot patch ROM. Following error has ocurred:
+Patching=Patching %s. Please wait...
+PatchedOK=Patching finished. Do you want to test the ROM?
+InvalidIPS=Invalid IPS patch
+
+[RegCodes]
+chkLicModel(0)=Old code model
+chkLicModel(1)=New code model
+chkJapOld=Japan
+chkUSAOld=United States
+chkEurOld=Europe
+chkJapNTSC=Japan (NTSC)
+chkJapPAL=Japan (PAL)
+chkOVNTSC=Overseas (NTSC)
+chkOVPAL=Overseas (PAL)

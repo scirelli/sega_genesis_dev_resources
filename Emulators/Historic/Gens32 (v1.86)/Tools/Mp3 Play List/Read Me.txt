@@ -1,0 +1,10 @@
+Mp3 Play list v1.00
+------------------------------
+What is it?
+it's a tool for you to create the play list.
+
+How to use?
+Just copy it to your mp3's folder(If you wanna play these mp3s with Gens32 Surreal,please copy the Mp3 Loader.iso as well.Just run
+this programme,then it will create the play list for you.
+
+						2005 DarkDancer

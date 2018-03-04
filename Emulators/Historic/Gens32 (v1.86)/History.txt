@@ -1,0 +1,507 @@
+////////////////////////////////////////////
+//Gens32 Surreal v1.86 HD
+////////////////////////////////////////////
+Marry Christmas ^_^
+1) Adjust sounds.
+2) Rewrite Gens32 Filter IV
+2) Fixed the save problem of XinQiGaiWangZhi(Chinese). 
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.86 Se
+////////////////////////////////////////////
+1) Adjust sounds.
+2) Rewrite Gens32 Filter IV
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.86 Recall
+////////////////////////////////////////////
+1)Rewrite Super TV Filter.make it more like some TV set.
+2)Rewrite Gens32 Filter IV.
+3)Adjust sounds,try to make it more like real hardware.
+4)Add a noise effect while reading SEGA CD.Since I don't
+have the hardware yet,I got it from my Sony WALKMAN...
+5)Remove soundrate stuff.
+6)Remove OpenGL stuff,since it's so hard to got a SDK.
+
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.80 Std
+////////////////////////////////////////////
+1)Rewrite Gens32 Filter I.
+2)Rewrite Gens32 Filter II.
+3)Update YM2612 stuff.Adjust for 114db playback.
+4)Update mouse driver system,buildin 4 drivers.
+They are Lethal Enforcers,Lethal Enforcers II, Dune2, Cannon Fodder.
+you can check out mouse.txt for more details.
+5)Try to fix DAC sound.
+
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.79 Ghost
+////////////////////////////////////////////
+1)Rewrite Gens32 Filter I.
+2)Rewrite Gens32 Filter II.
+3)Added a speed up engine.Only worked when sound enabled.
+
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.79 BadBoy
+////////////////////////////////////////////
+1)Try to fix the bugs on ATI HD2600 etc..
+2)Adjust DAC.
+3)ADjust YM2612.
+4)Adjust PCM.
+5)Deleted some filters.Update Gens32 Surreal II.
+6)Update Gens32 IO for some hack use.
+
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.78 Se
+////////////////////////////////////////////
+The code name is 'Se'.It's just consider as a rebuild versin of v1.78 std.
+
+1)Rename Gens32 Antialiasing I ~ IV to Gens32 Filter I~IV.
+2)Update Gens32 Filter III;
+3)Fixed Some bugs in display and audio stuff.
+4)Added a new filter called Gens32 Filter IV,720P output supported now.
+
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.78 Std
+////////////////////////////////////////////
+1) Update DAC stuff.May be nice,but still some
+noise there.176400HZ was recommended.
+2) Use a new technique called 'Twirler' to improve
+YM2612 playback.
+3) Update 3D surround.
+4) Update Gens32 Antialiasing III to Gens32 Antialiasing III Advance.
+Add mix color stuff in advance version to make it looks more better.
+
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.76 IceBlue
+////////////////////////////////////////////
+1)Some update on sound stuff,make it sampler and faster.
+
+2)Fixed the bug,which resize the window while reactive.
+
+3)Gens32 Antialiasings III released,designed for 1024*768.
+
+4)Some update on Gens32 Antialiasings II.
+
+5)Fixed the bug while playing CDDA.
+
+Also,the nice theme(include background,start log,menu log,icon) was designed by
+AKM1989,really thanks.
+ 
+And more.....
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.76 Girl
+////////////////////////////////////////////
+1)Some update on sound stuff.
+
+2)Fixed a bug,which caused slient while dump audio.
+
+3)Update render plugin Gens32 Antialiasings to Gens32 Antialiasings II.
+
+4)^_^ I just forget update what...toooooo long since I finshed this stuff.
+
+Warning: This version request a powerful PC.
+
+////////////////////////////////////////////
+//Gens32 Surreal v1.76
+////////////////////////////////////////////
+1) Update YM2612 core,PSG core etc...to 24bit.
+
+2) Playback with 64bit AHDA.
+
+3) Restore classic menu.
+
+4) New force feedback drivers comes with this version,
+one is for MK3/MK3 hack, one is for virtual fighter 2.
+Because new tech was bright into these stuff,so more
+force feedback drivers should be released in our forum later,
+
+5) A mp3 player called ACOMPAL media player comes with 
+this version,Which playback with 64bit AHDA too.
+
+
+///////////////////////////////////////////
+//Gens32 Surreal v1.72
+///////////////////////////////////////////
+1) Update 24bit and 32bit playback stuff.Note,
+that Gens32 surreal never really supported
+24bits or 32bits playback,even this version.
+It just use a method to "emulate" them in 16bits.
+
+2) Add 172000HZ sound rate playback,that can fix some 
+sound bugs under 192000HZ.Thanks to Stéphane Dallongeville.
+
+3) Add a option which can force to use software update sound.
+This may fix some fucking problems.
+
+4) Rewrite and add some render plugin.I wana emulate really TV,
+but it's long way ahead.These things are WIP stuffs.
+
+5) New roms supported.But the keyboard stuff still not fully emulated.
+
+6) New backgrond, still thanks to amk1989.
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.69 R2
+///////////////////////////////
+1) With Nazo's debug,fixed the nosie problem with
+ Sound Blaster Audigy 2 ZS Platinum.
+
+2) Do some update on YM2612.(I am not sure it's a 
+update),make sounds sounds more nice.
+
+3) Changing default settings to fix some problem.
+
+4) Use simple volume config instread the old complex
+one,and add a short cut to config the volume,they are:
+Ctr + Num+ and Ctr + Num-.
+
+5) Fixed some bugs(long...long ago,I forget fixed what).
+
+6) Thanks to AKM1989's help,we have some now logos.
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.69
+///////////////////////////////
+1) Fixed the bug which caused crash when load
+7z archives.
+
+2) Update Rom Exploer explorer.
+
+3) Update Water Effect.
+
+4) Replace Keep Colors Antialiasing with Gens32 2X.
+
+5) Update Search Cheat System,worked more faster.
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.68
+///////////////////////////////
+1) Fixed a classic bug,the nForce mainboard
+user can use Gens32 Surreal without 
+worried about freezen now.Thanks to
+wphoto2003(acgwolf) who helped with the test 
+stuff.
+
+2) Emulate controller stuff more actually.Both
+1P and 2P can disconnect now.
+
+3) Added water effect which was imported form ZSens.
+
+4) Added TV Nosie effect.
+
+5) New start logo, which painted by akm1989(Emu-Land).
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.67
+///////////////////////////////
+1)Based on Upthorn's hard work.SEGA CD save
+states was supported.You can get his code at
+Gens32's forum.
+2)Rewrite Sound Playback Mode C;
+3)Do a little change on config joypad.You need
+to press a while and release with your mouse to 
+select the key you want to config.
+4)Rewrite Super TV,it's still a WIP verison.
+
+The R2 update:
+1) Fixed a bug in YM2612 when enable SSG_EG.
+2) Supported Virtual Space Controller.
+3) Fixed a bug in joypad config.Speed up key
+will no overwrite quick load key anymore.
+4) Fixed joypad config delay,make it more 
+suiteble.
+
+The Bowknot update:
+1) Fixed bugs.
+2) Some work on Gens32 Antialiasing,maybe more nicer.
+3) Added an option to improve the sound quality when
+playback at 192MH sound rate.
+4) Added an option to remix music(Only worked when turn
+on 192MH imprve).
+5) Remove the picture under Gens menu.
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.66
+//////////////////////////////
+1)Improved Cheat system;
+2)Improved Rom Explorer;
+3)Improved 32bpp graphics system;
+4)Improved Controller Config system;
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.64
+//////////////////////////////
+1) Added a lovely rom explorer
+2) Redesigned Gens32 Antialiasing
+3) Redesigned sound playback system
+
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.62
+//////////////////////////////
+
+the Update:
+1) Add a filter called MM2X;
+2) Add new sound sample rate support: 30000HZ;
+3) New Rom hack technology supported;
+4) Fix the bug when pausing;
+5) Add new video system,called 'emulate TV size',which can make
+the display area martch the PAL,NTSC etc... If it can not worked correctly,just
+press Alt+ Enter twice to fix this problem.
+5) You can rewind the game with your pad.
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.60
+//////////////////////////////
+
+the Update:
+1) Rewrite Super TV,more bright now.But the full screen's bug still not fixed,
+You have to Press Alt+Return twice if it can not display full area.
+
+2) Update CUPL.dll,Shing Force II chinese translation work fine now.
+
+3) Bind down PowerUp,which a software to support update Online.From now on,you 
+can get the latest Gens32 Surreal(especially WIP version) by just press 'PowerUp.exe'.
+
+4) Update Rewind system.You have a chance to select the distance you want to rewind. 
+
+5) Update cheat system,you can edit the cheat with a text editor now,but not compatible
+with old versions.
+
+6) Fixed some bugs in menu.
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.58
+//////////////////////////////
+
+The Update: 
+
+1) Needs a Little less Processing power now.
+
+2) With my friend ChengZhi's help, several bugs were fixed. Works under windows98 now.
+
+3) Added/Rewrote/Deleted several filters.
+
+4) 7z supported.
+
+5) Updated some emulation stuff, more like the real hardware now. (some of them aren't supported by Fusion v3.51).
+
+6) SMD format's bug was fixed.
+
+The Std update:
+
+1) Added an option called '7z Spy'.Which help you to find the right rom in 7z archive.
+
+2) Fixed a bug when load 7z.
+
+The R2 update:
+
+1) Try to fix some classical Gens's bug.Such as the '&About' file.
+
+2) Restore the logo effect, You can set them in Option->Mic.
+
+3) Added multi-Menu system,if you don't like Surreal's menu,you can switch to the old classical menu in Option->Mic.
+
+4) Added Rewind system.You can find it under Tools Menu.
+
+5) Low down Unl's game's support to low up official game's compatibility.
+
+6) Support 'Common Unl Patch Library' which designed to solve some Unl game's problem.(Item 5 + Item 6 = Compatibility up with all roms).
+
+PS: 
+
+1) This version's theme was designed by heavyds, who's from Brazil. The theme is really very very nice, thanks.And the chinese translation's theme was designed by LuciferWon.Also very nice and many thanks.
+
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.49
+//////////////////////////////
+
+1)Supported the rom more then 48M(less then 96M),some hacked roms,such as MK3 Hack8(hacked by Kabal,64M) worked now. 
+
+2)Fixed the DAC sound in Final Fantasy(Russian translation of Barver Battle Saga) 
+
+3)Fixed some problems in Wu Kong Wai Zhuan. 
+
+4)More... 
+
+Beta2 Update:
+1)Can play back CDDA stuff with Direct Show.(I leave an opion to switch between MPG123 and Direct Show). 
+
+2)Auto speed up when loading SEGA CD.Still some problems when playing movies or caused a crash. 
+
+3)Added tow sound playback mode. 
+
+4)Rewind the menu to the old mode.akm1989 sent me 2 backgrounds,it's very nice,thanks.
+
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.47
+//////////////////////////////
+
+1)Based on OpenGL,added some filters.Such as glscanlines,glNTSC3.58(WIP),glMotion Blur(not like the old LCD effect,but a new,nicer one),glHigh Lihgt. 
+
+2)Based on OpenGL,added 16bpp supported. 
+
+3)Based on OpenGL,added an option to adjust scalines. 
+
+4)Added some Color maps 
+
+5)Fixed some bugs.(Power Instinct (J) [!]'s music OK again.) 
+
+6)Optimized some stuff,maybe work faster. 
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.40
+//////////////////////////////
+
+Restored: 
+
+1)Speciel Game Fix system.With my friend Ken?s help,I restored this system. 
+2)Movie recored & play stystem.New format,not compatible with old versions of Gens32 
+
+New: 
+
+1)A new SEGA CD formats was supported.That is the ISO + Playlist + Mp3.In order to help you to create the playlist when you wanna enjoy mp3s.I have write a tool with this version.You can find it In tools folder.But it is not recommend you to rename the game tracks with this tool.Especially on a FAT32 system.Wirte the playlist manually will be more safer 
+
+Updates: 
+
+1)Optimized the codes of the sound system and the video system.Maybe works faster. 
+
+2)A new technology called "dynamic float correct" was used in sound system. 
+
+Bug fix: 
+
+1)Some bugs disappeared when I wanna fix them,Perhaps later.
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.32
+//////////////////////////////
+
+Restored: 
+1) Wav Dump system 
+2)Map X,Y,Z to A,B,C with Mode 
+3) Quick Load/Save with joypad 
+
+New: 
+1)A new render plugin added 
+2)Color Map select menu added 
+3)A nice "LED" system show sound volume 
+
+Changes: 
+1)GUI and background changed.Replace some text with pictures 
+2)Reproject some render plugins 
+
+Bug fix: 
+1)The HQ2X filter's bug was fixed
+
+//////////////////////////////////////////
+//Gens32 Surreal v1.29 Mermaid
+//////////////////////////////
+
+3D Surround playback supported. 
+
+Some work on VSync. 
+
+Update Cool Music,some codes(Lowpass and echo)are taked form Gens+. 
+
+Drop file supprted agin.Only roms and ziped roms are supported now.-_-Some old versions of Gens32 even can play mp3 or make icons with this function...But some guys said that emulator sholdn't like that...1) 
+
+Protcted Saves system added.Use this function to protect saves form some accident.Such as power cut. 
+
+Priority switch added.You can change Priority with it. 
+
+SEGA CD sample rate auto controller added,lowdown the sample rate if the sample rate is too high to play music.If you like to play SEGA CD at a heigh sample rate with out music,I am afraid that you have to use Gens32 v1.28 Seelama. 
+
+Fixed some bugs. 
+
+R2 Update:
+
+3D Surround playback. 
+
+Some work on VSync. 
+
+New sound options, (Lowpass and echo) are taken form Gens+. 
+
+Drop file supported again. Only roms and zipped roms are supported now. -_- Some old versions of Gens32 even can play mp3 or make icons with this function... 
+
+Protected Saves system added. Use this function to protect saves in case of a problem. Such as a power out. 
+
+Priority switch added. You can change processing priority with it. 
+
+SEGA CD sample rate auto controller added, it will slow down the sample rate if it's set too high to play music. If you like to play SEGA CD at a high sample rate with out music, I am afraid that you'll have to use Gens32 v1.28 Seelama. 
+
+Fixed some bugs. 
+
+//////////////////////////////////////////
+//Gens32 Surreal 1.28
+//////////////////////////////
+LDU+ update:
+What is LDU technology? It is Gens32's mother.And now,she has came back.She can read the text and pictures on the 
+screen,and then, do a lot of crazy stuffs for you.Such as Force Feedback or translate roms into your language in a few hours. 
+
+Besides,I have designed a new Feedback equipment to instead the pad. 
+I will give more details later. 
+
+Perpetual Update:
+Fixed some bugs. 
+
+Inlcuded MDD Editor v1.00 Std. it provided the tools to complie an LDU.
+
+Seelama Update:
+Fixed some bugs. 
+
+Update to the Sound System. 52,000, 96,000 and 192,000 Khz sample rates are supported now. 24bit and 32bit playback is also newly supported. 
+
+3D Surround playback supported.
+
+//////////////////////////////////////////
+//Gens32 Surreal 1.20
+//////////////////////////////
+Blue Rain Update:
+1)Some work on SEGA CD save states .Not finshed yet. 
+
+2)Some changes on SEGA CD brm option. 
+
+3)Fixed sound stuff,maybe faster now. 
+
+4)Finaly,Mouse was supported! Just With the mouse driver,you can paly your games with your mouse! I have released 4 drivers with this version,they are Dune2's , Lethal Enforcers II's,Lethal Enforcers's and Cannon Fodder's.I will release more later. 
+
+XForm Update:
+1)Redesigned Menus. 
+
+2)Enjoy BGM mode added. 
+
+3)Fetch Game system added. 
+
+4)Indicator light for signal Game Playing/Mouse Enable. 
+
+5)Load GG Code/Save As GG code option added. 
+
+6)More filters added. 
+
+7)Restored Render Plugin system. 
+
+8)Check Rom Info option restored. 
+
+9)More... 
+
+//////////////////////////////////////////
+//Gens32 Surreal 1.00
+//////////////////////////////
+
+The history started...

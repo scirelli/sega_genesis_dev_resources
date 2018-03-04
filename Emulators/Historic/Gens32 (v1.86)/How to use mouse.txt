@@ -1,0 +1,62 @@
+Dune2:
+=====================
+
+Start & Logo:
+////////////////////////////////////
+Left button: Move Left.
+Right button: Move Right.
+Middle button: Start.
+Wheel: up or down.
+
+In Game(normal)
+////////////////////////////////////
+Left button: Select.
+Right button: cancel.
+Middle button: pause.
+
+In Game(building)
+////////////////////////////////////
+Left button: move left.
+Right button: move right.
+Wheel: up or down.
+Middle button: Ok.
+
+Pause
+/////////////////////////////////////
+Wheel: up or down.
+Left button: set.
+Right button: play.
+Middle button: exit.
+
+
+
+Lethal Enforcers & Lethal Enforcers II
+=======================================
+
+Menu
+/////////////////////////////////////////
+Left button: start.
+Right button: set.
+Wheel: up or down.
+
+In Game
+//////////////////////////////////////////
+Left button: shot.
+Right button: reload.
+Middle button: pause.
+
+
+Cannon_Fodder
+================
+
+In Game
+/////////////////////////////////////////
+Left button: move.
+Right button: shot.
+
+Pause(While move to the menu,paused automatically)
+//////////////////////////////////////////
+Wheel: switch.
+
+Node:
+There is a bug,so please be careful while you check out world map.

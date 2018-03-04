@@ -1,0 +1,9 @@
+//Default 32X BIOS:
+32X_G_bios.bin
+32X_M_bios.bin
+32X_S_bios.bin
+
+//Default CD BIOS:
+US_CD_Bios.bin  //USA version;
+JA_CD_Bios.bin  //Japen version;
+EU_CD_Bios.bin  //Europe version;

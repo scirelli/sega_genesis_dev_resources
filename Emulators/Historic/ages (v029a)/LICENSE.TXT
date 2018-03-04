@@ -1,0 +1,31 @@
+WinAGES v0.29a (Pulsar)         *** COPYRIGHT ***  by Quinntesson
+http://www.emuitalia.com/ages
+
+
+License
+-------
+AGES is freeware and is distributed "as is."  AGES may only be used for
+personal, non-profit causes.  You must not use AGES or possess it in any form
+if you do any of the following things:
+
+1.) Use ROM images that you are not legally entitled to.
+2.) Whine at me about making speedier releases or releasing source code.
+3.) Ask me to send ROMs to you or anyone else.
+4.) Whine at me about emulating _____.
+5.) Whine at me about porting AGES or releasing source code for porting.
+6.) Whine at me about anything else or annoy me in any other general way.
+
+
+Notes about Distributing AGES
+-----------------------------
+You may redistribute this emulator if and only if you follow these rules:
+
+1. The archive must be unchanged.  Nothing should be added, nothing should
+   be removed.  (This means no lame "This was downloaded from ___" files,
+   and absolutely no ROMs.)
+2. You must not make profit in any way from distributing my emulator.  (That
+   means it absolutely must not appear in a commercially distributed
+   "collection" of any kind.)
+3. You must not take credit for my work.
+4. You must not violate my copyright in any other way that I haven't
+   explicitly stated.

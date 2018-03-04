@@ -1,0 +1,75 @@
+GenRomSuite versión 2.8.2 por Tom
+~~~~~~~~~~~~~~~~~~~~~~~
+
+GenRomSuite es una pequeña "suite" de herramientas para trabajar con ROMs y emuladores de la consola Sega Genesis / MegaDrive. Con esta aplicación puedes hacer esto:
+
++ Editar el encabezado de ROMs binarias (.bin), es decir, editar información tal como: nombre del juego, fecha, paises, etc... Tambien permite corregir el checksum de las ROM, en caso de que este sea incorrecto.
++ Convertidor de ROMs: Permite convertir ROMs entre los formatos SMD (Super Magic Drive, entrelazado), y el formato BIN (Descarga binaria). Ademas permite convertir varias ROMs a la vez.
++ Lanzadera de emuladores: Soporta hasta 6 emuladores (Gens, Kega/Fusion, Ages, Xega, DGen y un sexto emulador a elección del usuario). Tambien permite cargar una ROM y lanzarla directamente en el emulador.
++ Parcheador IPS de ROMs: Permite aplicar parches en formato IPS a ROMs. Soporta parches normales y con compresión RLE. Tambien permite aplicar paquetes de datos extras, de ser necesario.
+
+Otras funciones del programa son:
+
+* Una util barra de estado que informa todo el tiempo sobre el estado de cada operación que realizes (convertir ROMs, errores, etc.).
+* Soporte de archivos de idioma que permiten traducir el programa de manera muy sencilla.
+* Soporte para los estilos visuales de Windows XP.
+* Una practica barra de herramientas "estilo Outlook", donde puedes iniciar las herramientas disponibles con solo hacer clic sobre ellas.
+
+Para ejecutar el programa, simplemente descomprimelo en una carpeta junto a los archivos de idioma (se incluyen dos, español e ingles, con la extensión .IDI), luego abre la carpeta donde lo hayas colocado y haz doble clic sobre "GenSuite.exe". Al arrancarlo por primera vez, debes elegir un idioma (por defecto se selecciona el ingles, pero puedes cambiarlo a español, simplemente seleccionado el archivo .IDI en la ventana que se te abre).
+
+Desde la version 1.7.55, el programa sera distribuido con un practico instalador, para mayor comodidad.
+
+Historial
+=========
+Ve el archivo "historia.txt para mas información
+
+Notas del programa
+==================
+- Esta aplicación fue programada en Visual Basic 6.0, de modo que necesitas las librerias de VB 6 esten instaladas en tu maquina. Si usas cualquier version de Windows superior a la 98SE, no debes preocuparte, ya que estos las incluyen, pero si no las tienes las puedes descargar desde http://activex.microsoft.com/controls/vb6/vbrun60.cab (aproximadamente, 1 MB).
+- Puedes cambiar el idioma de la aplicación desde el menu Archivo-->Seleccionar idioma...
+- Si usas un emulador basado en MS-DOS, debes indicarlo en la pantalla de configuración, para asi permitir que el emulador "encuentre" la ROM.
+- Si usas un emulador que no soporta cargar ROMs por la linea de comandos (por ejemplo retroDrive), puedes configurar GenRomSuite para que "envie las teclas" al emulador. Simplemente busca el "atajo de teclas" que abre la ventana de "Abrir ROM" en tu emulador (como Ctrl+O), e indicasela a GenRomSuite en la ventana de configuración.
+- GenRomSuite soporta opciones de linea de comandos (solo una a la vez):
+	GenSuite.exe [/c] [/h ruta_a_la_ROM] [/l ruta_a_la_ROM] [/p]
+	/c	Lanza el Convertidor de ROMs
+	/h rom	Lanza el Editor de encabezados, opcionalmente con una ROM
+	/l rom	Lanza la Lanzadera de emuladores, opcionalmente con una ROM
+	/p	Lanza el Parcheador IPS
+- La configuración del programa se guarda en el archivo "GENSUITE.ini"
+- Puedes crear tus propias traducciones, simplemente crea una copia de alguno de los archivos de idioma existentes, y traducelo, respetando los nombres de las variables, y las secuencias "%x", que son reemplazadas durante la ejecución del programa. Ejemplos:
+
+Simbolo-->Reemplazado por:
+  -> "%r"=ruta o archivo de ROM
+  -> "%p"=ruta o archivo ejecutable
+  -> "%v"=versión de la aplicación
+  -> "%t"=memoria RAM total
+  -> "%f"=memoria RAM disponible (libre)
+
+Al cambiar o eliminar alguno de esos simbolos puedes causar fallos en la aplicación.
+Si deseas realizar una traducción para que sea incluida con el programa, simplemente enviamela (mi dirección esta mas abajo...), y con gusto la incluire. No olvides colocar tu nombre en la variable "lblTransBy=" (ya que aparecera en la ventana "Acerca de...").
+
+- Cualquier bug o fallo, por favor reportalo a mi dirección de e-mail. Se explicito, reporta el mensaje y el código del error que pueda salir (especialmente si es un error de VB: "Error en tiempo de ejecución").
+- El codigo fuente esta disponible, por si deseas bajarlo, ahora bajo licencia GNU General Public License.
+
+Contacto:
+=========
+Mi e-mail es tomman@cantv.net.
+Puedes reportar bugs, fallos, o enviar traducciones y comentarios.
+
+Agradecimientos:
+================
+ *A Felipe XnaK: (http://www.classicgaming.com/launchtool, felipe@ComPorts.com), por su excelente documento "The Complete Documentation About Genesis ROM Format", que me sirvio de partida para escribir esta aplicación.
+ *A los de Genesis Collective (http://www.genesiscollective.com), por su excelente documentación acerca de la Sega Genesis en general.
+ *A los autores de los emuladores (Michel Gerritse, Steve Snake, Stéphane Dallongeville, Quinntesson, ...), por sus excelentes aplicaciones. Mantengan ese esfuerzo!
+ *A los miembros de Sega Emulation Forums, ya que siempre son de ayuda
+ *A los webmasters de Zophar's Domain, por que cada vez que publico algo, ellos lo informan, Gracias.
+ *A fataku por ayudarme a probar lo de los estilos visuales en XP.
+ *al que invento el visual basic, que seguro no fue bill....
+ *A los del grupo de news de Visual Basic (microsoft.public.es.vb), que tambien me ayudaron a entender eso de las APIs (especial agradecimiento a Morgan).
+ *A VBnet (http://vbnet.mvps.org/) y a AllAPI (http://www.mentalis.org), por su excelente código fuente para VB.
+ *A ZeroSoft (http://zerosoft.zophar.net), por su excelente documento sobre el formato IPS.
+ *a Fabian y su PIII 866 con WinXP y VB6, que me sirvio para corregir ciertos "errorcitos" bajo sistemas basados en NT.
+ *a mi madre por haberme comprado esta computadora...
+ *a cualquiera que no haya nombrado aqui, gracias.
+
+=GenRomSuite 2.8 rv.2==05/03/2005==05:34p======BIEN HECHO EN VENEZUELA=================

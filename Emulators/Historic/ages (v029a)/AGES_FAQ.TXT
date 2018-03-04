@@ -1,0 +1,201 @@
+What is AGES?
+        It is a Genesis/Sega CD/32X/SMS emulator for Windows written by
+        Quinntesson.  For more information, visit the About page on the
+        AGES website.  (http://www.emuitalia.com/ages/about.html)
+
+How can I help the project?
+        Please visit the Contributing page on the AGES website.
+        (http://www.emuitalia.com/ages/contributing.html)
+
+Is AGES free?
+        Yes.
+
+Is AGES open source?
+        Not now or anytime soon.
+
+Will AGES be ported to other platforms/OSes?
+        I have considered porting AGES to Dreamcast, but this would mean
+        rewriting all of the assembly code.  Furthermore, I have some really
+        big reservations because of possible conflict with the commercial and
+        still present Genesis/PCE emulation service provided by Sega to its
+        consumers.  Finally, I don't yet have all the parts for my PC<->DC
+        serial cable.  Despite all of this I think DCAGES ("Sega CD"
+        backwards...) would be pretty cool, but don't expect it to show up
+        anytime in the near future.
+
+What is AGES written in?
+        99% optimized assembly, %1 C++/MFC.
+
+What are the minimum system requirements to run AGES?
+        You will need Windows, DirectX 3.0 or higher, and a CPU with MMX.
+        To use a joystick, you will need DirectX 5.0 or higher.  To use your
+        CD-ROM drive(s), you will need ASPI.  To use AGES in windowed mode
+        your display must be 16-bit color.
+
+        Genesis: should run 60+ fps on an Intel P2 350 MHz with sound at
+                 22050 Hz.
+
+        Sega CD: Using an ISO image with auto frameskip and sound at
+                 22050 Hz, I get full speed on an Intel PIII 500 MHz.
+                 Some CD drives blatantly hog CPU time when accessing.  If
+                 you have this kind of drive, using CDs directly will lower
+                 the performance somewhat.
+
+        32X: should be about 17 fps on an Intel PIII 500 MHz if you have not
+             adjusted the SH2 speeds in the AGES.INI file.  By editting those
+             SH2 speed paramaters, I can get up to around 35-40 fps on an
+             Intel PIII 500 Mhz before compatiblity  starts to suffer.  Your
+             mileage may vary.  Frameskip has little effect.
+
+        I am continuously bringing down the CPU speed requirements for each
+        system.  If you want to use joysticks, you will need DirectX 5.0
+        instead of 3.0.
+
+Aren't there any better Genesis/32X/Sega CD emulators?
+        AGES's sound support isn't as complete as other Genesis emulators, but
+        those other emulators did not write their own sound emulation!  AGES
+        is the first emulator since Genecyst and KGen with a custom sound
+        core, and it is constantly improving.  So for now, the other emulators
+        could be qualified as "better," but AGES has many cool features that
+        no other Genesis emulator has, and it is constantly adding more.
+
+        retroDrive and Xega are the only other 32X emulators.  They can play
+        a few games that AGES can't, but AGES can play many games that they
+        can't.  I'd suggest keeping all three of them around for the time
+        being.
+
+        There are three other Sega CD emulators under development:  Gens,
+        Kega, and Xega.  As far as I know, Gens has the highest compatiblity,
+        but AGES has many unique features which make it worth using.
+
+Does AGES need the System ROMs for Genesis, Sega CD, and/or 32X?
+        You do not need the Genesis system ROM to emulate Genesis games, but
+        you can use it if you have the file and have configured AGES to use
+        it.
+
+        You *MUST* have a Sega CD BIOS to emulate Sega CD games designed for
+        use with the region of that BIOS.  I currently have no plans to
+        implement any sort of "BIOS Faking."
+
+        You will need the three 32X System ROMs to properly run AGES in 32X
+        mode.  If you are running AGES on a laptop in the middle of the
+        desert with no Internet access, you can use AGES's "BIOS Faking,"
+        capabilities which alleviate the need for *ANY* of the 32X System
+        ROMs.  I WILL NOT PROVIDE ANY SUPPORT FOR THE USE OF AGES IN THIS
+        MODE.  IF THERE ARE ANY PROBLEMS, GO DOWNLOAD THE 32X SYSTEM ROMS!
+        If you are emulating Sega CD/32X games, you must have the 32X system
+        ROMs present and configured.  There is no "BIOS faking" for CD/32X
+        games.
+
+Where can I find technical information about Genesis, 32X, and/or Sega CD?
+        Go to a search engine and enter keywords like "emulation,"
+        "technical", and "documents."  Please note that you may have to go to
+        several websites to find one that doesn't suck.  Also note that the
+        Genesis, 32X, and Sega CD hardware and software manuals scans are
+        huge and thus not available on any website.  Finally, the Sega CD
+        documentation scans do not provide sufficient information to write an
+        emulator, you will have to do a *LOT* of reverse engineering.  To
+        give you an idea of how long it takes, I spent the better part of a
+        mostly free summer on it, and I was reasonably experienced at reverse
+        engineering when I started.  Do not ask me to send technical
+        information to you, your request will be ignored.
+
+Does AGES use dynamic recompiling (drc) or high-level emulation (hle)?
+        I have written a dynamic recompiler for the SH2s, but currently it is
+        not present in public releases as it has some bugs that lower AGES's
+        compatibility.  I am planning to add a tiny bit of HLE into the
+        dynamic recompilers sometime later.  The other CPU cores are still
+        interpretive.  No HLE is used to emulate the Sega CD, all unavailable
+        information was painstakingly reverse engineered.
+
+What 3-D APIs will AGES support?
+        None.  The 32X does not have a real 3-D chip in it.  All polygons are
+        calculated by the SH2s.  By emulating the SH2s properly, the polygons
+        and texturing trivally comes as a "free lunch."  As for Sega CD
+        rotate/scale graphics chip, it operates in a substantially different
+        way than any 3-D API, so it is also not emulated using 3-D
+        acceleration.
+
+Will AGES ever include ____ support?
+        My primary focus is on the Genesis/Sega CD/32X.  I may or may not add
+        other systems someday.  It depends on whether or not I feel like it.
+
+When will you release the next version of AGES/Can I be a beta tester?
+        AGES is a non-commercial, ongoing project.  It really doesn't make
+        sense to call any versions of it "beta."  Anyway, I don't like giving
+        out private builds.  Wait for the next public release.  I don't
+        anticipate there being more than a 2 months or so in-between releases.
+        If you are still eager to help out, you can do compatiblity testing
+        on each release and send your results to me by email.
+
+What is the difference between ISO, RAW, and BIN?
+        AS AGES SEES IT, there are only 2 types of CD image.  The first type
+        contains only the 2048 data bytes of a CD data sector.  AGES
+        considers this type to be .ISO.  The second type contains all 2352
+        bytes of a CD data sector including sync, mode, and CRC junk.  AGES
+        considers this type to be either .RAW or .BIN.  If your image file
+        has the incorrect extension, you will get an error.  Please note that
+        all of these filetypes are incomplete representations of a CD if they
+        are not accompanied by a CUE file.
+
+What is a CUE file?
+        CUE files are pretty standard among CD burner software.  It tells the
+        software what files are to be burned and how to format them on the
+        CD.  AGES requires a CUE file when using a CD image in order to
+        produce accurate TOC information.  Without accurate TOC information,
+        most Sega CD games will not work.
+
+How do I make a CUE file?
+        Many places all over the web have tutorials on this.  Use a search
+        engine to find them.  Do not go on messageboards and ask; it is very
+        annoying to most people.
+
+I get a message stating something like "Internal battery RAM not
+formatted," what should I do?
+        Do one of two things.  Option 1 is to go into your BRM directory and
+        delete the BRM file associated with Sega CD BIOS(es).  Option 2 is to
+        reset the emulated Sega CD and press button-A (instead of start)
+        during the boot screen.  This will take you to the CD-player screen.
+        Select "option" (USA v1.10) or "memory" (USA v2.00) to get to the
+        format screen.  Then format the RAM.
+
+Every time I want to save something with AGES, I can only use internal
+battery RAM; is there a way to use RAM cartridges?
+        Yes, enable it in the Machine->Sega CD menu.  Also choose a size
+        for the RAM cartridges.
+
+Can I use multiple RAM cartridges simultaneously?
+        Each Sega CD game (whether on CD or just as an image) has its
+        own unique RAM cartridge file in your BRM directory.  A single game
+        can not have multiple RAM cartridges associated with it
+        simultaneously.
+
+Is there a dump of the RAM cartridge/where can I find it?
+        AGES will create and format these automatically.  If you are looking
+        for some kind of Saved-State/Battery-Ram/RAM-cartridge archive
+        website, I have no idea where to find one.  I suggest a search engine.
+
+How do I use MP3s in AGES to get sound?
+        You can't yet.  AGES just doesn't play MP3s currently.
+
+I keep getting error messages about GoodGen.DLL and Good32X.DLL, how do I fix
+it?
+        Make sure they are actually present on your machine.  Make sure you
+        have the newest versions of them.  Otherwise, they may simply just
+        not work right on your version of windows.  The best you can do if
+        this is the case, is to go into the GUI menu and turn off those
+        errors messages until I can fix the problem.
+
+How do I use Sega Menacer / Konami Justifier lightgun emulation?
+        Straight out of the manual:
+
+        AGES can emulate the Sega Menacer lightgun, or Konami Justifier
+        lightgun.  Note that all games I know of are designed to use a control
+        pad in port 1 and the lightgun in port 2.  The ablity to select
+        Menacer and Justifier on port 1 exists only for completeness.  If you
+        want to use your PC's mouse to control the lightgun, be sure to
+        actually configure the appropriate player's input device to "mouse"
+        (instead of "keyboard" or "joystick").  Note that these lightguns are
+        not perfectly useable due to some nasty timing issues.  This will be
+        fixed soon.  Also, the second Konami Justifier gun (pink) is not yet
+        supported.

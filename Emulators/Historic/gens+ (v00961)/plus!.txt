@@ -1,0 +1,98 @@
+
+Gens Plus! - Rodrigo Cardoso
+
+version 0.0.9.61:
+- Save SRAM option.
+
+version 0.0.9.60:
+- Many bugs fixed.
+- Support for compressed roms plugins (allow gens+ decompress many kind of
+  compressed roms).
+- Support for screen shot plugins.
+- Added option to enable/disable layers during emulation.
+- New genesis sound format: GSR - gens sound record (beta).
+- Direct 3D device working. Gens+ now can use Direct 3D filters.
+- Many small improvements.
+- Configurable turbo key.
+
+version 0.0.3.39:
+- Bug fixed on load some 32X roms.
+- A little mistake fixed (I can't call this a bug): Select Files dialog opened
+  a save dialog box instead of an open dialog.
+- Some bugs fixed with graphics:
+  - 3x renders was not running under windowed mode.
+  - On some machines, it was not running under full screen mode too.
+  - The "stretch" option disables the filter.
+- New graphics device: GDI (windowed mode only).
+
+version 0.0.3.38:
+- Suport for record and play genesis movies (gri, grz).
+- A stupid bug fixed on SMS/GG rom format check.
+- Bug fixed with language files (gens+ crashed when the file language.dat wasn't
+  in the right place).
+- Other stupid bug fixed on SMS/GG SRAM (gens+ was saving SRAM in all games).
+- A little bug fixed on screen shots routine (when the screen dir weren't a full
+  path name, no screen shot were taken).
+
+version 0.0.3.37:
+- Some fixes on SMS/GG rom check.
+- Some minor SMS/GG emulation bugs fixed.
+- A bug fixed on configuration files: Force mode 555.
+- New full screen resolutions, with flip function changes (test).
+- New software blitters (3x).
+
+version 0.0.3.XX:
+- Now Gens emulates Sega Master System and Game Gear!
+- A litle bug on reverb fixed.
+- Bug fixed on cheats system.
+- Scale2x fully optimized (faster!!), scale2x now suports MMX.
+- Added save states for Sega Master System and Game Gear.
+- New option: switch to full screen when load a rom.
+- Fixed some bugs on preview shot routine.
+- Disable screen saver during emulation option.
+- Fixed some interface bugs.
+- Added "Turbo Mode".
+- Fixed some SMS emulation bugs.
+- SMS/GG roms now log VGM files (correct).
+- New genesis sound log format: SGM (under development).
+- Fixed a bug on POV joysticks.
+
+version 0.0.2.XX:
+- Reverb (asm optimized source, MMX suport).
+- Many interface optimizations.
+- Print screen text function optimized, gens now suport fonts.
+- Many cheats files optimizations: new script type (better format), tabble suport.
+- YM2612 SSG-EG envelope disable option. This was causing some inacurate sound in some games (like Shining Force 2).
+- Added new software render: hq2x (thanks to Maxim).
+
+version 0.0.1.XX:
+- Cheats search implementation.
+- Update screen shots:
+  - GIF compressed format (faster and smaller code);
+  - fixed a bug;
+- WinXP controls style.
+- Save states now have a preview screen shot.
+- Suport for rar compressed roms.
+- Low-pass sound filter (optimized asm source).
+- Log VGM files (have some errors).
+- Some interface optimizations.
+- Sound volume control option.
+- More intro effects: fire and smoke.
+- New render: Scale2x (optimized asm source, but do not uses MMX).
+- New configuration dialog.
+- Configuration file optimizations.
+
+version 0.0.0.XX:
+- Suport joysticks axes and POV buttons.
+- Compress save state files.
+- Some fixes on Sega CD save states (not 100% functional).
+- Suport for script cheats files.
+- Two new software renders added: Kreed Super2xSAI and Kreed SuperEagle.
+- Hotkeys suport.
+- One controller configuration for each game option.
+- Deny multiple instances of the program to run at the same time.
+- Some new intro effects.
+- Some zLib optimizations (load zipped roms faster).
+- Some minor code optimizations.
+- Better screen shot routine.
+- Compress screen shots option (PNG format).

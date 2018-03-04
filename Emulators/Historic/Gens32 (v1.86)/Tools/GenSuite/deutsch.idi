@@ -1,0 +1,180 @@
+;Deutsch - von Loki - v2.x.x - www.vg-world.de
+[mdMain]
+mnuArch=&Datei
+mnuArchIdioma=Sprache auswählen...
+mnuArchQuit=&Beenden
+mnuAyuda=&Hilfe
+mnuAyudaAcerca=Über...
+cmdTools=Utilities
+shConvert=ROM Konverter
+shEdit=Header Editor
+shRun=Emulator Launcher
+shIPS=IPS ROM Patcher
+
+[frmSplash]
+lblPlatform=für Windows
+lblVersion=Version
+lblCompany=geschrieben von Tom
+lblKey=-==================>>>Drück irgendeine Taste<<<====================-
+
+[frmIdioma]
+Caption=Sprache auswählen
+IDOK=&OK
+IDCANCEL=&Abbruch
+Msg1=Es scheint so, als würde GenRomSuite das erste Mal auf diesem Computer laufen. Um zu beginnen, bitte eine Sprache auswählen.
+Msg2=Wähl eine Sprache für dieses Programm aus.
+
+[frmSetup]
+Caption=Setup Location
+fPath=Emulator Location
+fRoms=ROM Ordner
+lbOtro=weiterer Emulator (Genecyst, Genital, Genesis Plus...)
+IDOK=&OK
+IDCANCEL=&Abbruch
+chkFCmd=Rom über Eingabeaufforderun laden
+fExtOpt=Externe Emuoptionen
+chkDOSEmu=Dieser Emu läuft nur unter DOS
+optByCommand=Starte Rom über Eingabeaufforderung
+optByKeys=Nutze Emu Keyshortcuts
+
+[frmAcercaDe]
+fWeb=Empfohlene Webseiten
+fApp=Programm Infos
+lbDir=Ordner
+lbRom=Roms
+lbWin=Windows
+lbMem=Speicher
+IDOK=&OK
+cmdCredits=Credits...
+lblWeb(3)=Besuch meine Homepage...
+lblWeb(4)=Foren und Support
+lblPlatform=für Windows
+lblCompany=Tom
+lblTransBy=Loki
+
+[frmHeadEdit]
+Caption=Header Editor
+fRom=Wähle ein Rom im Binärformat aus (.bin)
+frmRhe=Header Infos
+fDevice=Schnittstellen
+fZone=Ziel
+cmdRec=&Speichern
+cmdRecComo=Speichern &unter...
+cmdPlay=&Start
+cmdExit=&Schließen
+
+[frmIPSPatcher]
+fPatch=IPS ROM Patching
+lblInfo=Wähle eine Datei zum Patchen aus, und falls benötigt eine extra Data-Datei. Klick dann auf "Patch", um zu starten.
+lblOriginal=Original Rom:
+lblPatch=IPS Patch:
+lblPatched=Gepatchte Datei:
+chkData=Nutze eine extra Data-Datei (wird bei einigen Hacks benötigt):
+cmdPatch=Patch!
+cmdClose=Schließen
+
+[chkDev]
+0=Joypad
+1=6-Button Joypad
+2=Tastatur
+3=Drucken
+4=Trackball
+5=Diskettenlaufwerk
+6=Aktivator
+7=Team Play
+8=MS Joystick
+9=Serial RS232C
+10=Tablet
+11=Paddle Controller
+12=CDROM
+13=Mega Mouse
+
+[sName]
+0=Domestic name:
+1=Overseas name:
+2=Konsole name:
+3=Gamecode:
+4=Copyright:
+5=Kommentare:
+
+[frmLauncher]
+Caption=Launcher
+fEmus=Klick auf einen Emu, um zu starten
+fRom=Wähle ein Rom
+cmdOtro=weitere...
+cmdSetup=Setup...
+cmdExit=&Schließen
+lblExternal=Externer Emu:
+
+[frmRomConv]
+Caption=ROM Converter
+lbOrgBin=Original ROM:
+lbOrgSMD=Original ROM:
+lbDestBin=Ziel (konvertiert) ROM:
+lbDestSMD=Ziel (konvertiert) ROM:
+cmdSMD2BIN=Konvertiere
+cmdBIN2SMD=Konvertiere
+cmdRunOut=&Schließen
+
+[Msgs]
+ReRunId=Um die Einstellungen zu übernehmen, muß GenRomSuite neugestartet werden
+AppMsg=GenRomSuite %v wird ausgeführt
+BadChecksum=Die Romprüfsumme ist falsch, willst du sie überarbeiten?
+WarningChecksum1=Warnung: Einige Spiele beinhalten eine eigene Routine zur Berechnung der Prüfsumme.
+WarningChecksum2=Wenn du diese Prüfsumme bearbeitest, kann es passieren, daß das Spiel nicht mehr korrekt oder gar nicht funktioniert! Trotzdem fortfahren?
+ReadyToEdit=ROM %r bereit zum Bearbeiten.
+ReadyToRun=ROM %r bereit zum Starten.
+OverwriteMSG=Willst du wirklich die Änderungen speichern?
+SavedAsMsg=ROM erfolgreich in %r gespeichert
+ErrString=Ein Fehler ist beim Speichern des Roms aufgetreten!
+NoIni1=Scheint so, als würdest du das Programm das erste Mal nutzen!
+NoIni2=Du mußt einen Emu auswählen, um ihn nutzen zu können.
+NoRunMsg=Kann %p nicht starten!
+SelRomErr=Du mußt erst ein Rom auswählen!
+SelDestErr=Wähle bitte eine Datei aus, bevor du das Rom konvertierst!
+CNVProg=Konvertiere ROM. Bitte Warten...
+OKCNV=Konvertierung erfolgreich abgeschlossen!
+ErrCNV=Es sind Fehler bei der Konvertierung aufgetreten!
+DstMsg=Konvertiertes ROM in %r gespeichert!
+CantCNV1=Kann das ROM nicht konvertieren!
+CantCNV2=Fehler beim Konvertieren des Roms. Bitte nochmal versuchen.
+RunApp=Aktuell %p.
+RunRom=Aktuell %p mit %r.
+WantExit=Willst du wirklich das Programm beenden?
+Goodbye=Auf Wiedersehen...
+RomFolder=Wähle einen Ordner zum Speichern der Roms aus
+MainEXE=Main EXE of %p
+EXEs=Executables (*.exe)
+SelEXE=Wähle Executable von %p 
+AllFiles=Alle Dateien (*.*)
+SelOtroEmu=Wähle Emu
+BinFile=Binäres ROM Dump (*.bin)
+SMDRom=Super Magic Drive Interleaved ROM (*.smd)
+AllRoms=Alle unterstütztem Dateitypen (*.bin, *.smd, *.zip)
+ZippedRoms=gepackte ROMs (*.zip)
+Patches=IPS Patch (*.ips)
+SelIPSBox=Wähle IPS Patch
+SelRomBox=Wähle ROM
+SaveRF=ROM Speichern
+LoadBinT=Wähle binäres Rom
+SaveCNV=Speichere konvertiertes Rom
+MemStat=%t KB Total, %f KB Frei
+SelRomPErr=Du mußt ein Rom auwählen!
+SelIPSPErr=Du mußt ein IPS Patch auswählen!
+SelDstPErr=Du mußt einen Dateinamen angeben!
+SelChunkErr=Du möchtest eine extra Data-Datei nutzen, hast sie aber noch nicht ausgewählt! Trotzdem fortfahren?
+CantPatch=Kann Rom nicht patchen. Es traten folgende Fehler auf:
+Patching=Patche %s. Bitte warten...
+PatchedOK=Patchen abgeschlossen. Möchtest du das Rom testen?
+InvalidIPS=fehlerhafter IPS Patch!
+
+[RegCodes]
+chkLicModel(0)=Altes Codemodel
+chkLicModel(1)=Neues Codemodel
+chkJapOld=Japan
+chkUSAOld=US
+chkEurOld=Europa
+chkJapNTSC=Japan (NTSC)
+chkJapPAL=Japan (PAL)
+chkOVNTSC=Welt (NTSC)
+chkOVPAL=Welt (PAL)

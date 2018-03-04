@@ -1,0 +1,180 @@
+;简体中文 - ACOMPAL S.D.W 汉化组 - ver 2.x.x
+[mdMain]
+mnuArch=&文件
+mnuArchIdioma=选择界面语言...
+mnuArchQuit=&退出
+mnuAyuda=&帮助
+mnuAyudaAcerca=关于...
+cmdTools=工具栏
+shConvert=转换ROM
+shEdit=编辑ROM头
+shRun=模拟器前端
+shIPS=IPS补丁
+
+[frmSplash]
+lblPlatform=Windows版
+lblVersion=版本
+lblCompany=作者Tom(汤姆)
+lblKey=-==================>>>按任意键继续<<<====================-
+
+[frmIdioma]
+Caption=选择界面语言
+IDOK=&确定
+IDCANCEL=&取消
+Msg1=请选择适合你的界面语言
+Msg2=请选择界面语言...
+
+[frmSetup]
+Caption=注册模拟器
+fPath=模拟器路径
+fRoms=ROM路径
+lbOtro=其它模拟器(Genecyst, Genital, Genesis Plus...)
+IDOK=&确定
+IDCANCEL=&取消
+chkFCmd=利用命令行加载
+fExtOpt=扩展选项
+chkDOSEmu=这是一个DOS下的模拟器
+optByCommand=使用命令行运行
+optByKeys=快捷键设置
+
+[frmAcercaDe]
+fWeb=推荐站点
+fApp=程序信息
+lbDir=程序路径
+lbRom=ROM路径
+lbWin=操作系统
+lbMem=内存
+IDOK=&确定
+cmdCredits=Credits...
+lblWeb(3)=作者主页
+lblWeb(4)=论坛和支持
+lblPlatform=Windows版
+lblCompany=作者Tom(汤姆)
+lblTransBy=
+
+[frmHeadEdit]
+Caption=编辑ROM头
+fRom=准备编辑的ROM(*.bin)
+frmRhe=ROM信息
+fDevice=设备
+fZone=编码格式
+cmdRec=&保存
+cmdRecComo=另存为...
+cmdPlay=&运行
+cmdExit=&关闭
+
+[frmIPSPatcher]
+fPatch=IPS补丁工具
+lblInfo=使用IPS补丁来修正游戏中的BUG，实现游戏的汉化。
+lblOriginal=ROM文件：
+lblPatch=IPS补丁：
+lblPatched=ROM保存路径：
+chkData=使用扩展的数据文件 (需要破解):
+cmdPatch=应用补丁！
+cmdClose=关闭
+
+[chkDev]
+0=手柄
+1=六键手柄
+2=键盘
+3=打印机
+4=Control Ball
+5=软驱
+6=Activator
+7=Team Play
+8=PC游戏控制器
+9=Serial RS232C
+10=Tablet
+11=Paddle Controller
+12=光驱
+13=鼠标
+
+[sName]
+0=国内名称:
+1=海外名称:
+2=主机名称:
+3=编码:
+4=版权:
+5=备注:
+
+[frmLauncher]
+Caption=模拟前端
+fEmus=单击要使用的模拟器
+fRom=选择运行的ROM
+cmdOtro=其它模拟器
+cmdSetup=注册模拟器
+cmdExit=&退出
+lblExternal=其它模拟器：
+
+[frmRomConv]
+Caption=转换ROM
+lbOrgBin=待转换的ROM：
+lbOrgSMD=待转换的ROM：
+lbDestBin=转换后的ROM:
+lbDestSMD=转换后的ROM:
+cmdSMD2BIN=转换
+cmdBIN2SMD=转换
+cmdRunOut=&关闭
+
+[Msgs]
+ReRunId=新的设定将在下次运行时生效
+AppMsg=GenRomSuite %v 简体中文版
+BadChecksum=错误的ROM检效值，是否要修正它？
+WarningChecksum1=注意：有些ROM使用的是自定的检效，修正此类ROM可能会导至无法正常运行。
+WarningChecksum2=
+ReadyToEdit=准备编辑的ROM%r
+ReadyToRun=准备运行的ROM%r
+OverwriteMSG=确定保存更改？
+SavedAsMsg=ROM保存完必 %r
+ErrString=无法保存该ROM!
+NoIni1=第一次使用本程序，需要您注册模拟器。
+NoIni2=
+NoRunMsg=无法运行 %p
+SelRomErr=请先选择一个待转换的ROM。
+SelDestErr=你必需指定一个要保存的ROM路径。
+CNVProg=转换中，请稍候...
+OKCNV=搞定！
+ErrCNV=有错误发生，无法完成转换操作！
+DstMsg=已完成转换并保存在了 %r 
+CantCNV1=无法完成ROM转换。
+CantCNV2=有错误发生，请重试.
+RunApp=运行中 %p.
+RunRom=ROM %r已载入%p
+WantExit=确认退出？
+Goodbye=再见。
+RomFolder=请指定一个ROM保存文件夹。
+MainEXE=%p
+EXEs=可执行文件 (*.exe)
+SelEXE=请指定%p所在路径 
+AllFiles=所有文件(*.*)
+SelOtroEmu=选择模拟器
+BinFile=二进制格式 (*.bin)
+SMDRom=Super Magic Drive Interleaved ROM (*.smd)
+AllRoms=有效的ROM格式 (*.bin, *.smd, *.zip)
+ZippedRoms=ZIP压缩的ROM(*.zip)
+Patches=IPS补丁(*.ips)
+SelIPSBox=请指定IPS补丁
+SelRomBox=选择ROM
+SaveRF=保存ROM
+LoadBinT=选择ROM(*.bin)
+SaveCNV=保存ROM
+MemStat=总共%t KB ,  剩于%f KB
+SelRomPErr=请指定一个ROM。
+SelIPSPErr=请指定IPS补丁。
+SelDstPErr=请指定保存的ROM名称。
+SelChunkErr=您已经选择使用扩展的数据文件，但您并没有指定这样一个文件，是否继续执行操作？
+CantPatch=无法完成请求的操作，发生如下错误：
+Patching=操作进行中 %s。请稍候...
+PatchedOK=已完成操作，是否测试一下打好补丁的ROM?
+InvalidIPS=无效的IPS路径。
+
+[RegCodes]
+chkLicModel(0)=旧编码格式
+chkLicModel(1)=新编码格式
+chkJapOld=日本
+chkUSAOld=美国
+chkEurOld=欧洲
+chkJapNTSC=日本 (NTSC)
+chkJapPAL=日本 (PAL)
+chkOVNTSC=海外(NTSC)
+chkOVPAL=海外 (PAL)

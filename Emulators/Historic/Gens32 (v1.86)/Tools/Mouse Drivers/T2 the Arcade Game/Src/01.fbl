@@ -1,0 +1,3 @@
+#SetPin 32772 32774
+#SetArea 0 320 0 320
+#DefineButton 1 2 7

@@ -1,0 +1,665 @@
+WinAGES v0.29a (Pulsar)         *** COPYRIGHT ***  by Quinntesson
+http://www.emuitalia.com/ages
+
+
+Minimum requirements
+--------------------
+You will need Windows, DirectX 3.0 or higher, and a 233 MHz CPU with
+MMX.  To use a joystick, you will need DirectX 5.0 or higher.  To use your
+CD-ROM drive(s), you will need ASPI.  To use AGES in windowed mode your
+display must be set to 16-bit color.
+
+
+Getting Started with Sega 32X
+-----------------------------
+Use GROM, Ucon, GoodGen, or other program to convert all of your 32X ROMs to
+BINARY format.  Then rename their extensions to ".32X".  Download the 3 32X
+BIOSes.  Configure AGES (via "Config->File IO->Load System ROM") to be able to
+load them.  The 32X Master SH2 ROM is 2048 bytes, the 32X Slave ROM is 1024
+bytes, and the 32X M68000 ROM is 256 bytes.  You can turn off use of the 32X
+system ROMs, and AGES will fall back on its BIOS faking routines, but
+I will not officially support the use of BIOS faking, so if there is a
+problem with AGES, be sure you have the ROMs and have configured AGES to use
+them!
+
+You can download Ucon and the complete 32X BIOS fileset from Eidolon's Inn.
+(http://www.eidolons-inn.de/sega/gen_files.html)
+(http://www.eidolons-inn.de/sega/32x_dev.html)
+You can download GROM from http://www.dynarec.com/~bart
+You can download GoodGen from any decent emulation website.
+You can download WinRAR from the WinRAR website.
+(http://www.rarsoft.net)
+You can download ZLib.DLL from the ZLib.DLL website.
+(http://www.winimage.com/zLibDll/)
+
+Getting Started with Sega CD
+----------------------------
+First make sure you have ASPI installed.  If you don't, AGES will display
+something like "Error with WNASPI32.DLL."  Download the Sega CD BIOSes.
+Configure AGES (via "Config->File IO->Load System ROM") to be able to load
+them.  AGES WILL NOT RUN SEGA CD GAMES WITHOUT A BIOS!  AGES will
+automatically choose which BIOS to use, but this means you must choose your
+regional settings before booting the Sega CD.  If you make any changes, you
+must reset the Sega CD before the changes will take effect.
+
+As of this release, Japanese games don't work with the Japanese BIOS
+v1.01, when the "weird Japanese BIOS fix" option is not selected.  Make sure
+that option is checked before attempting to play any Japanese Mega CD games.
+
+You can download ASPI from the Adaptec Inc FTP.
+(ftp://ftp.adaptec.com/software_pc/aspi/aspi32.exe)
+You can download the Sega CD BIOSes from Eidolon's Inn.
+(http://www.eidolons-inn.de/sega/segacd_dev.html)
+You can download WinRAR from the WinRAR website.
+(http://www.rarsoft.net)
+You can download ZLib.DLL from the ZLib.DLL website.
+(http://www.winimage.com/zLibDll/)
+
+
+Important information
+---------------------
+AS ALWAYS read the AGES FAQ (http://www.emuitalia.com/ages/faq.html) for
+further information.
+
+For various reasons, saved state files, demo files, and some keys in the
+AGES.INI file created with versions of AGES prior to 0.29a are *not*
+compatible with versions of AGES 0.29a and higher.  Sorry for the
+inconvenience.
+
+To run AGES in windowed mode, you must set your desktop's color depth to 16
+bit.  If it isn't, you will only be able to use AGES in fullscreen mode; AGES
+will stay paused in windowed mode.  If, during loading, a DirectInput call
+fails, AGES will stay open, but alert you that you will only be able to watch
+games run.
+
+The "load patch" action only works with IPS patches intended for use with
+BINARY ROM images.  Patches for SMD or MD files should not be used!  Patches
+for CD images of any type (ISO or RAW/BIN) also should not be used.
+
+The ISO support has been replaced with CUE/ISO/MP3 support because the
+compatiblity of solitary ISOs is poor.  Most games will not work without
+their music tracks present.  Learn how to use/make CUE sheets, DO NOT ASK ME
+HOW TO DO IT!  SegaXtreme has a nice tutorial.  The URL for SegaXtreme is:
+http://www.litespeedcomputers.com/sx/
+
+In your CUE sheets, specify your music tracks with the .WAV extension and
+WAVE keyword; AGES assumes they are MP3s anyway, and will appropriately
+compensate.  As of this release, AGES will not play MP3 files, but it
+probably will in the future (as well as using them to create correct TOC
+entries for the game).  Also, AGES will not recognize filenames with spaces
+unless the whole filename is enclosed in double quotes.  ( " )  Within a
+RAR'd or ZIPped CUE/ISO/MP3 archive, all files names in the CUE sheet should
+not have a path!
+
+
+What's implemented
+------------------
++ Genesis YM2612 sound (sans LFO, RS, DT, SSGEG, FB, stereo control)
++ Genesis DAC sound
++ Genesis PSG sound (sans noise channel)
++ Sega CD PCM sound
++ Player 1 and player 2
++ 3 button and 6 button controllers
++ Sega mouse
++ Sega Menacer (but has calibration/timing problems)
++ Justifier (but has calibration/timing problems)
++ Sega teamplayer multitap
++ Electronic Arts 4 Way Play
++ M68000 and Z80
++ Master and Slave SH2s
++ Raster effects (palette changes *and* VDP configuration changes)
++ Shadow and Highlight effects
++ Sprite Masking and Sprite Limiting
++ Interlace mode (sans window plane)
++ All three 32X graphics modes
++ 32X/Genesis layering
++ most SH2 peripherals
++ Dual frame buffer support
++ BIN/GEN, SMD, MD, 32X, ISO, RAW/BIN, and CUE filetypes
++ ZIP support for BIN/GEN, SMD, 32X, ISO, RAW/BIN, and CUE filetypes
++ RAR support for BIN/GEN, SMD, 32X, ISO, RAW/BIN, and CUE filetypes
++ Direct CD-ROM support for Sega CD via ASPI
++ Save State loading and saving (Genesis only)
++ Genecyst saved state loading
++ Genesis/32X Battery RAM saving and loading
++ Serial EEPROM support
++ Sega CD internal backup RAM
++ Sega CD RAM cartridges
++ Sega CD Rotate/Scale graphics "layer"
++ CD music track playing
++ Multilingual engine
++ IPS patch loading
++ GoodGen.DLL, Good32X.DLL, and GoodSMS.DLL support
++ Genesis Collective Offline Database support
+
+What's not implemented (yet)
+----------------------------
+- Save State files for Sega CD, 32X, and SMS
+- 32X PWM Sound
+- MP3 track playback
+- Activator, Optical Pad, Modem, & any other unmentioned peripherals
+- Sprite collision & sprite overflow bits
+- SH2 INTC (partial)
+- SH2 SCI (partial)
+- RAR support for MD filetype
+- ZIP support for MD filetypes
+- SVP (might not even do this one anyway)
+- Sega CD "fullscreen" graphics
+
+
+Multilingual Engine
+-------------------
+AGES can be freely translated without needing to alter the EXE file.
+On loading, AGES will look for a file called AGES_LNG.INI.  If it is present,
+AGES will use it to replace the text of its menus, error messages, and
+dialog boxes.  It the AGES_LNG.INI file is NOT present, AGES will default to
+the English language.
+
+
+Keys
+----
+0-9             - select a saved-state slot 0 - 9.
+Alt L           - load a ROM
+Alt P           - pauses emulator
+Alt R           - resets emulator
+Alt X           - exists emulator
+Alt A           - advance by one frame
+Alt Z           - toggle Genesis Z80 enabled / disabled
+Alt - (numpad)  - switch to single resolution windowed mode
+Alt + (numpad)  - switch to double resolution windowed mode
+F1              - about AGES
+F2              - save state
+F3              - load state
+F4              - switch between windowed and fullscreen modes
+F5              - capture/release mouse
+F6              - start or stop recording a WAVE file
+Alt F6          - start or stop recording a GYM/VGM music file  (not done)
+F7              - start or stop recording a movie file (.AVI)   (not done)
+F8              - start or stop recording an AGES demo file
+F9              - save a PNG screenshot
+
+
+AGES defaults to the following keys for gameplay:
+
+Player 1
+    numpad up       - D-pad UP
+    numpad down     - D-pad DOWN
+    numpad left     - D-pad LEFT
+    numpad right    - D-pad RIGHT
+    enter           - START
+    a               - A
+    s               - B
+    d               - C
+    z               - X
+    x               - Y
+    c               - Z
+    v               - MODE (does not actually switch modes; use config menu)
+
+Player 2a
+    o               - D-pad UP
+    .               - D-pad DOWN
+    k               - D-pad LEFT
+    ;               - D-pad RIGHT
+    l               - START
+    t               - A
+    y               - B
+    u               - C
+    g               - X
+    h               - Y
+    j               - Z
+    b               - MODE (does not actually switch modes; use config menu)
+
+Players 1b-d and 2b-d do not have default settings.
+
+
+Features
+--------
+AGES_GS.INI    - AGES supports game-specific configuration -- also called
+                 "tweaking."  Any configuration item except for
+                 file paths and file filter indexes can be saved on a
+                 game-by-game basis in a file called AGES_GS.INI.  You will
+                 have to create/edit this file yourself, AGES has no built-in
+                 method for saving these game-specific settings.  Each game
+                 with special settings must have a "key" in the AGES_GS.INI
+                 file.  The key begins on the first column of a line and looks
+                 like:  [xxxxxxxx]  where the x's represent the 32-bit GoodGen
+                 CRC value for the game.  The game-specific configuration
+                 settings may appear on the lines following, until a different
+                 game key is encountered.  Multiple game keys can be grouped
+                 together, one on each line, if there are no lines in-between
+                 them.  This is mostly useful for sharing the exact same
+                 game-specific settings among all country variants and hacks
+                 of a particular game.  In order to use this feature, you
+                 must have GoodGen.DLL present for Genesis ROMs, Good32X.DLL
+                 for 32X ROMs, etc...
+
+Genesis        - AGES supports the Genesis Collective Offline Database.
+Collective       You must have GoodGen.DLL present in order for the feature
+                 to work properly.  GCO database is distributed as 
+                 Microsoft compressed HTML files.  To view these you must
+                 have Windows 98 (or later), or Internet Explorer 4, or DCOM
+                 for Windows 95 installed.
+
+Screenshots    - AGES can saved screenshots directly to PNG.  As far as I can
+                 tell, the files it outputs are consistently much smaller than
+                 what you would get from something like Paint Shop Pro.  If
+                 you edit the PNGs, you risk having the files grow by 50 %
+                 (or more) in size!  When you have the "autoname screenshots"
+                 option enabled, this is quite a powerful feature.  Just
+                 press F9 throughout the game and you will have a nicely named
+                 and numbered set of screenshots for the game.  How could I
+                 make it any easier?  :)  If you have trouble opening
+                 AGES-generated PNGs in your favorite program, you can fiddle
+                 with the compression level in the AGES.INI.
+
+Demos          - AGES demo files are basically logs of the input from the user
+                 every vblank.  To create a demo, select "save demo" from the
+                 "File" menu or press F8.  AGES will reset the current ROM and
+                 begin recording your keystrokes (or joystick or whatever) and
+                 save them to a file.  At this time, you will be prompted for
+                 a filename if autonaming is turned off.  Select "save demo"
+                 from the "File" menu or press F8 a second time to stop
+                 recording and finish saving the file.
+
+                 To play back, select "Load demo" from the "File" menu.  AGES
+                 will reset, play the demo back, and reset once it is
+                 finished.  Somes example uses of AGES demo files are:  in a
+                 highscores competition, to demonstrate some particular trick
+                 or how to get to a secret area, for random amusement, and so
+                 on.  In the future, I'll be adding more features, such as
+                 the ability to "jump in" during a demo playback, and so on.
+
+Waves          - AGES can record WAV sound files.  Hit F6 to begin, hit it
+                 again to stop.  Not much else to say.  ;)
+
+GYM/VGM        - Records a GYM music file.  [VGM files aren't actually
+                  supported yet.]  Hit Alt-F6 to begin and hit it again to
+                 stop.  The GYMs output do not include DAC samples.                 
+
+Movies         - Records an AVI file with sound.  SET FRAMESKIP TO 0 WHEN
+                 USING THIS.
+                 [Not yet implemented]
+
+Menacer and    - AGES can emulate the Sega Menacer lightgun, or Konami
+Justifier        Justifier lightgun.  Note that all games I know of are
+                 designed to use a control pad in port 1 and the lightgun
+                 in port 2.  The ablity to select Menacer and Justifier on
+                 port 1 exists only for completeness.  If you want to use
+                 your PC's mouse to control the lightgun, be sure to actually
+                 configure the appropriate player's input device to "mouse"
+                 (instead of "keyboard" or "joystick").  Note that these
+                 lightguns are not perfectly useable due to some nasty timing
+                 issues.  This will be fixed soon.  Also, the second Konami
+                 Justifier gun (pink) is not yet supported.
+
+Game Genie     - AGES supports Game Genie codes loaded from a file.  The file
+                 is named xxxxx.PAT  where "xxxxx" is the exact name of the
+                 game appearing in the titlebar of the AGES frame.  To
+                 activate a particular code, highlight it in the Game Genie
+                 dialog box.  Click "OK" when you are finished.  You may have
+                 to reset the game before some codes will take effect.  There
+                 is no way to edit codes or insert new ones within AGES.  You
+                 will need to edit the .PAT file to make changes.
+
+
+
+Configuration
+-------------
+Options marked with a ## can be modified by editting the AGES.INI file if
+you want.  These sorts of options are present only for the benefit of
+advanced users.  Beginners do not need to tinker with them.
+
+* File IO
+    Load System ROM       - Use this to provide AGES with the full path to
+                            you Genesis, 32X, Sega CD, and SMS system ROMs.
+
+    Default CD drive      - Lists all the CD-ROM drives that AGES detected on
+                            your computer.  Choose one and it will be used
+                            for Sega CD emulation.
+
+    BRM Path              - BRM's are direct dumps of the battery RAM.  These
+                            files (if they come from a Genesis game) should be
+                            completely compatible with Genecyst.  Simply
+                            change the file extension.  This option is useful
+                            if you want to play your games off a CDR and still
+                            have battery RAM support, or if you just don't
+                            want your ROM directory to be cluttered.
+
+ ## ROM Path              - AGES remembers the directory that ROMs are loaded
+                            from.  It also remembers the previous file type
+                            used.
+
+ ## GSS Path              - This is the directory to store your game saved
+                            state files in.  Again, it is useful for playing
+                            games off a CDR or simply not cluttering your ROM
+                            directory.
+
+ ## DEM Path              - This is the directory for loading/saving your demo
+                            files in.
+
+ ## PAT Path              - This is the directory that AGES defaults to for
+                            loading patch files.
+
+ ## SHT Path              - This is the directory to store your screenshots
+                            files in.
+
+ ## WAV Path              - This is the directory to store your wave files
+                            in.
+
+ ## GYM/VGM Path          - This is the directory to store your GYM and VGM
+                            files in.
+
+ ## MOV Path              - This is the directory to store your AVI files
+                            in.
+
+    Save BRMs in saved    - If this option is checked, all BRM areas will be
+     states                 saved inside the save state file.  For Sega CD
+                            this would include the internal battery RAM as
+                            well as a RAM cartridge image (if you have
+                             RAM cartridges enabled).
+
+    Autoname Save States  - If enabled, the saved states will automatically
+                            be saved with a name that matches the ROM name.
+                            If disabled, you will always be prompted with a
+                            file-save dialog box to select a name for the
+                            saved-state.
+
+    Autoname Demos        - If enabled, AGES demo files will automatically
+                            be saved or loaded with a name that matches the
+                            ROM name.  If disabled, you will always be
+                            prompted with a file-save or file-open dialog box
+                            to select a name for the AGES demo file.
+
+    Autoname Patches      - If enabled, the patch will automatically
+                            be loaded from a file with a name that matches the
+                            ROM name.  If disabled, you will always be
+                            prompted with a file-open dialog box to select a
+                            name for the patch.
+
+    Autoname Screenshots  - If enabled, screenshots will automatically
+                            be saved with a name that matches the ROM name
+                            plus a three digit decimal number, which
+                            automatically increments as needed.  If disabled,
+                            you will always be prompted with a file-save
+                            dialog box to select a name for the screenshot.
+
+    Autoname Waves        - If enabled, wave files will automatically
+                            be saved with a name that matches the ROM name.
+                            If disabled, you will always be prompted with a
+                            file-save dialog box to select a name for the
+                            wave file.
+
+    Autoname GYM/VGM      - If enabled, GYM/VGM files will automatically
+                            be saved with a name that matches the ROM name.
+                            If disabled, you will always be prompted with a
+                            file-save dialog box to select a name for the
+                            GYM/VGM file.
+
+    Autoname Movies       - If enabled, AVI files will automatically
+                            be saved with a name that matches the ROM name.
+                            If disabled, you will always be prompted with a
+                            file-save dialog box to select a name for the
+                            AVI file.
+
+ ## PNGCompressionLevel   - Adjust this value if the you are having trouble
+                            opening AGES-generated PNGs in your favorite
+                            program.  The highest level of compression is 9,
+                            while the lowest is 0.  Most programs tend to use
+                            around level 6 compression.
+                            
+* Graphics
+    Frame Skip         - Can be set to Auto, 0, 1, 3, or 7.
+
+    Screen Size        - Sets the screen size.  F4 toggles between fullscreen
+                         and previous windowed mode.  Alt - selects single
+                         resolution windowed mode, Alt + selects double
+                         resolution windowed mode.
+
+    Scan Lines         - Chooses a scanline option: none, 50% intensity, or
+                         blank lines (the classic full effect).  This option
+                         is only used in the double resolution and fullscreen
+                         graphics modes.
+
+    Force Display      - Prevents games from blanking out the display.  This
+                         option is probably only useful to developers/hackers
+                         who wish to "see in the dark."
+
+    Enhance Visibility - Forces a pre-cooked palette on the Genesis, and 32X
+                         256 Color graphics modes, and SMS.  If a game is
+                         chugging along without establishing a palette, the
+                         screen stays blank and the game isn't playable.  Use
+                         this option to "see in the dark."  This may also be
+                         benficial to game developers/hackers.
+
+ ## Custom Window X    - A decimal number (E.G. 320) which is used in
+                         conjunction with some GUI frame/stretch behaviors.
+                         This value represents a preferred width for the
+                         AGES frame or for the aspect ratio of the displayed
+                         graphics.
+
+ ## Custom Window Y    - A decimal number (E.G. 224) which is used in
+                         conjunction with some GUI frame/stretch behaviors.
+                         This value represents a preferred height for the
+                         AGES frame or for the aspect ratio of the displayed
+                         graphics.
+
+* Sound
+    Rate               - This option controls the sample rate of the sound
+                         engine in AGES.  Your choices are 11025 Hz,
+                         22050 Hz, or 44100 Hz.  AGES runs fastest with
+                         the 11025 Hz setting, but has the best sound quality
+                         with the 44100 Hz setting.
+
+    Stereo             - Gives you stereo (2 channel) sound instead of
+                         mono (1 channel) sound.  Mono sound will make AGES
+                         run faster.
+                         [Not implemented yet.]
+
+    Allow Aliasing     - Sometimes games will program the sound chips (the
+                          YM2612 particularly) to emit high-frequency sounds
+                         which would be aliased to lower frequency noise.
+                         AGES (unlike other emulators) can filter out this
+                         noise to improve sound quality.  This filtering is
+                         *may* have subtle unwanted effects on some games, so
+                         this option is created so that you have control.
+                         There is no significant speed advantage to either
+                         setting.
+
+* Input
+    Player 1/2[abcd]   - Select the device that each player uses.  Choices are
+                         keyboard, joystick, mouse, and network connection.
+                         [Though you can set this to "network", AGES does not
+                         support network play yet.]
+
+    Define Keys...     - Define which keys are used for gameplay.  Press the
+                         "change" button to change a key, and the value will
+                         turn into flashing ?'s until you press a key.  If you
+                         do not press a key after 6 seconds, the selection
+                         will revert to its original value.
+
+    Define Joystick... - Define joystick buttons used for gameplay.  You
+                         can not change up, down, left, or right.  Press the
+                         "change" button to change a key, and the value will
+                         turn into flashing ?'s until you press a key.  If you
+                         do not press a button after 6 seconds, the selection
+                         will revert to its original value.
+
+    Network...         - Configure network options for network games.
+                         [Reserved for future expansion.]
+
+ ## MouseSensitivity   - When you are emulating a Sega Mouse, Sega Menacer,
+                         Konami Justifier, or Sega SMS Light Phaser with your
+                         system's mouse, this value will affect how fast
+                         the cursor moves.  Values from 1 to 8 are accepted,
+                         1 being slowest, and 8 being fastest.
+
+
+* GUI
+    Frame/Stretch      - AGES will give you your choice of frame/stretch
+     Behavior            behaviors while in windowed mode.  Each of these
+                         behaviors affects fullscreen mode as well.
+                         The following list explains each one.
+                          * Self adjust - This is the "classic" behavior of
+                              AGES.  When the emulated machine changes
+                              screen resolutions, the AGES frame is changed
+                              to match it.  All pixels are square and exact
+                              size, in windowed mode or fullscreen mode.
+                          * Static size/Square pixels - This setting causes
+                              the AGES frame to always stay the same size.
+                              The size is specified by the Custom Window X
+                              width and Custom Window Y height values.  See
+                              their description above.  The image will be
+                              stretched if necessary to fit inside the AGES
+                              frame, but all pixels will be kept square.  In
+                              full screen mode, the image will be stretched
+                              to fit on the whole screen, but all pixels will
+                              be kept square.
+                          * Static size/Stretched - This setting causes
+                              the AGES frame to always stay the same size.
+                              The size is specified by the Custom Window X
+                              width and Custom Window Y height values.  See
+                              their description above.  The image is
+                              stretched to exactly fit inside the AGES frame
+                              with no horizontal or vertical borders.  In
+                              fullscreen mode, the image is stretched to the
+                              aspect ratio specified by the Custom Window X
+                              width and Custom Window Y height values.
+                          * Resizeable/Square pixels - In this setting, you
+                              can dynamically resize the AGES frame.  The
+                              image will be stretched if necessary to fit
+                              inside the AGES frame, but all pixels will be
+                              kept square.  In fullscreen mode, the image will
+                              be stretched to fit on the whole screen, but all
+                              pixels will be kept square.
+                          * Resizeable/Custom XY ratio - In this setting, you
+                              can dynamically resize the AGES frame.  In
+                              windowed and fullscreen modes, the image is
+                              stretched to the aspect ratio specified by the
+                              Custom Window X width and Custom Window Y height
+                              values.  See their description above.
+                          * Resizeable/Stretched - In this setting, you
+                              can dynamically resize the AGES frame.  The
+                              image is stretched to exactly fit inside the
+                              AGES frame with no horizontal or vertical
+                              borders.  In fullscreen mode, the image is
+                              stretched to exactly fill the whole screen
+                              with no horizontal or vertical borders.
+
+    Game Name Search   - AGES can identify a ROM by its filename, by the name
+     Order               appearing in its header, or by the name that a ROM
+                         identifier (such as GoodGen) assigns to it based on
+                         its checksum value.  Use this option to control the
+                         order that AGES tries to internally name a ROM.  A
+                         ROM's name will effect the name seen in the title
+                         bar of the AGES window and the naming of BRM files,
+                         screenshots, saved states, etc...
+
+    Error Messages     - Allows you to turn on/off some nonessential (and
+                          often annoying) error messages.  Your choices are:
+                         ROM Validity Failure, Missing WNASPI32.DLL, Missing
+                         UnRAR.DLL, Missing ZLib.DLL, Missing GoodGen.DLL,
+                         and Missing Good32X.DLL.  Even though you can turn
+                         off the ASPI error message, it is still required
+                         for Sega CD emulation.
+
+    Auto-pause (focus) - If this option is enabled, AGES will pause when you
+                         switch tasks in Windows.  If this option is disabled,
+                         AGES will continue emulation even when you switch
+                         tasks.
+
+* Machine
+    Miscellaneous
+      Region           - Select region.  Choices are Autodetect, USA, Japan,
+                         and Europe.
+
+      Region Order     - Works with the Autodetect option.  Use this to
+                         control the search order (top down) of the
+                         autodetector.  Click on a region to bring it to the
+                         top of the list.
+
+      Port 1/2         - Select the device which will be emulated on that
+                         input port.  Choices are 3 button controller, 6
+                         button controller, Sega mouse, Sega Menacer,
+                         Konami Justifier, Sega Teamplayer, or Electronic Arts
+                         4 Way Play.
+
+      Expansion Port   - Selects the device which will be emulated on the
+                         expansion port.  These settings will have no effect
+                         if no port-expanding device is selected on Port 1/2.
+
+    Genesis
+      Use system ROM   - Turn on use of the Genesis system ROM.
+
+      Disable Z80      - Most games require Genesis Z80 emulation to work
+                         correctly, so don't disable the Z80 unless you know
+                         what you are doing.
+
+      Autofix checksum - Corrects a ROM's checksum in memory.  It is not wise
+                         to use this option as some ROMs use a different
+                         checksum scheme.
+                         [Reserved for future expansion.]
+
+      Sprite Limit     - Turn this option on to force AGES to adhere to the
+                         Genesis's natural limitations in sprite generation.
+
+      Squash Interlace - Checking this option will cause AGES to display
+                         Genesis interlace mode graphics at normal height
+                         but will only show half the lines available
+                         (alternating each frame).  Unchecking this option
+                         will double the height of the AGES frame and will
+                         draw all lines of the display.
+
+ ##   M68000 Speed     - Recommended value for this is CA.  Higher hex values
+                         will *lower* the clock frequency and thus may give
+                         the *appearance* of the emulator running faster when
+                         autoframeskip is turned off.  Games for the
+                         Genesis/Sega CD/32X collective can be VERY sensitive
+                         to timing, so tinker with this at your own risk!
+                         If you do have some success, I'd love to hear about
+                         it in an email.
+
+ ##   Z80 Speed        - Recommended value for this is EB.  See the Genesis
+                         M68000 Speed description for more information about
+                         CPU speed settings.
+
+    32X
+      Use system ROMs  - I strongly recommend you enable this option!  Turn
+                         this option off only in extremely dire situations.
+                         If you want to emulate CD/32X games, this option
+                         MUST be enabled, the BIOS "faking" will not work
+                         for CD/32X games.
+
+ ##   M SH2 Speed      - Recommended value for this is 75.  See the Genesis
+                         M68000 Speed description for more information about
+                         CPU speed settings.
+
+ ##   S SH2 Speed      - Recommended value for this is 75.  See the Genesis
+                         M68000 Speed description for more information about
+                         CPU speed settings.
+
+    SCD
+      Enabled CD/32X   - This option must be on if you wish to emulate the
+                         32X along with the Sega CD.  Be aware that CD/32X
+                         games require the 32X systems ROMs to be present
+                         and configured, the BIOS "faking" will not work.
+
+      Use RAM carts    - Enables automatic saving and loading of Cartridge
+                         BRMs for each individual game.  Turn this option off
+                         if you don't want your BRM directory cluttered with
+                         files.
+
+      RAM cart size    - This controls the size of the RAM cartridge.  You
+                         probably can't go wrong by using the largest setting.
+
+ ##   M68000 Speed     - Recommended value for this is B5.  See the Genesis
+                         M68000 Speed description for more information about
+                         CPU speed settings.
+
+Thanks
+------
+AGES could not have existed without the help of many individuals out there.
+Special thanks go out to (in no particular order) Eric Quinn, Eidolon, Atani,
+Charles MacDonald, Earl, Steve Snake, the guys of SegaXtreme and of Sega
+ROMHouse, the guys of Genesis Power, Flavio, The Fox, Kilrathi, Red5, Zoop,
+and Smmify, and all the others who have sent bug reports, ROMs, or technical
+information.  I hope I didn't forget anyone.  Email me if I did.

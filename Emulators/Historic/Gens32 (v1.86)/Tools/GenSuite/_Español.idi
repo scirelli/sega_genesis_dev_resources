@@ -1,0 +1,181 @@
+;Español - by Tom - ver 2.x.x
+[mdMain]
+mnuArch=&Archivo
+mnuArchIdioma=Seleccionar idioma...
+mnuArchQuit=&Salir
+mnuAyuda=&?
+mnuAyudaAcerca=Acerca de...
+cmdTools=Utilidades
+shConvert=Convertidor de ROMs
+shEdit=Editor de encabezados
+shRun=Lanzadera de emuladores
+shIPS=Parcheador IPS de ROMs
+
+[frmSplash]
+lblPlatform=para Win32
+lblVersion=Versión
+lblCompany=Programado por Tom
+lblKey=-============>>>Presiona cualquier tecla para continuar<<<==============-
+
+[frmIdioma]
+Caption=Seleccionar idioma
+IDOK=&Aceptar
+IDCANCEL=&Cancelar
+Msg1=Parece que es la primera vez que ejecutas GenRomSuite. Para comenzar, debes seleccionar un idioma para la aplicación.
+Msg2=Selecciona un idioma para la aplicación
+
+[frmSetup]
+Caption=Configurar ubicaciones
+fPath=Ubicación de emuladores
+fRoms=Directorio de ROMs
+lbOtro=Otro emulador (Genecyst, Genital, Genesis Plus...)
+IDOK=&Aceptar
+IDCANCEL=&Cancelar
+chkFCmd=Cargar ROM via linea de comandos
+fExtOpt=Opciones del emulador externo
+chkDOSEmu=Este emulador es un programa de MS-DOS
+optByCommand=Iniciar ROM desde la linea de comandos
+optByKeys=Usar teclas de acceso directo del emulador
+
+[frmAcercaDe]
+fWeb=Sitios Web recomendados
+fApp=Información de la aplicación
+lbDir=Carpeta
+lbRom=ROMs
+lbWin=Windows
+lbMem=Memoria
+IDOK=&Aceptar
+cmdCredits=Creditos y agradecimientos...
+lblWeb(3)=Visitar mi sitio Web...
+lblWeb(4)=Foros y soporte
+lblPlatform=para Win32
+lblCompany=Programado por Tom
+lblTransBy=
+
+[frmHeadEdit]
+Caption=Editor de encabezados
+fRom=Seleccionar ROM en formato binario (.bin)
+frmRhe=Información del encabezado
+fDevice=Dispositivos
+fZone=Zonas de destino
+cmdRec=&Guardar
+cmdRecComo=G&uardar como...
+cmdPlay=&Ejecutar
+cmdExit=&Cerrar
+
+[frmIPSPatcher]
+Caption=Parcheador de ROMs IPS
+fPatch=Parcheador de ROMs IPS
+lblInfo=Selecciona un archivo a parchear, un parche a aplicar, y de ser necesario, un archivo de datos extra. Entonces, haz clic en "Parchear" para empezar.
+lblOriginal=ROM original:
+lblPatch=Parche IPS:
+lblPatched=ROM parcheado:
+chkData=Usar un archivo de datos extra (necesario para algunos parches):
+cmdPatch=Parchear!
+cmdClose=Cerrar
+
+[chkDev]
+0=Joypad
+1=Joyad de 6 botones
+2=Teclado
+3=Impresora
+4=Bola de control
+5=Disquetera
+6=Activador
+7=Adaptador de 4 joypads
+8=Joystick MS
+9=Puerto serie RS232
+10=Tableta de dibujo
+11=Controlador de pala
+12=Lector de CD
+13=Raton Mega Mouse
+
+[sName]
+0=Nombre domestico:
+1=Nombre comercial:
+2=Consola destino:
+3=Código del juego:
+4=Copyright:
+5=Comentario:
+
+[frmLauncher]
+Caption=Lanzadera
+fEmus=Haz clic sobre un emulador para ejecutarlo
+fRom=Selecciona una ROM a ejecutar
+cmdOtro=Otro...
+cmdSetup=Configurar...
+cmdExit=&Cerrar
+lblExternal=Emulador externo a usar:
+
+[frmRomConv]
+Caption=Convertidor de ROMs
+lbOrgBin=ROM de origen:
+lbOrgSMD=ROM de origen:
+lbDestBin=ROM de destino (Convertida):
+lbDestSMD=ROM de destino (Convertida):
+cmdSMD2BIN=Convertir
+cmdBIN2SMD=Convertir
+cmdRunOut=&Cerrar
+
+[Msgs]
+ReRunId=Debes reiniciar GenRomSuite para aplicar los cambios
+AppMsg=GenRomSuite %v en ejecución
+BadChecksum=El checksum de esta ROM no es correcto. ¿Deseas arreglarlo?
+WarningChecksum1=ADVERTENCIA: Algunas ROMs tienen sus propias rutinas de comprobación del checksum.
+WarningChecksum2=Si modificas dicho checksum, puede que el juego no funcione. ¿Deseas continuar?
+ReadyToEdit=ROM %r lista para su edición.
+ReadyToRun=ROM %r lista para su ejecución.
+OverwriteMSG=¿Estas seguro de querer guardar los cambios?
+SavedAsMsg=ROM guardada exitosamente en %r
+ErrString=¡Error al guardar la ROM!
+NoIni1=Parece que es la primera vez que usas la Lanzadera. Antes de seguir, 
+NoIni2=debes configurar la Lanzadera para usar al menos un emulador.
+NoRunMsg=No se puede ejecutar %p
+SelRomErr=¡Debes seleccionar una ROM a convertir!
+SelDestErr=¡Debes seleccionar un archivo destino para la ROM convertida!
+CNVProg=Convirtiendo ROM. Por favor espera un momento...
+OKCNV=¡Conversión correcta!
+ErrCNV=Hubo errores durante la conversión. Algunas ROMs no fueron convertidas.
+DstMsg=ROM convertida exitosamente en %r
+CantCNV1=No se pudo convertir la ROM!
+CantCNV2=Error al convertir la ROM. Por favor, intentalo de nuevo.
+RunApp=Ejecutando %p.
+RunRom=Ejecutando %p con la ROM %r.
+WantExit=¿De verdad deseas salir?
+Goodbye=Hasta luego...
+RomFolder=Selecciona el directorio donde guardas tus ROMs
+MainEXE=Ejecutable principal de %p
+EXEs=Ejecutables (*.exe)
+SelEXE=Seleccionar ejecutable de %p 
+AllFiles=Todos los archivos (*.*)
+SelOtroEmu=Seleccionar emulador
+BinFile=Descarga binaria de ROM (*.bin)
+SMDRom=ROM entrelazada Super Magic Drive (*.smd)
+AllRoms=Todos los tipos de ROMs soportados (*.bin, *.smd, *.zip)
+ZippedRoms=ROMs comprimidas (*.zip)
+Patches=Parches IPS (*.ips)
+SelIPSBox=Seleccionar parche IPS a aplicar
+SelRomBox=Seleccionar ROM
+SaveRF=Guardar ROM
+LoadBinT=Seleccionar ROM binaria
+SaveCNV=Guardar ROM convertida
+MemStat=%t KB totales, %f KB libres
+SelRomPErr=¡Debes seleccionar una ROM a parchear!
+SelIPSPErr=¡Debes seleccionar un parche IPS a aplicar!
+SelDstPErr=¡Debes seleccionar un nombre de archivo para la ROM parcheada!
+SelChunkErr=Has decido usar un conjunto de datos extra, pero no has seleccionado ninguno. ¿Deseas continuar?
+CantPatch=No se puede parchear la ROM: Ha ocurrido el siguiente error:
+Patching=Parcheando %s. Por favor espera...
+PatchedOK=Parcheo finalizado. ¿Deseas probar la ROM?
+InvalidIPS=Parche IPS inválido
+
+[RegCodes]
+chkLicModel(0)=Modelo viejo
+chkLicModel(1)=Modelo nuevo
+chkJapOld=Japón
+chkUSAOld=Estados Unidos
+chkEurOld=Europa
+chkJapNTSC=Japón (NTSC)
+chkJapPAL=Japón (PAL)
+chkOVNTSC=Extranjero (NTSC)
+chkOVPAL=Extranjero (PAL)
