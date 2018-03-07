@@ -1,6 +1,6 @@
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  Integer Data Formats                                                                   ┃
-┠━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │ Operand Data Format       │ Size        │      Notes                                    │
 ├───────────────────────────┼─────────────┼───────────────────────────────────────────────┤
 │ Bit                       │ 1 Bit       │                                               │
@@ -23,8 +23,8 @@
 └───────────────────────────┴─────────────┴───────────────────────────────────────────────┘
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  Single and Double Operand Operations                                                                           ┃
-┠━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃                               Single and Double Operand Operations                                              ┃
+┣━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │      +          │ Arithmetic addition or postincrement indicator.                                               │
 ├─────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
 │      -          │ Arithmetic subtraction or predecrement indicator.                                             │
@@ -51,7 +51,7 @@
 ├─────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
 │ sign-extended   │ All bits of the upper portion are made equal to the high-order bit of the lower portion.      │
 ├─────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────┤
-│                Other Operations                                                                                 │
+│                                    Other Operations                                                             │
 ├───────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────┤
 │      TRAP         │ Equivalent to Format ÷ Offset Word → (SSP);                                                 │
 │                   │ SSP - 2 → SSP;                                                                              │
@@ -70,7 +70,7 @@
 │ else <operations> │ If the condition is false and else is omitted, the instruction performs no operation. Refer │
 │                   │ to the Bcc instruction description as an example.                                           │
 ├───────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────┤
-│       Register Specifications                                                                                   │
+│                                 Register Specifications                                                         │
 ├──────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────┤
 │     An       │ Any Address Register n (example: A3 is address register 3)                                       │
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
@@ -161,49 +161,192 @@
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
 │ IC, DC, IC/DC│ Instruction, Data, or Both Caches                                                                │
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ MMUSR        │ MMU Status Register                                                                              │
+│   MMUSR      │ MMU Status Register                                                                              │
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
 │    PC        │ Program Counter                                                                                  │
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
 │    Rc        │ Any Non Floating-Point Control Register                                                          │
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
-│   SFC        │ Source Function Code Register                                                                    │
+│    SFC       │ Source Function Code Register                                                                    │
 ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
 │    SR        │ Status Register                                                                                  │
 ├──────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────┤
 │                Register Codes                                                                                   │
-├──────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-├──────────────┼─────────────────────────┤
-│              │                         │
-└──────────────┴─────────────────────────┘
+├──────────────┬───────────────────────────────────────┬──────────────────────────────────────────────────────────┘
+│      *       │ General Case                          │
+├──────────────┼───────────────────────────────────────┤
+│      C       │ Carry Bit in CCR                      │
+├──────────────┼───────────────────────────────────────┤
+│     cc       │ Condition Codes from CCR              │
+├──────────────┼───────────────────────────────────────┤
+│     FC       │ Function code                         │
+├──────────────┼───────────────────────────────────────┤
+│      N       │ Negative Bit in CCR                   │
+├──────────────┼───────────────────────────────────────┤
+│      U       │ Undefined, Reserved for Motoroal Use. │
+├──────────────┼───────────────────────────────────────┤
+│      V       │ Overflow Bit in CCR                   │
+├──────────────┼───────────────────────────────────────┤
+│      X       │ Extend Bit in CCR                     │
+├──────────────┼───────────────────────────────────────┤
+│      Z       │ Zero Bit in CCR                       │
+├──────────────┼───────────────────────────────────────┤
+│      -       │ Not Affected or Applicable            │
+├──────────────┴───────────────────────────────────────┴───────┐
+│                Stack Pointers                                │
+├──────────────┬───────────────────────────────────────────────┤
+│     ISP      │ Supervisor/Interrupt Stack Pointer            │
+├──────────────┼───────────────────────────────────────────────┤
+│     MSP      │ Supervisor/Master Stack Pointer               │
+├──────────────┼───────────────────────────────────────────────┤
+│     SP       │ Active Stack Pointer                          │
+├──────────────┼───────────────────────────────────────────────┤
+│     SSP      │ Supervisor (Master or Interrupt Stack Pointer │
+├──────────────┼───────────────────────────────────────────────┤
+│     USP      │ User Stack Pointer                            │
+├──────────────┴───────────────────────────────────────────────┤
+│                Miscellaneous                                 │
+├──────────────┬───────────────────────────────────────────────┤
+│    <ea>      │ Effective Address                             │
+├──────────────┼───────────────────────────────────────────────┤
+│   <label>    │ Assemble Program Label                        │
+├──────────────┼───────────────────────────────────────────────┤
+│   <list>     │ List of registers, for example D3-D0          │
+├──────────────┼───────────────────────────────────────────────┤
+│     LB       │ Lower Bound                                   │
+├──────────────┼───────────────────────────────────────────────┤
+│     m        │ Bit m of an Operand                           │
+├──────────────┼───────────────────────────────────────────────┤
+│     m-n      │ Bits m through n of Operand                   │
+├──────────────┼───────────────────────────────────────────────┤
+│     UB       │ Upper Bound                                   │
+├──────────────┼───────────────────────────────────────────────┤
+│              │                                               │
+└──────────────┴───────────────────────────────────────────────┘
+
+# Data Movement Instructions
+The MOVE and FMOVE instructions with their associated addressing modes are the basic means of transferring and storing addresses and data. MOVE instructions transfer byte, word, and long-word operands from memory to memory, memory to register, register to memory, and register to register. MOVE instructions transfer word and long-word operands and ensure that only valid address manipulations are executed. In addition to the general MOVE instructions, there are several special data movement instructions: MOVE16, MOVEM, MOVEP, MOVEQ, EXG, LEA, PEA, LINK, and UNLK. The MOVE16 instruction is an MC68040 extension to the M68000 instruction set.
+The FMOVE instructions move operands into, out of, and between floating-point data registers. FMOVE also moves operands to and from the floating-point control register (FPCR), floating-point status register (FPSR), and floating-point instruction address register (FPIAR). For operands moved into a floating-point data register, FSMOVE and FDMOVE explicitly select single- and double-precision rounding of the result, respectively. FMOVEM moves any combination of either floating-point data registers or floating-point control registers. Table 3-2 lists the general format of these integer and floating-point data movement instructions.
+
+## Data Movement Operation Format
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Instruction     ┃ Operand Syntax      ┃ Operand Size        ┃                    Operation                                                             ┃
+┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+│ EXG             │ Rn, Rn              │       32            │  Rn ← → Rn                                                                               │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ FMOVE           │ FPm, FPn            │       X             │ Source → Destination                                                                     │
+│                 │ <ea>, FPn           │ B, W, L, S, D, X, P │ Floating precision move.                                                                 │
+│                 │ FPm, <ea>           │ B, W, L, S, D, X, P │                                                                                          │
+│                 │ <ea>, FPcr          │       32            │                                                                                          │
+│                 │ FPcr, <ea>          │       32            │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ FSMOVE,         │ FPm, FPn            │       X             │ Source → Destination; round destination to single or                                     │
+│ FDMOVE          │ <ea>, FPn           │ B, W, L, S, D, X    │ double precision.                                                                        │
+│                 │                     │                     │ Floating precision move.                                                                 │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ FMOVEM          │ <ea>, <list>        │ 32, X               │ Listed Registers → Destination                                                           │
+│                 │ <ea>, Dn            │   X                 │                                                                                          │
+│                 │ <list>, <ea>        │ 32, X               │ Source → Listed Registers                                                                │
+│                 │ Dn, <ea>            │   X                 │                                                                                          │
+│                 │                     │                     │ Move multiple                                                                            │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ LEA             │ <ea>, An            │ 16, 32              │ <ea> → An Load Effective Address                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ In short, LEA loads a pointer to the item you're                                         │
+│                 │                     │                     │ addressing whereas MOV loads the actual value at that                                    │
+│                 │                     │                     │ address.                                                                                 │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ lea eax, [ebp - 4] The value of ebp is subtracted by                                     │
+│                 │                     │                     │ 4 and the resulting value is stored in eax. This                                         │
+│                 │                     │                     │ instruction would just calculate the address and                                         │
+│                 │                     │                     │ store the calculated value in the destination                                            │
+│                 │                     │                     │ register. See this post for further details.                                             │
+│                 │                     │                     │ https://stackoverflow.com/a/25824111/808603                                              │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ LINK            │ An, #<d>            │  16, 32             │ SP → - 4 → SP; An → (SP); SP An, SP + D → SP                                             │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Allocates or creates a frame in the stack for local                                      │
+│                 │                     │                     │ use by the subroutine of size d bytes.                                                   │
+│                 │                     │                     │ • An is an address register serving as the frame                                         │
+│                 │                     │                     │   pointer (FP); A6 is used.                                                              │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ After creating the frame:                                                                │
+│                 │                     │                     │ – Passed parameters are accessed with a positive                                         │
+│                 │                     │                     │   displacement with respect to FP, A6                                                    │
+│                 │                     │                     │   i.e MOVE.W 8(A6),D0                                                                    │
+│                 │                     │                     │ – Local temporary storage variables are accessed                                         │
+│                 │                     │                     │   with negative displacement with respect to A6                                          │
+│                 │                     │                     │   i.e. MOVE.L D2,-10(A6)                                                                 │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ MOVE            │ <ea>, <ea>          │ 8, 16, 32           │ Source → Destination                                                                     │
+│ MOVE16          │ <ea>, <ea>          │ 16 bytes            │ Aligned 16-Byte Block → Destination                                                      │
+│ MOVEA           │ <ea>, An            │ 16, 32 → 32         │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ MOVEM           │ list, <ea>          │ 16, 32              │ Listed Registers → Destination                                                           │
+│                 │ <ea>, list          │ 16, 32 → 32         │ Source → Listed Registers                                                                │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ MOVEP           │ Dn, (d16, An)       │ 16, 32              │ Dn 31 - 24 → (An + dn); Dn 23 - 16 → (An + dn + 2);                                      │
+│                 │                     │                     │ Dn 15 - 8 → (An + dn + 4); Dn 7 - 0 → (An + dn + 6)                                      │
+│                 │ (d16, An), Dn       │                     │ (An + dn) → Dn 31 - 24; (An + dn + 2) → Dn 23 - 16                                       │
+│                 │                     │                     │ (An + dn + 4) → Dn 15 - 8; (An + dn + 6) → Dn 7 - 0                                      │
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ MOVEQ           │ #<data>, Dn         │ 8 → 32              │ Immediate Data → Destination                                                             │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ PEA             │ <ea>                │ 32                  │ SP - 4 → SP; <ea> → (SP)                                                                 │
+│                 │                     │                     │ Push Effective Address                                                                   │
+│                 │                     │                     │ Its the counter part to LEA                                                              │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ UNLK            │ An                  │ 32                  │ An → SP; (SP) → An; SP + 4 → SP                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+└─────────────────┴─────────────────────┴─────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
+NOTE: A register list includes any combination of the eight floating-point data registers or any combination of three control registers (FPCR, FPSR, and FPIAR). If a register list mask resides in a data register, only floating-point data registers may be specified.
+
+# Integer Arithmetic Instructions
+The integer arithmetic operations include four basic operations: ADD, SUB, MUL, and DIV. They also include CMP, CMPM, CMP2, CLR, and NEG. The instruction set includes ADD, CMP, and SUB instructions for both address and data operations with all operand sizes valid for data operations. Address operands consist of 16 or 32 bits. The CLR and NEG instructions apply to all sizes of data operands. Signed and unsigned MUL and DIV instructions include:
+    * Word multiply to produce a long-word product.
+    * Long-word multiply to produce a long-word or quad-word product.
+    * Long word divided by a word divisor (word quotient and word remainder).
+    * Long word or quad word divided by a long-word divisor (long-word quotient and long- word remainder).
+A set of extended instructions provides multiprecision and mixed-size arithmetic: ADDX, SUBX, EXT, and NEGX. Refer to Table 3-3 for a summary of the integer arithmetic operations. In Table 3-3, X refers to the X-bit in the CCR.
+
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Instruction     ┃ Operand Syntax      ┃ Operand Size        ┃                    Operation                                                             ┃
+┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+│ ADD             │ Dn, <ea>            │ 8, 16, 32           │ Source + Destination → Destination                                                       │
+│                 │ <ea>, Dn            │ 8, 16, 32           │                                                                                          │
+│ ADDA            │ <ea>, An            │    16, 32           │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ADDI            │ #<data>, <ea>       │ 8, 16, 32           │ Immediate Data + Destination → Destination                                               │
+│ ADDQ            │ #<data>, <ea>       │ 8, 16, 32           │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+└─────────────────┴─────────────────────┴─────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
+
+# References
+* http://68k.hax.com/
+* https://en.wikibooks.org/wiki/68000_Assembly
+* http://info.sonicretro.org/Redhotsonic
+* http://mrjester.hapisan.com/04_MC68/ 
