@@ -620,8 +620,8 @@ A set of subroutine call and return instructions and conditional and uncondition
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ DBcc, FDBcc     │ Dn, <label>         │      16             │ If Condition False, Then Dn - 1 → Dn                                                     │
 │                 │                     │                     │ If Dn → -1, Then _c + dn → PC                                                            │
-│                 │                     │                     │ 	fdbcc			Floating-Point Test Condition,                                       │
-│                 │                     │                     │     fdb{condition_code}	Dn,<ea>	Decrement, and Branch                                    │
+│                 │                     │                     │  fdbcc Floating-Point Test Condition,                                                    │
+│                 │                     │                     │  fdb{condition_code} Dn,<ea> Decrement, and Branch                                       │
 │                 │                     │                     │ http://www.nextcomputers.org/NeXTfiles/Docs/NeXTStep/3.3/nd/Assembler/Part2_ArchSpecific/M68k_Instructions.htmld/index.html │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ Scc, FScc       │   <ea>              │      8              │ If Condition True, 1's → Destination;                                                    │
