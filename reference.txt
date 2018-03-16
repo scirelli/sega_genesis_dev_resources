@@ -277,10 +277,19 @@ The FMOVE instructions move operands into, out of, and between floating-point da
 │                 │                     │                     │ – Local temporary storage variables are accessed                                         │
 │                 │                     │                     │   with negative displacement with respect to A6                                          │
 │                 │                     │                     │   i.e. MOVE.L D2,-10(A6)                                                                 │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ The LINK instruction pushes an address onto the stack, saves the stack address at which  │
+│                 │                     │                     │ the address is stored, and reserves an area of the stack. Using this instruction in a    │
+│                 │                     │                     │ series of subroutine calls results in a linked list of stack frames.                     │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ MOVE            │ <ea>, <ea>          │ 8, 16, 32           │ Source → Destination                                                                     │
 │ MOVE16          │ <ea>, <ea>          │ 16 bytes            │ Aligned 16-Byte Block → Destination                                                      │
 │ MOVEA           │ <ea>, An            │ 16, 32 → 32         │                                                                                          │
+│                 │                     │                     │ This instruction moves the byte, word, or long-word operand from the specified general   │
+│                 │                     │                     │ register to a location within the address space specified by the destination function    │
+│                 │                     │                     │ code (DFC) register. It also moves the byte, word, or long-word operand from a location  │
+│                 │                     │                     │ within the address space specificed by the source function code (SFC) register to the    │
+│                 │                     │                     │ specified general register.                                                              │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ MOVEM           │ list, <ea>          │ 16, 32              │ Listed Registers → Destination                                                           │
 │                 │ <ea>, list          │ 16, 32 → 32         │ Source → Listed Registers                                                                │
@@ -298,6 +307,11 @@ The FMOVE instructions move operands into, out of, and between floating-point da
 │                 │                     │                     │ Its the counter part to LEA                                                              │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ UNLK            │ An                  │ 32                  │ An → SP; (SP) → An; SP + 4 → SP                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ The UNLK instruction removes a stack frame from the end of the list by loading an address│
+│                 │                     │                     │ into the stack pointer and pulling the value at that address from the stack. When the    │
+│                 │                     │                     │ operand of the instruction is the address of the link address at the bottom of a stack   │
+│                 │                     │                     │ frame, the effect is to remove the stack frame from the stack and from the linked list.  │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
@@ -504,6 +518,13 @@ BTST, BSET, BCLR, and BCHG are bit manipulation instructions. All bit manipulati
 
 # Bit Field Instructions
 The M68000 family architecture supports variable-length bit field operations on fields of up to 32 bits. The BFINS instruction inserts a value into a bit field. BFEXTU and BFEXTS extract a value from the field. BFFFO finds the first set bit in a bit field. Also included are instructions analogous to the bit manipulation operations: BFTST, BFSET, BFCLR, and BFCHG. Table 3-7 summarizes bit field operations.
+One of the data types provided by the MC68030 is the bit field, consisting of as many as 32 consecutive bits. An offset from an effective address and a width value defines a bit field. The offset is a value in the range of – 231 through 231 – 1 from the most significant bit (bit 7) at the effective address. The width is a positive number, 1 through 32. The most significant bit of a bit field is bit 0. The bits number in a direction opposite to the bits of an integer.
+The instruction set includes eight instructions that have bit field operands. The insert bit field (BFINS) instruction inserts a bit field stored in a register into a bit field. The extract bit field signed (BFEXTS) instruction loads a bit field into the least significant bits of a register and extends the sign to the left, filling the register. The extract bit field unsigned (BFEXTU) also loads a bit field, but zero fills the unused portion of the destination register.
+
+The set bit field (BFSET) instruction sets all the bits of a field to ones. The clear bit field (BFCLR) instruction clears a field. The change bit field (BFCHG) instruction complements all the bits in a bit field. These three instructions all test the previous value of the bit field, setting the condition codes accordingly. The test bit field (BFTST) instruction tests the value in the field, setting the condition codes appropriately without altering the bit field. The find first one in bit field (BFFFO) instruction scans a bit field from bit 0 to the right until it finds a bit set to one and loads the bit offset of the first set bit into the specified data register. If no bits in the field are set, the field offset and the field width is loaded into the register.
+An important application of bit field instructions is the manipulation of the exponent field in a floating-point number. In the IEEE standard format, the most significant bit is the sign bit of the mantissa. The exponent value begins at the next most significant bit position; the exponent field does not begin on a byte boundary. The extract bit field (BFEXTU) instruction and the BFTST instruction are the most useful for this application, but other bit field instructions can also be used.
+Programming of input and output operations to peripherals requires testing, setting, and inserting of bit fields in the control registers of the peripherals. This is another application for bit field instructions. However, control register locations are not memory locations; therefore, it is not always possible to insert or extract bit fields of a register without affecting other fields within the register.
+Another widely used application for bit field instructions is bit- mapped graphics. Because byte boundaries are ignored in these areas of memory, the field definitions used with bit field instructions are very helpful.
 
                                                     Bit Field Operation Format
 ┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -798,6 +819,18 @@ The TAS, CAS, and CAS2 instructions coordinate the operations of processors in m
 │                 │                     │                     │ If Z, Then Du → Destination                                                              │
 │                 │                     │                     │ Else Destination → Dc                                                                    │
 │                 │                     │                     │ Compare and Swap with Operand                                                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ The CAS instruction compares the value in a memory location with the value in a data     │
+│                 │                     │                     │ register, and copies a second data register into the memory location if the compared     │
+│                 │                     │                     │ values are equal. This provides a means of updating system counters, history information,│
+│                 │                     │                     │ and globally shared pointers. The instruction uses an indivisible read-modify-write      │
+│                 │                     │                     │ cycle. After CAS reads the memory location, no other instruction can change that location│
+│                 │                     │                     │ before CAS has written the new value. This provides security in single-processor systems,│
+│                 │                     │                     │ in multitasking environments, and in multiprocessor environments. In a single-processor  │
+│                 │                     │                     │ system, then operation is protected from instructions of an interrupt routine. In a      │
+│                 │                     │                     │ multitasking environment, no other task can interfere with writing the new value of a    │
+│                 │                     │                     │ system variable. In a multiprocessor environment, the other processors must wait until   │
+│                 │                     │                     │ the CAS instruction completes before accessing a global pointer.                         │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CAS2            │ Dc1-Dc2, Du1-Du2,   │    16, 32           │ Dual Operand CAS                                                                         │
 │                 │   (Rn)-(Rn)         │                     │ Compare and Swap with Operand                                                            │
@@ -1108,19 +1141,141 @@ Table 3-18 lists the integer condition code computations for instructions and Ta
 ├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ LSL, ROXL                     │  *  │  *  │  *  │  0  │  ?  │ C = Dm -r + 1                                                                            │
 ├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
-│                               │     │     │     │     │     │                                                                                          │
+│ LSR (r=0)                     │  -  │  *  │  *  │  0  │  0  │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ROXL (r = 0)                  │  -  │  *  │  *  │  0  │  ?  │ X = C                                                                                    │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ROL                           │  -  │  *  │  *  │  0  │  ?  │ C = Dm - r + 1                                                                           │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ROL (r = 0)                   │  -  │  *  │  *  │  0  │  0  │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ASR, LSR, ROXR                │  *  │  *  │  *  │  0  │  ?  │ C = Dr - 1                                                                               │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ASR, LSR (r = 0)              │  -  │  *  │  *  │  0  │  0  │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ROXR (r = 0)                  │  -  │  *  │  *  │  0  │  ?  │ X = C                                                                                    │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ROR                           │  -  │  *  │  *  │  0  │  ?  │ C = Dr - 1                                                                               │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ROR (r = 0)                   │  -  │  *  │  *  │  0  │  0  │                                                                                          │
+└───────────────────────────────┴─────┴─────┴─────┴─────┴─────┴──────────────────────────────────────────────────────────────────────────────────────────┘
+? = Other—See Special Definition
+N = Result Operand (MSB)
+    __       __
+Z = Rm Λ...Λ R0
+Sm = Source Operand (MSB)
+Dm = Destination Operand (MSB)
+Rm = Result Operand (MSB)
+__
+Rm = Not Result Operand (MSB)
+R = Register Tested
+r = Shift Count
+
+# Conditonal Tests
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Mnemonic ┃   Condition      ┃ Encoding ┃       Test            ┃
+┣━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━┫
+│   T*     │   True           │   0000   │        1              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   F*     │   False          │   0001   │        0              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │      _   _            │
+│   HI     │   High           │   0010   │      C ۸ Z            │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   LS     │ Low or Same      │   0011   │      C ۷ Z            │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│ CC(HI)   │ Carry Clear      │   0100   │        C              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│ CS(LO)   │ Carry Set        │   0101   │        C              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   NE     │ Not Equal        │   0110   │        Z              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   EQ     │ Equal            │   0111   │        Z              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   VC     │ Overflow Clear   │   1000   │        V              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   VS     │ Overflow Set     │   1001   │        V              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   PL     │ Plus             │   1010   │        N              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│   MI     │ Minus            │   1011   │        N              │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │         _   _         │
+│   GE     │ Greater or Equal │   1100   │ N ۸ V ۷ N ۸ V         │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │     _   _             │
+│   LT     │ Less Than        │   1101   │ N ۸ V ۷ N ۸ V         │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │         _   _   _   _ │
+│   GT     │ Greater Than     │   1110   │ N ۸ V ۷ Z ۷ N ۸ V ۸ Z │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │         _   _         │
+│   LE     │ Less or Equal    │   1111   │ Z ۷ N ۸ V ۷ N ۸ V     │
+└──────────┴──────────────────┴──────────┴───────────────────────┘
+NOTES:
+_
+N = Logical Not N
+_
+V = Logical Not V
+_
+Z = Logical Not Z
+*Not available for the Bcc instruction.
+
+
+
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+├──────────┼──────────────────┼──────────┼───────────────────────┤
+│          │                  │          │                       │
+└──────────┴──────────────────┴──────────┴───────────────────────┘
+
+
+
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃       Operations              ┃  X  ┃  N  ┃  Z  ┃  V  ┃  C  ┃                                     Operation                                            ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │                               │     │     │     │     │     │                                                                                          │
 ├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
 ├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
 ├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
 ├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                               │     │     │     │     │     │                                                                                          │
+├───────────────────────────────┼─────┼─────┼─────┼─────┼─────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                               │     │     │     │     │     │                                                                                          │
 └───────────────────────────────┴─────┴─────┴─────┴─────┴─────┴──────────────────────────────────────────────────────────────────────────────────────────┘
 
