@@ -522,8 +522,11 @@ One of the data types provided by the MC68030 is the bit field, consisting of as
 The instruction set includes eight instructions that have bit field operands. The insert bit field (BFINS) instruction inserts a bit field stored in a register into a bit field. The extract bit field signed (BFEXTS) instruction loads a bit field into the least significant bits of a register and extends the sign to the left, filling the register. The extract bit field unsigned (BFEXTU) also loads a bit field, but zero fills the unused portion of the destination register.
 
 The set bit field (BFSET) instruction sets all the bits of a field to ones. The clear bit field (BFCLR) instruction clears a field. The change bit field (BFCHG) instruction complements all the bits in a bit field. These three instructions all test the previous value of the bit field, setting the condition codes accordingly. The test bit field (BFTST) instruction tests the value in the field, setting the condition codes appropriately without altering the bit field. The find first one in bit field (BFFFO) instruction scans a bit field from bit 0 to the right until it finds a bit set to one and loads the bit offset of the first set bit into the specified data register. If no bits in the field are set, the field offset and the field width is loaded into the register.
+
 An important application of bit field instructions is the manipulation of the exponent field in a floating-point number. In the IEEE standard format, the most significant bit is the sign bit of the mantissa. The exponent value begins at the next most significant bit position; the exponent field does not begin on a byte boundary. The extract bit field (BFEXTU) instruction and the BFTST instruction are the most useful for this application, but other bit field instructions can also be used.
+
 Programming of input and output operations to peripherals requires testing, setting, and inserting of bit fields in the control registers of the peripherals. This is another application for bit field instructions. However, control register locations are not memory locations; therefore, it is not always possible to insert or extract bit fields of a register without affecting other fields within the register.
+
 Another widely used application for bit field instructions is bit- mapped graphics. Because byte boundaries are ignored in these areas of memory, the field definitions used with bit field instructions are very helpful.
 
                                                     Bit Field Operation Format
@@ -666,6 +669,14 @@ A set of subroutine call and return instructions and conditional and uncondition
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ NOP             │   none              │     none            │ PC + 2 → PC (Integer Pipeline Synchronized)                                              │
 │                 │                     │                     │	No OPeration                                                                             │
+│                 │                     │                     │	Although the no operation (NOP) instruction performs no visible operation, it serves an  │
+│                 │                     │                     │ important purpose. It forces synchronization of the integer unit pipeline by waiting for │
+│                 │                     │                     │	all pending bus cycles to complete. All previous integer instructions and floating-point │
+│                 │                     │                     │ external operand accesses complete execution before the NOP begins. The NOP instruction  │
+│                 │                     │                     │	does not synchronize the FPU pipeline—floating- point instructions with floating-point   │
+│                 │                     │                     │	register operand destinations can be executing when the NOP begins. NOP is considered a  │
+│                 │                     │                     │	change of flow instruction and traps for trace on change of flow. A single- cycle        │
+│                 │                     │                     │	nonsynchronizing operation can be affected with the TRAPF instruction.                   │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ FNOP            │   none              │     none            │ PC + 4 → PC (FPU Pipeline Synchronized)                                                  │
 │                 │                     │                     │ Float No OPeration                                                                       │
