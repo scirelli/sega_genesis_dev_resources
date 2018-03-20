@@ -1233,10 +1233,48 @@ Z = Logical Not Z
 *Not available for the Bcc instruction.
 
 
+Figure 3-1 illustrates the intermediate result format. The intermediate result’s exponent for some dyadic operations (i.e., multiply and divide) can easily overflow or underflow the 15- bit exponent of the designation floating-point register. To simplify the overflow and underflow detection, intermediate results in the FPU maintain a 16-bit (17 bits for the MC68881 and MC68882), twos complement, integer exponent. Detection of an overflow or underflow intermediate result always converts the 16-bit exponent into a 15-bit biased exponent before being stored in a floating-point data register. The FPU internally maintains the 67-bit mantissa for rounding purposes. The mantissa is always rounded to 64 bits (or less, depending on the selected rounding precision) before it is stored in a floating-point data register.
+If the destination is a floating-point data register, the result is in the extended-precision format and is rounded to the precision specified by the FPSR PREC bits before being stored. All mantissa bits beyond the selected precision are zero. If the single- or double-precision mode is selected, the exponent value is in the correct range even if it is stored in extended- precision format. If the destination is a memory location, the FPSR PREC bits are ignored. In this case, a number in the extended-precision format is taken from the source floating- point data register, rounded to the destination format precision, and then written to memory.
+Depending on the selected rounding mode or destination data format in effect, the location of the least significant bit of the mantissa and the locations of the guard, round, and sticky bits in the 67-bit intermediate result mantissa varies. The guard and round bits are always calculated exactly. The sticky bit is used to create the illusion of an infinitely wide intermediate result. As the arrow illustrates in Figure 3-1, the sticky bit is the logical OR of all the bits in the infinitely precise result to the right of the round bit. During the calculation stage of an arithmetic operation, any non-zero bits generated that are to the right of the round bit set the sticky bit to one. Because of the sticky bit, the rounded intermediate result for all required IEEE arithmetic operations in the RN mode is in error by no more than one half unit in the last place.
 
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
+## Figure 3-1 Intermediate Result Format
+                                                           ┌────┐ 
+                                                           ▼    │
+┌─────────────────┬─┬─┬───────────────────────────────┬─┬─┬─┐   │
+│ 16-BIT Exponent │ ┊ ┊        63-BIT Mantissa        ┊ ┊ ┊ │ ──┘
+└─────────────────┴─┴─┴───────────────────────────────┴─┴─┴─┘
+                   │ │              LSB of Fraction ─┘ │ │ │
+                   │ └─ Integer Bit       Guard Bit ───┘ │ │
+                   └─── Overflow bit      Round Bit ─────┘ │
+                                         Sticky Bit ───────┘
+
+## Rounding the Result
+The FPU supports the four rounding modes specified by the IEEE 754 standard. These modes are round to nearest (RN), round toward zero (RZ), round toward plus infinity (RP), and round toward minus infinity (RM). The RM and RP rounding modes are often referred to as "directed rounding modes" and are useful in interval arithmetic. Rounding is accomplished through the intermediate result. Single-precision results are rounded to a 24- bit boundary; double-precision results are rounded to a 53-bit boundary; and extended- precision results are rounded to a 64-bit boundary. Table 3-21 lists the encodings for the FPCR that denote the rounding and precision modes.
+
+FPCR Encodings
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Rounding Mode           ┃ Encoding  ┃ Rounding Precisionst     ┃
+┃ (RND Field)             ┃           ┃     (PREC Field)         ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━┳━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+│ To Nearest (RN)         │  0  │  0  │ Extend (X)               │
+├─────────────────────────┼─────┼─────┼──────────────────────────┤
+│ To Zero (RZ)            │  0  │  1  │ Single (S)               │
+├─────────────────────────┼─────┼─────┼──────────────────────────┤
+│ To Minus Inifinity (RM) │  1  │  0  │ Double (D)               │
+├─────────────────────────┼─────┼─────┼──────────────────────────┤
+│ To Plus Infinity (RP)   │  1  │  1  │ Undifined                │
+└─────────────────────────┴─────┴─────┴──────────────────────────┘
+
+
+
+
+
+
+
+
+
+
 │          │                  │          │                       │
 ├──────────┼──────────────────┼──────────┼───────────────────────┤
 │          │                  │          │                       │
@@ -1399,6 +1437,8 @@ l: 32 bits
 w: 16 bits
 b: 8 bits
 ATC: Address translation caches
+NAN: Not a Number
+SNAN: Signaling NAN
 
 # References
 * http://68k.hax.com/
