@@ -573,6 +573,49 @@ Five instructions support operations on binary-coded decimal (BCD) numbers. The 
 │ ABCD            │ Dn, Dn              │         8           │ Source   + Destination   + X → Destination                                               │
 │                 │ -(An), -(An)        │         8           │       10              10                                                                 │
 │                 │                     │                     │ Add Binary-Coded Decimal                                                                 │
+│                 │                     │                     │ Add Decimal with Extend                                                                  │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Adds the source operand to the destination operand along with the extend    │
+│                 │                     │                     │ bit, and stores the result in the destination location. The addition is performed using  │
+│                 │                     │                     │ binary-coded decimal arithmetic. The operands, which are packed binary-coded decimal     │
+│                 │                     │                     │ numbers, can be addressed in two different ways:                                         │
+│                 │                     │                     │ 1. Data Register to Data Register: The operands are contained in the data registers      │
+│                 │                     │                     │    specified in the instruction.                                                         │
+│                 │                     │                     │ 2. Memory to Memory: The operands are addressed with the predecrement ad- dressing mode  │
+│                 │                     │                     │    using the address registers specified in the instruction.                             │
+│                 │                     │                     │ This operation is a byte operation only.                                                 │
+│                 │                     │                     │ Condition Codes:                                                                         │
+│                 │                     │                     │   X   N   Z   V   C                                                                      │
+│                 │                     │                     │ ┌───┬───┬───┬───┬───┐                                                                    │
+│                 │                     │                     │ │ * │ U │ * │ U │ * │                                                                    │
+│                 │                     │                     │ └───┴───┴───┴───┴───┘                                                                    │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  X - Set the same as the carry bit.                                                      │
+│                 │                     │                     │  N - Undefined                                                                           │
+│                 │                     │                     │  Z - Cleared if the result is nonzero; unchanged otherwise.                              │
+│                 │                     │                     │  V - Undefined                                                                           │
+│                 │                     │                     │  C - Set if a decimal carry was generated; cleared otherwise.                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Note                                                                                     │
+│                 │                     │                     │ Normally, the Z condition code bit is set via programming before the start of an operatio│
+│                 │                     │                     │ This allows successful tests for zero results upon completion of multiple-prcision       │
+│                 │                     │                     │ operations.                                                                              │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  15  14  13  12   11   10   9   8   7   6   5   4   3   2   1   0                        │
+│                 │                     │                     │ ┌───┬───┬───┬───┬─────────────┬───┬───┬───┬───┬───┬───┬─────────────┐                    │
+│                 │                     │                     │ │ 1 │ 1 │ 0 │ 0 │ Register Rx │ 1 │ 0 │ 0 │ 0 │ 0 │R/M│ Register Ry │                    │
+│                 │                     │                     │ └───┴───┴───┴───┴─────────────┴───┴───┴───┴───┴───┴───┴─────────────┘                    │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Instruction Fields:                                                                      │
+│                 │                     │                     │     Register Rx field—Specifies the destination register.                                │
+│                 │                     │                     │         If R/M = 0, specifies a data register.                                           │
+│                 │                     │                     │         If R/M = 1, specifies an address register for the predecrement addressing mode.  │
+│                 │                     │                     │     R/M field—Specifies the operand addressing mode.                                     │
+│                 │                     │                     │         0 - The operation is data register to data register.                             │
+│                 │                     │                     │         1 - The operation is memory to memory.                                           │
+│                 │                     │                     │     Register Ry field—Specifies the source register.                                     │
+│                 │                     │                     │        If R/M = 0, specifies a data register.                                            │
+│                 │                     │                     │         If R/M = 1, specifies an address register for the predecrement addressing mode.  │                                                                       │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ NBCD            │     <ea>            │         8           │ 0 - Destination   - X → Destination                                                      │
 │                 │                     │                     │                10                                                                        │
@@ -1267,28 +1310,44 @@ FPCR Encodings
 └─────────────────────────┴─────┴─────┴──────────────────────────┘
 
 
+## FPCC Encodings
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━┳━━━━━┳━━━━━┳━━━━━━━┓
+┃           Data Type          ┃  N  ┃  Z  ┃  I  ┃  NAN  ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━╋━━━━━╋━━━━━╋━━━━━━━┫
+│ + Normalized or Denormalized │  0  │  0  │  0  │   0   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ - Normalized or Denormalized │  1  │  0  │  0  │   0   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ + 0                          │  0  │  1  │  0  │   0   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ - 0                          │  1  │  1  │  0  │   0   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ + Infinity                   │  0  │  0  │  1  │   0   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ - Infinity                   │  1  │  0  │  1  │   0   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ + NAN                        │  0  │  0  │  0  │   1   │
+├──────────────────────────────┼─────┼─────┼─────┼───────┤
+│ - NAN                        │  1  │  0  │  0  │   1   │
+└──────────────────────────────┴─────┴─────┴─────┴───────┘
+
+## Floating-point Conditional Testing
+The inclusion of the unordered condition in floating-point branches destroys the familiar trichotomy relationship (greater than, equal, less than) that exists for integers. For example, the opposite of floating-point branch greater than (FBGT) is not floating-point branch less than or equal (FBLE). Rather, the opposite condition is floating-point branch not greater than (FBNGT). If the result of the previous instruction was unordered, FBNGT is true; whereas, both FBGT and FBLE would be false since unordered fails both of these tests (and sets BSUN).
 
 
 
-
-
-
-
-
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-├──────────┼──────────────────┼──────────┼───────────────────────┤
-│          │                  │          │                       │
-└──────────┴──────────────────┴──────────┴───────────────────────┘
+│          │                  │          │    │                     │
+├──────────┼──────────────────┼──────────┼────┼─────────────────────┤
+│          │                  │          │    │                     │
+├──────────┼──────────────────┼──────────┼────┼─────────────────────┤
+│          │                  │          │    │                     │
+├──────────┼──────────────────┼──────────┼────┼─────────────────────┤
+│          │                  │          │    │                     │
+├──────────┼──────────────────┼──────────┼────┼─────────────────────┤
+│          │                  │          │    │                     │
+├──────────┼──────────────────┼──────────┼────┼─────────────────────┤
+│          │                  │          │    │                     │
+└──────────┴──────────────────┴──────────┴────┴─────────────────────┘
 
 
 
@@ -1439,6 +1498,19 @@ b: 8 bits
 ATC: Address translation caches
 NAN: Not a Number
 SNAN: Signaling NAN
+FPC or FPCR: floating point control register
+FPS or FPSR: floating point status register
+ALU: arithmetic logic unit
+UNFL: underflow
+INEX2: inexact bit
+OVFL: overflow
+FPCC: Floating-point Condition Code
+EQ: equal to
+GT: greater than
+LT: less than
+UN: unordered
+
+
 
 # References
 * http://68k.hax.com/
