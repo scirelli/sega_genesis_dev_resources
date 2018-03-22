@@ -332,13 +332,48 @@ A set of extended instructions provides multiprecision and mixed-size arithmetic
 ┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │ ADD             │ Dn, <ea>            │ 8, 16, 32           │ Source + Destination → Destination                                                       │
 │                 │ <ea>, Dn            │ 8, 16, 32           │                                                                                          │
-│ ADDA            │ <ea>, An            │    16, 32           │                                                                                          │
+│                 │                     │                     │ Adds the source operand to the destination operand using binary addition and stores the  │
+│                 │                     │                     │ result in the destination location. The size of the operation may be specified as byte,  │
+│                 │                     │                     │ word, or long. The mode of the instruction indicates which operand is the source and     │
+│                 │                     │                     │ which is the destination, as well as the operand size.                                   │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Note                                                                                     │
+│                 │                     │                     │ The Dn mode is used when the destination is a data register; the destination <ea> mode   │
+│                 │                     │                     │ is invalid for a data register.  ADDA is used when the destination is an address         │
+│                 │                     │                     │ register. ADDI and ADDQ are used when the source is immediate data. Most assemblers      │
+│                 │                     │                     │ automatically make this distinction.                                                     │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ADDA            │ <ea>, An            │    16, 32           │ Source + Destination → Destination                                                       │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Adds the source operand to the destination address register and stores the result in the │
+│                 │                     │                     │ address register. The size of the operation may be specified as word or long. The entire │
+│                 │                     │                     │ destination address register is used regardless of the operation size.                   │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ ADDI            │ #<data>, <ea>       │  8, 16, 32          │ Immediate Data + Destination → Destination                                               │
-│ ADDQ            │ #<data>, <ea>       │  8, 16, 32          │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Adds the immediate data to the destination operand and stores the result in the          │
+│                 │                     │                     │ destination location. The size of the operation may be specified as byte, word, or long. │
+│                 │                     │                     │ The size of the immediate data matches the operation size.                               │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ ADDQ            │ #<data>, <ea>       │  8, 16, 32          │ Immediate Data + Destination → Destination                                               │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Adds an immediate value of one to eight to the operand at the destination   │
+│                 │                     │                     │ location. The size of the operation may be specified as byte, word, or long. Word and    │
+│                 │                     │                     │ long operations are also allowed on the address registers. When adding to address        │
+│                 │                     │                     │ registers, the condition codes are not altered, and the entire destination address       │
+│                 │                     │                     │ register is used regardless of the operation size.                                       │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ ADDX            │    Dn, Dn           │  8, 16, 32          │ Source + Destination + X → Destination                                                   │
 │                 │ -(An), -(An)        │  8, 16, 32          │                                                                                          │
+│                 │                     │                     │ Adds the source operand and the extend bit to the destination operand and stores the     │
+│                 │                     │                     │ result in the destination location. The operands can be addressed in two different ways: │
+│                 │                     │                     │ 1. Data register to data register—The data registers specified in the instruction contain│
+│                 │                     │                     │ the operands.                                                                            │
+│                 │                     │                     │ 2. Memory to memory—The address registers specified in the instruction address the       │
+│                 │                     │                     │ operands using the predecrement addressing mode.                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ The size of the operation can be specified as byte, word, or long.                       │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CLR             │     <ea>            │  8, 16, 32          │ 0 → Destination                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
@@ -392,6 +427,11 @@ The logical operation instructions (AND, OR, EOR, and NOT) perform logical opera
 ┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │     AND         │ <ea>, Dn            │  8, 16, 32          │ Source ۸ Destination → Destination                                                       │
 │                 │ Dn, <ea>            │  8, 16, 32          │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │    ANDI         │ #<data>, <ea>       │  8, 16, 32          │ Immediate Data ۸ Destination → Destination                                               │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
