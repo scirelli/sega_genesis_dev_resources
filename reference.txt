@@ -427,17 +427,47 @@ The logical operation instructions (AND, OR, EOR, and NOT) perform logical opera
 ┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │     AND         │ <ea>, Dn            │  8, 16, 32          │ Source ۸ Destination → Destination                                                       │
 │                 │ Dn, <ea>            │  8, 16, 32          │                                                                                          │
+│                 │                     │                     │ Performs an AND operation of the source operand with the destination operand and stores  │
+│                 │                     │                     │ the result in the destination location. The size of the operation can be specified as    │
+│                 │                     │                     │ byte, word, or long. The contents of an address register may not be used as an operand.  │
 │                 │                     │                     │                                                                                          │
+│                 │                     │                     │ NOTE                                                                                     │
+│                 │                     │                     │  Most assemblers use ANDI when the source is immediate data. The Dn mode is used when    │
+│                 │                     │                     │  the destination is a data register; the destination < ea > mode is invalid for a data   │
+│                 │                     │                     │  register.                                                                               │
 │                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes: XNZVC                                                                   │
+│                 │                     │                     │ X — Not affected.                                                                        │
+│                 │                     │                     │ N — Set if the most significant bit of the result is set; cleared otherwise.             │
+│                 │                     │                     │ Z — Set if the result is zero; cleared otherwise.                                        │ 
+│                 │                     │                     │ V — Always cleared.                                                                      │
+│                 │                     │                     │ C — Always cleared.                                                                      │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │    ANDI         │ #<data>, <ea>       │  8, 16, 32          │ Immediate Data ۸ Destination → Destination                                               │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Performs an AND operation of the immediate data with the destination operand and stores  │
+│                 │                     │                     │ the result in the destination location. The size of the operation can be specified as    │
+│                 │                     │                     │ byte, word, or long. The size of the immediate data matches the operation size.          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes: XNZVC                                                                   │
+│                 │                     │                     │ X — Not affected.                                                                        │
+│                 │                     │                     │ N — Set if the most significant bit of the result is set; cleared otherwise.             │
+│                 │                     │                     │ Z — Set if the result is zero; cleared otherwise.                                        │ 
+│                 │                     │                     │ V — Always cleared.                                                                      │
+│                 │                     │                     │ C — Always cleared.                                                                      │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │    EOR          │ Dn, <ea>            │  8, 16, 32          │ Source ⊕ Destination → Destination                                                       │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │    EORI         │ #<data>, <ea>       │  8, 16, 32          │ Immediate Data ⊕ Destination → Destination                                               │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │    NOT          │ <ea>                │  8, 16, 32          │ ~ Destination → Destination                                                              │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
@@ -461,6 +491,25 @@ Memory shift and rotate operations shift word operands one bit position only. Th
 │  ASL            │ #<data>, Dn         │ 8, 16, 32           │  |X/C| ◀--| ◀---------- | ◀-- 0                                                          │
 │                 │    <ea>             │    16               │   ---      -------------                                                                 │
 │                 │                     │                     │  Arithmetic Shift Left                                                                   │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Arithmetically shifts the bits of the operand in the direction (L or R) specified. The carry bit receives the last bit shifted out of the operand. The shift count for the shifting of a register may be specified in two different ways:
+│                 │                     │                     │ 1. Immediate—The shift count is specified in the instruction (shift range, 1 – 8).
+│                 │                     │                     │ 2. Register—The shift count is the value in the data register specified in instruction modulo 64.
+│                 │                     │                     │ The size of the operation can be specified as byte, word, or long. An operand in mem- ory can be shifted one bit only, and the operand size is restricted to a word.
+│                 │                     │                     │ For ASL, the operand is shifted left; the number of positions shifted is the shift count. Bits shifted out of the high-order bit go to both the carry and the extend bits; zeros are shifted into the low-order bit. The overflow bit indicates if any sign changes occur dur- ing the shift.
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ For ASR, the operand is shifted right; the number of positions shifted is the shift count. Bits shifted out of the low-order bit go to both the carry and the extend bits; the sign bit (MSB) is shifted into the high-order bit.                                                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes:                                                                         │
+│                 │                     │                     │ 
+│                 │                     │                     │  X — Set according to the last bit shifted out of the operand; unaffected for a shift count of zero.
+│                 │                     │                     │  N — Set if the most significant bit of the result is set; cleared otherwise.
+│                 │                     │                     │  Z — Set if the result is zero; cleared otherwise.
+│                 │                     │                     │  V — Set if the most significant bit is changed at any time during the shift operation;
+│                 │                     │                     │  cleared otherwise.
+│                 │                     │                     │  C — Set according to the last bit shifted out of the operand; cleared for a shift count
+│                 │                     │                     │  of zero.                                                                                │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                 │                     │                     │ Shifts off into the sign extention and carry bits of CCR                                 │
 │                 │                     │                     │             -------------       ---                                                      │
@@ -541,11 +590,27 @@ BTST, BSET, BCLR, and BCHG are bit manipulation instructions. All bit manipulati
 ┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │ BCHG            │ Dn, <ea>            │  8, 32              │ ~(<Bit Number> of Destination) → Z →                                                     │
 │                 │ #<data>, <ea>       │  8, 32              │ Bit of Destination                                                                       │
-│                 │                     │                     │ Bit CHanGe?                                                                              │
+│                 │                     │                     │ Bit CHanGe                                                                               │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Tests a bit in the destination operand and sets the Z condition code appropriately, then inverts the specified bit in the destination. When the destination is a data register, any of the 32 bits can be specified by the modulo 32-bit number. When the destination is a memory location, the operation is a byte operation, and the bit number is modulo 8. In all cases, bit zero refers to the least significant bit. The bit number for this operation may be specified in either of two ways:
+│                 │                     │                     │   1. Immediate—The bit number is specified in a second word of the instruction.          │
+│                 │                     │                     │   2. Register—The specified data register contains the bit number.                       │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
-│ BCHG            │ Dn, <ea>            │  8, 32              │ ~(<Bit Number> of Destination) → Z;                                                      │
+│ BCLR            │ Dn, <ea>            │  8, 32              │ ~(<Bit Number> of Destination) → Z;                                                      │
 │                 │ #<data>, <ea>       │  8, 32              │ 0 → Bit of Destination                                                                   │
 │                 │                     │                     │ Bit CLeaR?                                                                               │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ TEST (<bit number> of Destination) → Z; 0 → <bit number> of Destination                  │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Tests a bit in the destination operand and sets the Z condition code appropriately, then clears the specified bit in the destination. When a data register is the destination, any of the 32 bits can be specified by a modulo 32-bit number. When a memory location is the destination, the operation is a byte operation, and the bit number is modulo 8. In all cases, bit zero refers to the least significant bit. The bit number for this operation can be specified in either of two ways:
+│                 │                     │                     │     1. Immediate—The bit number is specified in a second word of the instruction.
+│                 │                     │                     │     2. Register—The specified data register contains the bit number.                     │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BSET            │ Dn, <ea>            │  8, 32              │ ~(<Bit Number> of Destination) → Z;                                                      │
 │                 │ #<data>, <ea>       │  8, 32              │ 1 → Bit of Destination                                                                   │
@@ -575,15 +640,60 @@ Another widely used application for bit field instructions is bit- mapped graphi
 ┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 │ BFCHG           │ <ea>{offset:width}  │  1 - 32             │ ~ Field → Field                                                                          │
 │                 │                     │                     │ Bit Field CHanGe                                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ TEST ( < bit field > of Destination) → < bit field > of Destination                      │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Sets the condition codes according to the value in a bit field at the specified effective address, then complements the field.
+│                 │                     │                     │ A field offset and a field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field.                                                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ X — Not affected.                                                                        │ 
+│                 │                     │                     │ N — Set if the most significant bit of the field is set; cleared otherwise.              │
+│                 │                     │                     │ Z — Set if all bits of the field are zero; cleared otherwise.                            │
+│                 │                     │                     │ V — Always cleared.                                                                      │
+│                 │                     │                     │ C — Always cleared.                                                                      │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFCLR           │ <ea> {offset:width} │  1 - 32             │ 0's → Field                                                                              │
 │                 │                     │                     │ Bit Field CLeaR                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ 0 → <bit field> of Destination                                                           │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  Sets condition codes according to the value in a bit field at the specified effective address and clears the field.
+│                 │                     │                     │  The field offset and field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field.│
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  Condition Codes
+│                 │                     │                     │  X — Not affected.
+│                 │                     │                     │  N — Set if the most significant bit of the field is set; cleared otherwise. Z — Set if all bits of the field are zero; cleared otherwise.
+│                 │                     │                     │  V — Always cleared.
+│                 │                     │                     │  C — Always cleared.
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFEXTS          │<ea>{offset:width},Dn│  1 - 32             │ Field → Dn; Sign-Extended                                                                │
 │                 │                     │                     │ Bit Field EXTend Sign                                                                    │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Extract Bit Field Signed                                                                 │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Extracts a bit field from the specified effective address location, sign extends to 32 bits, and loads the result into the destination data register. The field offset and field width select the bit field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field.│
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ X — Not affected.
+│                 │                     │                     │ N — Set if the most significant bit of the field is set; cleared otherwise. 
+│                 │                     │                     │ Z — Set if all bits of the field are zero; cleared otherwise.
+│                 │                     │                     │ V — Always cleared.
+│                 │                     │                     │ C — Always cleared.                                                                      │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFEXTU          │<ea>{offset:width},Dn│  1 - 32             │ Field → Dn; Zero-Extended                                                                │
 │                 │                     │                     │ Bit Field EXTend Unsigned                                                                │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Extract Bit Field Unsigned                                                               │
+│                 │                     │                     │ Extracts a bit field from the specified effective address location, zero extends to 32 bits, and loads the results into the destination data register. The field offset and field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field.│
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ X — Not affected.                                                                        │
+│                 │                     │                     │ N — Set if the most significant bit of the source field is set; cleared otherwise.       │
+│                 │                     │                     │ Z — Set if all bits of the field are zero; cleared otherwise.                            │
+│                 │                     │                     │ V — Always cleared.                                                                      │
+│                 │                     │                     │ C — Always cleared.                                                                      │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFFFO           │<ea>{offset:width},Dn│  1 - 32             │ Scan for First Bit Set in Field; Offset → Dn.                                            │
 │                 │                     │                     │ Bit Field First Field Offset?                                                            │
@@ -725,6 +835,24 @@ A set of subroutine call and return instructions and conditional and uncondition
 │  Bcc, FBcc      │   <label>           │   8, 16, 32         │ If Condition True, Then PC + dn → PC                                                     │
 │                 │                     │                     │ Branch carry clear                                                                       │
 │                 │                     │                     │ Floating Branch carry clear                                                              │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: If the specified condition is true, program execution continues at location (PC) + displacement. The program counter contains the address of the instruction word for the Bcc instruction plus two. The displacement is a twos-complement integer that represents the relative distance in bytes from the current program counter to the destination program counter. If the 8-bit displacement field in the instruction word is zero, a 16-bit displacement (the word immediately following the instruction) is used. If the 8-bit displacement field in the instruction word is all ones ($FF), the 32-bit displacement (long word immediately following the instruction) is used. Condition code cc specifies one of the following conditional tests (refer to Table 3-19 for more information on these conditional tests): │
+│                 │                     │                     │ (and bccs) Branch Conditionally                                                          │
+│                 │                     │                     │ bcc	<ea>	carry clear                                                                  │
+│                 │                     │                     │ bcs	<ea>	carry set                                                                    │
+│                 │                     │                     │ beq	<ea>	equal                                                                        │
+│                 │                     │                     │ bge	<ea>	greater or equal                                                             │
+│                 │                     │                     │ bgt	<ea>	greater than                                                                 │
+│                 │                     │                     │ bhi	<ea>	high                                                                         │
+│                 │                     │                     │ ble	<ea>	less or equal                                                                │
+│                 │                     │                     │ bls	<ea>	low or same                                                                  │
+│                 │                     │                     │ blt	<ea>	less than                                                                    │
+│                 │                     │                     │ bmi	<ea>	minus                                                                        │
+│                 │                     │                     │ bne	<ea>	not equal                                                                    │
+│                 │                     │                     │ bpl	<ea>	plus                                                                         │
+│                 │                     │                     │ bvc	<ea>	overflow clear                                                               │
+│                 │                     │                     │ bvs	<ea>	overflow set                                                                 │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ DBcc, FDBcc     │ Dn, <label>         │      16             │ If Condition False, Then Dn - 1 → Dn                                                     │
 │                 │                     │                     │ If Dn → -1, Then _c + dn → PC                                                            │
