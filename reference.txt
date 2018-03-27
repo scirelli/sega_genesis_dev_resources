@@ -697,16 +697,62 @@ Another widely used application for bit field instructions is bit- mapped graphi
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFFFO           │<ea>{offset:width},Dn│  1 - 32             │ Scan for First Bit Set in Field; Offset → Dn.                                            │
 │                 │                     │                     │ Bit Field First Field Offset?                                                            │
+│                 │                     │                     │ <bit offset> of Source Bit Scan → Dn                                                     │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Searches the source operand for the most significant bit that is set to a value of one. The bit offset of that bit (the bit offset in the instruction plus the offset of the first one bit) is placed in Dn. If no bit in the bit field is set to one, the value in Dn is the field offset plus the field width. The instruction sets the condition codes according to the bit field value. The field offset and field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field. │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes:                                                                         │
+│                 │                     │                     │  XNZVC                                                                                   │
+│                 │                     │                     │  X — Not affected.                                                                       │
+│                 │                     │                     │  N — Set if the most significant bit of the field is set; cleared otherwise. Z — Set if all bits of the field are zero; cleared otherwise.
+│                 │                     │                     │  V — Always cleared.                                                                     │
+│                 │                     │                     │  C — Always cleared.                                                                     │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFINS           │Dn,<ea>{offset:width}│  1 - 32             │ Dn → Field                                                                               │
 │                 │                     │                     │ Bit Field INSert?                                                                        │
+│                 │                     │                     │ Dn → < bit field > of Destination                                                        │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Inserts a bit field taken from the low-order bits of the specified data register into a bit field at the effective address location. The instruction sets the condition codes according to the inserted value. The field offset and field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field. │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes:                                                                         │
+│                 │                     │                     │  XNZVC                                                                                   │
+│                 │                     │                     │  X — Not affected.                                                                       │
+│                 │                     │                     │  N — Set if the most significant bit of the field is set; cleared otherwise. Z — Set if all bits of the field are zero; cleared otherwise.
+│                 │                     │                     │  V — Always cleared.                                                                     │
+│                 │                     │                     │  C — Always cleared.                                                                     │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFSET           │ <ea>{offset,width}  │  1 - 32             │ 1's → Field                                                                              │
 │                 │                     │                     │ Bit Field SET?                                                                           │
 │                 │                     │                     │ Write 1's starting at some offset till width?                                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ 1 → <bit field> of Destination                                                           │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Sets the condition codes according to the value in a bit field at the specified effective address, then sets each bit in the field.
+│                 │                     │                     │ The field offset and the field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field. │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes:                                                                         │
+│                 │                     │                     │     XNZVC                                                                                │
+│                 │                     │                     │     X — Not affected.                                                                    │
+│                 │                     │                     │     N — Set if the most significant bit of the field is set; cleared otherwise.          │
+│                 │                     │                     │     Z — Set if all bits of the field are zero; cleared otherwise.                        │   
+│                 │                     │                     │     V — Always cleared.                                                                  │
+│                 │                     │                     │     C — Always cleared.                                                                  │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BFTST           │ <ea>{offset:width}  │  1 - 32             │ Field MSB → N; ~ (OR of all Bits in Field) R → Z                                         │
 │                 │                     │                     │ Bit Field TeST                                                                           │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Sets the condition codes according to the value in a bit field at the specified effective address location. The field offset and field width select the field. The field offset specifies the starting bit of the field. The field width determines the number of bits in the field. │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Condition Codes:                                                                         │
+│                 │                     │                     │    XNZVC                                                                                 │
+│                 │                     │                     │    X — Not affected.                                                                     │
+│                 │                     │                     │    N — Set if the most significant bit of the field is set; cleared otherwise.           │
+│                 │                     │                     │    Z — Set if all bits of the field are zero; cleared otherwise.                         │
+│                 │                     │                     │    V — Always cleared.                                                                   │
+│                 │                     │                     │    C — Always cleared.                                                                   │
 │                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                 │                     │                     │                                                                                          │
@@ -981,6 +1027,15 @@ Privileged and trapping instructions as well as instructions that use or modify 
 ├─────────────────┬─────────────────────┬─────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BKPT            │ #<data>             │ none                │ Run Breakpoint Cycle                                                                     │
 │                 │                     │                     │ Breakpoint                                                                               │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CHK             │ <ea>, Dn            │   16, 32            │ If Dn < 0 or Dn > (<ea>), Then CHK Exception                                             │
 │                 │                     │                     │ Check Register Against Bounds                                                            │
