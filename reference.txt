@@ -914,6 +914,11 @@ A set of subroutine call and return instructions and conditional and uncondition
 ├─────────────────┬─────────────────────┬─────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BRA             │  <label>            │  8, 16, 32          │ PC + dn → PC                                                                             │
 │                 │                     │                     │ BRanch Always                                                                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ BRA <label>                                                                              │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Program execution continues at location (PC) + displacement. The program counter contains the address of the instruction word of the BRA instruction plus two. The displacement is a twos complement integer that represents the relative distance in bytes from the current program counter to the destination program counter. If the 8-bit displacement field in the instruction word is zero, a 16-bit displacement (the word immediately following the instruction) is used. If the 8-bit displacement field in the instruction word is all ones ($FF), the 32-bit displacement (long word immediately following the instruction) is used.
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BSR             │ <label>             │  8, 16, 32          │ SP - 4 → SP; PC → (SP); PC + dn → PC                                                     │
 │                 │                     │                     │ Branch to SubRoutine                                                                     │
@@ -1027,14 +1032,9 @@ Privileged and trapping instructions as well as instructions that use or modify 
 ├─────────────────┬─────────────────────┬─────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BKPT            │ #<data>             │ none                │ Run Breakpoint Cycle                                                                     │
 │                 │                     │                     │ Breakpoint                                                                               │
+│                 │                     │                     │ BKPT #<data>                                                                             │
 │                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: For the MC68010, a breakpoint acknowledge bus cycle is run with function codes driven high and zeros on all address lines. Whether the breakpoint acknowledge bus cycle is terminated with DTACK, BERR, or VPA, the processor always takes an illegal instruction exception. During exception processing, a debug monitor can distinguish different software breakpoints by decoding the field in the BKPT instruction. For the MC68000 and MC68008, the breakpoint cycle is not run, but an illegal instruction exception is taken.
 │                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CHK             │ <ea>, Dn            │   16, 32            │ If Dn < 0 or Dn > (<ea>), Then CHK Exception                                             │
