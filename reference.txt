@@ -615,10 +615,35 @@ BTST, BSET, BCLR, and BCHG are bit manipulation instructions. All bit manipulati
 │ BSET            │ Dn, <ea>            │  8, 32              │ ~(<Bit Number> of Destination) → Z;                                                      │
 │                 │ #<data>, <ea>       │  8, 32              │ 1 → Bit of Destination                                                                   │
 │                 │                     │                     │ Bit SET                                                                                  │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ TEST ( < bit number > of Destination) → Z; 1 → < bit number > of Des- tination           │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Tests a bit in the destination operand and sets the Z condition code appropriately, then sets the specified bit in the destination operand. When a data register is the destination, any of the 32 bits can be specified by a modulo 32-bit number. When a memory location is the destination, the operation is a byte operation, and the bit number is modulo 8. In all cases, bit zero refers to the least significant bit. The bit number for this operation can be specified in either of two ways:
+│                 │                     │                     │     1. Immediate—The bit number is specified in the second word of the instruction.      │
+│                 │                     │                     │     2. Register—The specified data register contains the bit number.                     │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │    XNZVC                                                                                 │
+│                 │                     │                     │    X — Not affected.                                                                     │
+│                 │                     │                     │    N — Not affected.                                                                     │
+│                 │                     │                     │    Z — Set if the bit tested is zero; cleared otherwise.                                 │
+│                 │                     │                     │    V — Not affected.                                                                     │
+│                 │                     │                     │    C — Not affected.                                                                     │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BTST            │ Dn, <ea>            │  8, 32              │ ~(<Bit Number> of Destination) → Z                                                       │
 │                 │ #<data>, <ea>       │  8, 32              │                                                                                          │
-│                 │                     │                     │ Bit TeST                                                                                 │
+│                 │                     │                     │ Bit TeST, Test a Bit                                                                     │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Tests a bit in the destination operand and sets the Z condition code appropriately. When a data register is the destination, any of the 32 bits can be specified by a modulo 32- bit number. When a memory location is the destination, the operation is a byte operation, and the bit number is modulo 8. In all cases, bit zero refers to the least significant bit. The bit number for this operation can be specified in either of two ways:
+│                 │                     │                     │  1. Immediate—The bit number is specified in a second word of the instruction.           │
+│                 │                     │                     │  2. Register—The specified data register contains the bit number.                        │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  X — Not affected.                                                                       │
+│                 │                     │                     │  N — Not affected.                                                                       │
+│                 │                     │                     │  Z — Set if the bit tested is zero; cleared otherwise.                                   │
+│                 │                     │                     │  V — Not affected.                                                                       │
+│                 │                     │                     │  C — Not affected.                                                                       │
+│                 │                     │                     │                                                                                          │
 └─────────────────┴─────────────────────┴─────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
 
 # Bit Field Instructions
@@ -922,6 +947,9 @@ A set of subroutine call and return instructions and conditional and uncondition
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ BSR             │ <label>             │  8, 16, 32          │ SP - 4 → SP; PC → (SP); PC + dn → PC                                                     │
 │                 │                     │                     │ Branch to SubRoutine                                                                     │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Pushes the long-word address of the instruction immediately following the BSR instruction onto the system stack. The program counter contains the address of the instruction word plus two. Program execution then continues at location (PC) + displacement. The displacement is a twos complement integer that represents the relative distance in bytes from the current program counter to the destination program counter. If the 8-bit displacement field in the instruction word is zero, a 16-bit displacement (the word immediately following the instruction) is used. If the 8-bit displacement field in the instruction word is all ones ($FF), the 32-bit displacement (long word immediately following the instruction) is used.                                                                                         │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ JMP             │ <ea>                │     none            │ Destination → PC                                                                         │
 │                 │                     │                     │ JuMP                                                                                     │
@@ -961,6 +989,16 @@ A set of subroutine call and return instructions and conditional and uncondition
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ FTST            │ <ea>                │ B, W, L, S, D, X, P │ Set Floating-Point Condition Codes                                                       │
 │                 │ FPn                 │        X            │ Test Floating-Point Operand                                                              │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                     │                     │                                                                                          │
+├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ CALLM           │#<data>, <ea>        │ Unsized             │ Call Module                                                                              │
+│                 │                     │                     │  Save Current Module State on Stack; Load New Module State from Destination              │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ The effective address of the instruction is the location of an external module descriptor. A module frame is created on the top of the stack, and the current module state is saved in the frame. The immediate operand specifies the number of bytes of arguments to be passed to the called module. A new module state is loaded from the descriptor addressed by the effective address.                                                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │                 │                     │                     │                                                                                          │
 └─────────────────┴─────────────────────┴─────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
@@ -1039,6 +1077,18 @@ Privileged and trapping instructions as well as instructions that use or modify 
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CHK             │ <ea>, Dn            │   16, 32            │ If Dn < 0 or Dn > (<ea>), Then CHK Exception                                             │
 │                 │                     │                     │ Check Register Against Bounds                                                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ CHK <ea> ,Dn                                                                             │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Compares the value in the data register specified in the instruction to zero and to the upper bound (effective address operand). The upper bound is a twos complement integer. If the register value is less than zero or greater than the upper bound, a CHK instruction exception (vector number 6) occurs.                                                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  X — Not affected.                                                                       │
+│                 │                     │                     │  N — Set if Dn < 0; cleared if Dn > effective address operand; undefined otherwise. Z — Undefined.
+│                 │                     │                     │  V — Undefined.                                                                          │
+│                 │                     │                     │  C — Undefined.                                                                          │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CHK2            │ <ea>, Rn            │  8, 16, 32          │ If Rn < Lower Bound or Rn > Upper Bound, Then CHK Exception                              │
 │                 │                     │                     │ Check Register Against Bounds                                                            │
