@@ -1,3 +1,5 @@
+// 4-73 CLR
+
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  Integer Data Formats                                                                   ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
@@ -1088,10 +1090,21 @@ Privileged and trapping instructions as well as instructions that use or modify 
 │                 │                     │                     │  V — Undefined.                                                                          │
 │                 │                     │                     │  C — Undefined.                                                                          │
 │                 │                     │                     │                                                                                          │
-│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ CHK2            │ <ea>, Rn            │  8, 16, 32          │ If Rn < Lower Bound or Rn > Upper Bound, Then CHK Exception                              │
 │                 │                     │                     │ Check Register Against Bounds                                                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ If Rn <LB or Rn> UB Then TRAP                                                            │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │ Description: Compares the value in Rn to each bound. The effective address contains the bounds pair: the upper bound following the lower bound. For signed comparisons, the arithmetically smaller value should be used as the lower bound. For unsigned comparisons, the logically smaller value should be the lower bound.
+│                 │                     │                     │ The size of the data and the bounds can be specified as byte, word, or long. If Rn is a data register and the operation size is byte or word, only the appropriate low-order part of Rn is checked. If Rn is an address register and the operation size is byte or word, the bounds operands are sign-extended to 32 bits, and the resultant operands are compared to the full 32 bits of An.
+│                 │                     │                     │ If the upper bound equals the lower bound, the valid range is a single value. If the reg-ister value is less than the lower bound or greater than the upper bound, a CHK instruc- tion exception (vector number 6) occurs.                                                                                         │
+│                 │                     │                     │                                                                                          │
+│                 │                     │                     │  X — Not affected.                                                                       │
+│                 │                     │                     │  N — Undefined.                                                                          │
+│                 │                     │                     │  Z — Set if Rn is equal to either bound; cleared otherwise. V — Undefined.               │
+│                 │                     │                     │  C — Set if Rn is out of bounds; cleared otherwise.                                      │
+│                 │                     │                     │                                                                                          │
 ├─────────────────┼─────────────────────┼─────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
 │ ILLEGAL         │    none             │  none               │ SSP - 2 → SSP; Vector Offset → (SSP);                                                    │
 │                 │                     │                     │ SSP - 4 → SSP; PC → (SSP);                                                               │

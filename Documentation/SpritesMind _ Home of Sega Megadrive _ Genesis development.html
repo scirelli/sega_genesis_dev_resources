@@ -1,0 +1,396 @@
+
+<!-- saved from url=(0047)http://gendev.spritesmind.net/page-collide.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SpritesMind : Home of Sega Megadrive / Genesis development</title>
+<meta name="description" content="Sega Megadrive - Genesis homebrew development">
+<meta name="keywords" content="spritesmind,sega,programming,kmod,gens,genesis,megadrive,ooga,development,console,emulator,neogeo,st0rm,ym2612,sgcc,homemade,homebrew">
+<meta name="author" content="KanedaFr">
+<meta name="language" content="english">
+<meta http-equiv="Content-Language" content="en-GB">
+
+<meta name="robots" content="all">
+<script language="JavaScript">
+<!--
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+ var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+   var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+   if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style><style></style></head>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="MM_preloadImages(&#39;images/kaneda_r2_c3_f2.jpg&#39;,&#39;images/kaneda_r2_c4_f2.jpg&#39;,&#39;images/kaneda_r2_c5_f2.jpg&#39;,&#39;images/kaneda_r4_c1_f2.jpg&#39;,&#39;images/kaneda_r5_c1_f2.jpg&#39;,&#39;images/kaneda_r6_c1_f2.jpg&#39;,&#39;images/kaneda_r7_c1_f2.jpg&#39;,&#39;images/kaneda_r9_c1_f2.jpg&#39;,&#39;images/kaneda_r10_c1_f2.jpg&#39;,&#39;images/kaneda_r11_c1_f2.jpg&#39;,&#39;images/kaneda_r13_c1_f2.jpg&#39;)">
+<table width="770" border="0" cellpadding="0" cellspacing="0">
+<!-- fwtable fwsrc="kaneda_off.png" fwbase="kaneda.jpg" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="1" -->
+  <tbody><tr>
+   <td valign="bottom"><table border="0" cellpadding="0" cellspacing="0" width="770">
+	  <tbody><tr>
+	   <td><img name="kaneda_r1_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r1_c1.jpg" width="496" height="70" border="0"></td>
+	   <td valign="top"><table border="0" cellpadding="0" cellspacing="0" width="274">
+		  <tbody><tr>
+		   <td><img name="kaneda_r1_c3" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r1_c3.jpg" width="274" height="53" border="0"></td>
+		  </tr>
+		  <tr>
+		   <td><table border="0" cellpadding="0" cellspacing="0" width="274">
+			  <tbody><tr>
+			   <td><a href="http://gendev.spritesmind.net/page-contact.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage(&#39;kaneda_r2_c3&#39;,&#39;&#39;,&#39;images/kaneda_r2_c3_f2.jpg&#39;,1);"><img name="kaneda_r2_c3" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r2_c3.jpg" width="120" height="17" border="0"></a></td>
+			   <td><a href="http://gendev.spritesmind.net/page-help.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage(&#39;kaneda_r2_c4&#39;,&#39;&#39;,&#39;images/kaneda_r2_c4_f2.jpg&#39;,1);"><img name="kaneda_r2_c4" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r2_c4.jpg" width="86" height="17" border="0"></a></td>
+			   <td><a href="http://gendev.spritesmind.net/page-links.html" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage(&#39;kaneda_r2_c5&#39;,&#39;&#39;,&#39;images/kaneda_r2_c5_f2.jpg&#39;,1);"><img name="kaneda_r2_c5" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r2_c5.jpg" width="68" height="17" border="0"></a></td>
+			  </tr>
+			</tbody></table></td>
+		  </tr>
+		</tbody></table></td>
+	  </tr>
+	</tbody></table></td>
+  </tr>
+</tbody></table>
+<table width="770" height="103%" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td height="100%" valign="top"><table width="128" height="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td colspan="2"><img name="kaneda_r3_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r3_c1.jpg" width="128" height="24" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/page-home.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r4_c1&#39;,&#39;&#39;,&#39;images/kaneda_r4_c1_f2.jpg&#39;,1);"><img name="kaneda_r4_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r4_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/page-news.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r5_c1&#39;,&#39;&#39;,&#39;images/kaneda_r5_c1_f2.jpg&#39;,1);"><img name="kaneda_r5_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r5_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/page-demos.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r6_c1&#39;,&#39;&#39;,&#39;images/kaneda_r6_c1_f2.jpg&#39;,1);"><img name="kaneda_r6_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r6_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/page-tools.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r7_c1&#39;,&#39;&#39;,&#39;images/kaneda_r7_c1_f2.jpg&#39;,1);"><img name="kaneda_r7_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r7_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/page-tech.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r9_c1&#39;,&#39;&#39;,&#39;images/kaneda_r9_c1_f2.jpg&#39;,1);"><img name="kaneda_r9_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r9_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/page-doc.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r10_c1&#39;,&#39;&#39;,&#39;images/kaneda_r10_c1_f2.jpg&#39;,1);"><img name="kaneda_r10_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r10_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/wip/" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage(&#39;kaneda_r11_c1&#39;,&#39;&#39;,&#39;images/kaneda_r11_c1_f2.jpg&#39;,1);"><img name="kaneda_r11_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r11_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img name="kaneda_r12_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r12_c1.jpg" width="128" height="75" border="0"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="http://gendev.spritesmind.net/forum/" target="_blank" onmouseover="MM_swapImage(&#39;kaneda_r13_c1&#39;,&#39;&#39;,&#39;images/kaneda_r13_c1_f2.jpg&#39;,1);" onmouseout="MM_swapImgRestore()"><img name="kaneda_r13_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r13_c1.jpg" width="128" height="25" border="0"></a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img name="kaneda_r14_c1" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r14_c1.jpg" width="128" height="81" border="0"></td>
+        </tr>
+        <tr>
+          <td width="105" height="100%" align="center" valign="top" bgcolor="#002375">
+          	<a href="http://www.youtube.com/user/SpritesMind?feature=creators_cornier-%2F%2Fs.ytimg.com%2Fyt%2Fimg%2Fcreators_corner%2FYouTube%2F40x40_yt_white.png"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/youtube.png" alt="Subscribe to me on YouTube" align="middle"></a><img src="http://www.youtube-nocookie.com/gen_204?feature=creators_cornier-//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png" style="display: none">&nbsp;
+          <!--	<a href="https://twitter.com/SpritesMind" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @SpritesMind</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+<a href="https://twitter.com/SpritesMind"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/twitter.png" alt="" align="middle"></a><br><span style="font-size: 0.5em;">
+Icons by <a href="http://blog.neorelic.com.au/free-download-social-icon-pack/" target="_blank">neorelic</a></span></td>
+          <td width="23">&nbsp;</td>
+        </tr>
+    </tbody></table></td>
+    <td width="488" valign="top">
+      <table width="100%" border="0">
+        <tbody><tr>
+          <td height="73">
+</td>
+        </tr>
+        <tr>
+          <td width="488"><style type="text/css">
+<!--
+.Style1 {
+	color: #001961;
+	font-weight: bold;
+	font-size: 18px;
+}
+-->
+</style>
+<p align="center">Sprite collision for Genesis </p>
+<p align="center">Kaneda - Oct 04 </p>
+<p>&nbsp;</p>
+<p>If you try to learn how to create a game, a question will certainly come : 
+  How do I know if my sprites collide ?</p>
+<p>When this question finally came, I launched Google and read all I can find about 
+  it.<br>
+  It was hard because 3D is everywhere and I was looking for 2D sprites collision.<br>
+  Here is an easy to read (I think) resume of what I learnt, how I ported it to 
+  Genesis and how I took advantage of Genesis features to optimize it.</p>
+<p>&nbsp;</p>
+<p><span class="Style1">► Method 0 : Let the Genesis works for you!</span></p>
+<p>This method can only be used for VERY basic/limited game.<br>
+  On screen, with have your sprite and the bad ones. Bad sprites can't collide 
+  themself because you make it this way.<br>
+  The ONLY collision which can occurs is between you and a bad guy.<br>
+  How to detect this ? You can use a software method that I'll explain later or 
+  you can simply ask the Genesis.</p>
+<p>A bit of the Status Register will tell you if a sprite collision occurs or 
+  not.<br>
+  0 means no collision, 1 means collision (you're dead).<br>
+  But it's all! You know 2 sprites collides but not which and where.</p>
+<p>Very limited no ? But with this, you can at least make something like <a href="http://www.handhelden.com/mattel/AutoRace.html" target="_blank">AutoRace</a>.</p>
+<p>You understand why I call it Method 0 : you'll never use it!....not alone!<br>
+  When the hardware isn't enought, use the software!</p>
+<p>&nbsp;</p>
+<p><span class="Style1">► Method 1 : Basis</span></p>
+<p>First, what is Sprite collision ? It's when your shot kills an UFO or when 
+  Sonic die because of a stupid killer bee!<br>
+  What define a sprite like a shot, an UFO, Sonic or a killer bee ? Its picture, 
+  its colors, its position, its size and any user defined data...<br>
+  Its size and its position...so its rect (x, y, x+width, y+height).<br>
+  Here we are : we need to check if a sprite rect intersect with others.<br>
+In which case a sprite rect intersect another one ? 4 cases :</p>
+<ul>
+  <li>case 1 : <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_1.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite1.x &lt; sprite2.x but sprite1.x2 &gt; sprite2.x ) AND ( sprite1.y 
+    &lt; sprite2.y but sprite1.y2 &gt; sprite2.y )</li>
+  <li>case 2: <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_2.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite1.x &lt; sprite2.x but sprite1.x2 &gt; sprite2.x ) AND ( sprite1.y&lt; 
+    sprite2.y2 but sprite1.y2 &gt; sprite2.y2 )</li>
+  <li>case 3: <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_3.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite1.x &lt; sprite2.x2 but sprite1.x2 &gt; sprite2.x2 ) AND ( sprite1.y 
+    &lt; sprite2.y2 but sprite1.y2 &gt; sprite2.y2 )</li>
+  <li>case 4: <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_4.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite1.x &lt; sprite2.x2 but sprite1.x2 &gt; sprite2.x ) AND ( sprite1.y 
+    &lt; sprite2.y but sprite1.y2 &gt; sprite2.y )</li>
+</ul>
+<p>Of course, don't test case 3 if case 2 is successful. we have up to 4 cases 
+  of 4 tests to check.<br>
+  The Genesis can handle up to 80 sprites (with some limits but forget it until 
+  needed) so our sprite collide test can be written like this</p>
+<blockquote> 
+  <p><em>For each of the 80 sprites, check if it collides with the others</em></p>
+</blockquote>
+<p>Good! Well....not really. Perhaps DirectX use this method but us, we need something 
+  optimized, who take the less resource as possible!<br>
+  Here we make 80*(80-1)*4*4 calls...and often since there is more often NO collision 
+  (unless you are on an asteroids field!)<br>
+  A good one if you're trying to understand what LAG is!</p>
+<p>In a lot of case, you'll learn that it's more easy to find what you DON'T need 
+  that what you need. Let's try</p>
+<p>In wich case a sprite rect NOT intersect with another one ? 4 cases :</p>
+<ul>
+  <li>case 1 : <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_not1.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite2.x &gt; sprite1.x2 )</li>
+  <li>case 2: <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_not2.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite1.x &gt; sprite2.x )</li>
+  <li>case 3: <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_not3.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite2.y &gt; sprite1.y2 )</li>
+  <li>case 4: <img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_not4.GIF" width="80" height="80" align="absmiddle"><br>
+    ( sprite1.y &gt; sprite2.y2 )</li>
+</ul>
+<p>4 cases, like the previous method...Well not exactly the same ? 4 cases of 1, and only 1, test.<br>
+  We now have 80*(80-1)*4*1, 4 times faster !</p>
+<p>Now, try to optimize this slow loop.
+  What does it do ? <br>
+  Check sprite 1 with sprite 2<br>
+  Check sprite  1 with sprite 3<br>
+  Check sprite 1 with sprite 4<br>
+  Check sprite 1 with sprite X<br>
+  Check sprite 1 with sprite 80<br>
+  Check sprite 2 with sprite 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Style4">!!</span><br>
+  Check sprite 2 with sprite 3 <br>
+  Check sprite 2 with sprite 4<br>
+  Check sprite 2 with sprite X<br>
+  Check sprite 2 with sprite 80<br>
+  Check sprite 3 with sprite 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Style4">!!</span><br>
+  Check sprite 3 with sprite 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Style4">!!</span><br>
+  Check sprite 3 with sprite 4<br>
+  Check sprite 3 with sprite X<br>
+  Check sprite 3 with sprite 80
+</p>
+<p>As you can see with the "!!", we check some collide several times. You can also notice these duplicate checks are with the previous sprite.<br>
+So we need to only check each sprite with the next ones .</p>
+<blockquote>
+  <p><em>For each sprite, check if it collides with the next one</em></p>
+</blockquote>
+<p>We now have (79+78+77+...+2+1)*4*1, or ((79*80)/2)*4...yes, 2 times faster.<br>
+Even if we finally are 8 times faster than original method, it's still a heavy loop.<br>
+We must call it the less possible to avoid resource leak! Ask for the help of the Genesis and its Status Register!</p>
+<blockquote>
+  <p><em>If the Genesis detects a sprite collision<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For each sprite, check if it collides with the next one </em></p>
+</blockquote>
+<p>Our loop is still heavy but, at least, we only call it when necessary!<br>
+  Can we optimize it again ? In fact, yes, but with time, it's game specific.</p>
+<p>&nbsp;</p>
+<p><span class="Style1">► Method 2 : Game specific</span></p>
+<p>This method is an optimized version of method 1. I don't merge them together because I think you can use method 1 only, since this method is game specific.<br>
+  What do I mean by 'game specific' ? In some cases, you won't be able to use it, as I explain at the end.</p>
+<p>What do we really want in most of the cases ? If our sprites collide with CPU ones.<br>
+  But not if our sprites collide themself (your shot won't kill you!) nor CPU ones collide themself (why shot if UFO crash on other UFO ?).<br>
+  We can also have art sprites we don't need to check (the animated moon on the background is just here to illustrate space!)<br>
+  So we have the 'good' sprites which need to be checked with the 'bad' sprites <br>
+  Two ways to handle this:</p>
+<ol>
+  <li>The first sprite on your sprite list are 'good' sprites, followed by the 'bad' sprites, themself followed by the 'art sprite'</li>
+  <li>A 'good' sprites list and a 'bad' sprites list </li>
+</ol>
+<p>I use the first one because I only need one array of 80 sprites, no need to worry about the max number of 'good' sprites and of 'bad' sprites.</p>
+<blockquote>
+  <p><em>For each of the 'good' sprite, check if it collides with a 'bad' sprite</em></p>
+</blockquote>
+<p>Now we have (number of 'good' sprites)*(number of 'bad' sprites)*4...so at max it's 40*40*4.<br>
+  This is the method I personnaly use with success</p>
+<p>&nbsp;</p>
+<p><strong>Q.</strong>"But in Pong, the ball isn't a 'good' nor a 'bad' sprite! I can't use this method"<br>
+  <strong>A.</strong>Are you sure ? For me, the ball is 'good' THEN 'bad' :<br>
+When the ball come from the CPU, it's a 'bad' sprite. You check collide with it. If it collides, you change the direction and make it a 'good' sprite!<br> 
+You check if it collides with the 'bad' CPU paddle. If it collides, you change the direction and make it a 'bad' sprite....and so on.<br>
+So, this method could be apply to Pong</p>
+<p>&nbsp;</p>
+<p><strong>Q.</strong>"But in Mickey and Donald, I need to check if they collide ! I can't use this method"<br>
+  <strong>A.</strong>You can't use ONLY this method.<br>
+  You first need to check if Mickey collides Donald and handle it ( Mickey is on Donald or Mickey slaps Donald).<br>
+  Then you can normaly use the method to check if any of them (the 'good' sprites) collide with a 'bad' sprite</p>
+<p>&nbsp;</p>
+<p><strong>Q.</strong>"But in Puzzle Bobble, there isn't 'good' or 'bad' sprite! I can't use this method"<br>
+  <strong>A.</strong>Unfortunatly yes, this method isn't for Puzzle Bobble, as for any game when you can't make 2 sprites categories : 'good' and 'bad' (yours and its) </p>
+<p>&nbsp;</p>
+<p><span class="Style1">► Method 3 : More limits but more speed</span></p>
+<p>I recently found an other way to optimize. I call it the Fonzie Method because he found &amp; used it before me :)<br>
+  This method has some disadvantages : it can only be apply on games which was designed to use this method and, most of all, some collision tests <em><strong>could</strong></em> be missed. <br>
+  Ok, what's the need for this method if what we need doesn't work 100% ? Because, as I said, this method will miss some sprites collide only if you design it well. </p>
+<p>I was looking for a way to check collision between less sprites as possible and only when I need to.<br>
+The Status Register's bit again ? Sorry, not this time...because I need to know <u>which</u> sprites collide.<br>
+On the Genesis, we have 32 columns (or 40 if you want) of 8 pixel width. I worked on the idea that if you have 2 sprites on the same column then they perhaps collide.</p>
+<p>First, draw the 'good' sprites and store their number on the 32width (for 32 columns) goodList. If you sprite is on column 11 and 12, write it at goodList[11] <strong>and</strong> goodList[12]. <br>
+  Second, do the same thing with the 'bad' sprites in the badList.<br>
+  For each of the column, if there is something in the goodList AND the badList, then test collide between these 2 sprites! If collision, remove them for the lists to avoid unneeded others test in the following columns.</p>
+<p>We now have (number of 'good' sprites) * 1 write + (number of 'bad' sprite)*1 write + 32*4 tests. Not so bad, no ?! <br>
+  Sorry,but it's too good to be real! We have a BIG problem :  
+  How do we must act if we have more than 1 sprite on the same column ?! </p>
+<table width="100%" border="0">
+  <tbody><tr>
+    <td width="64"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_fonzie_1.GIF" width="63" height="94" align="absmiddle"></td>
+    <td>the red is the good one so we have<br>
+      goodList = [1,1]<br>
+      badList = [0,?]</td>
+  </tr>
+</tbody></table>
+<p>If I put the green bad sprite, I won't detect the collision with the yellow sprite.<br>
+  If I put the yellow bad sprite, it's ok....in this case!</p>
+<p>So this method is wrong...if you let it like that.<br>
+  Another time, let's think again at what we're looking for.<br>
+  For a lot of games (the others can't use this method), we want to check</p>
+<p>
+&nbsp;&nbsp;&nbsp;If our sprites collide CPU one<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;If CPU sprites collide our sprites
+</p>
+<p>The same thing ? Well, it seems yes if you say it...but if you code it, you'll understand what is the difference.<br>
+  On the previous method, we used the first one so I'll test the second!</p>
+<p>I also choose it because we often had less 'good' sprites than 'bad' sprites ( we only have one on a jump'n'run game and your shoot is limited on a shoot'em up) and because our sprites are better handled (to have a minimum time between each shoot for example).</p>
+<p>First, draw all the 'good' sprites and update the goodList.<br>
+Second, for each sprite, check if there is something on the column and check it.If there is nothing, draw it else handle the collide! </p>
+<p><em>Example 1:</em></p>
+<table border="0">
+  <tbody><tr>
+    <td width="169"><div align="center">[0,1,0,2,3,4,0,5]</div></td>
+    <td width="*"><div align="center"></div></td>
+    <td width="169"><div align="center">[0,1,0,2,<span class="Style5">3</span>,4,0,<span class="Style5">5</span>]</div></td>
+  </tr>
+  <tr>
+    <td><div align="center"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_fonzie_2a.GIF" width="169" height="164"></div></td>
+    <td><div align="center">=&gt;</div></td>
+    <td><div align="center"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_fonzie_2b.GIF" width="169" height="164"></div></td>
+  </tr>
+</tbody></table>
+ 2 collide tests : with sprite 3 (negative) and with sprite 5 (positive)
+ <p><em>Example 2:</em></p>
+ <table border="0">
+   <tbody><tr>
+     <td width="169"><div align="center">[0,1,0,2,2,0,3,3]</div></td>
+     <td width="*"><div align="center"></div></td>
+     <td width="169"><div align="center">[0,1,0,2,<span class="Style5">2</span>,0,3,<span class="Style5">3</span>]</div></td>
+   </tr>
+   <tr>
+     <td><div align="center"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_fonzie_3a.GIF" width="169" height="164"></div></td>
+     <td><div align="center">=&gt;</div></td>
+     <td><div align="center"><img src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/case_fonzie_3b.GIF" width="169" height="164"></div></td>
+   </tr>
+ </tbody></table>
+ <br>
+ Sprite 2 and 3 take 2 column each <br>
+2 collide tests : with sprite 2 (negative) and with sprite 3 (positive)
+<p>&nbsp;</p>
+<p>Perhaps you didn't notice but there is a big difference with what we wrote before.<br>
+We was used to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Update all sprites<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Check all sprites with next ones<br>
+Now we have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Update 'good' sprites<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Update 'bad' sprites and check collide<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Update 'art' sprites</p>
+<p>Is it a good change ?<br>
+  We had<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(number of 'good' sprites)*(number of 'bad' sprites)*4 test =&gt; max 40*40*4<br>
+We have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(number of 'good' sprites)*1 write + (number of 'bad' sprites)*1 test + (number of 'bad' sprites)*4 tests </p>
+<p>On the heaviest possibility for Method Two, we have 40 'good' sprites and 40 'bad' sprites, so 64000 operation.<br>
+  With the same value, we have 240 operations. 266 times faster! The difference decreases upon 'good' or 'bad' sprites number.<br>
+  You'll find 2 cases where Method Two is better than Method 3 : when there is only 1 'good' sprites and when there isn't a 'bad' sprite.</p>
+<p>So, is it a good method ?<br>
+  Well...it's up to you! But don't forget :</p>
+<ul>
+  <li>avoid two 'good' sprites on the same column (control the speed of your sprite, the time between each movement, etc...)</li>
+  <li>you have to handle a column list (a 32 width array)</li>
+  <li>you have to test the collide while redrawing 'bad' sprites and not when you want. </li>
+</ul>
+<p>&nbsp; </p>
+<p><span class="Style1">► Final Words</span></p>
+<p>To check collide, I use the sprite rect (8*x, 8*y, 8*x2, 8*y2). If you need a more accurate detection, you'll need to have a collide box per sprite and make all the checks between sprite's collide box.</p>
+<p>This is not the ultimate method, it's a common method. Be free to create yours but I'm pretty sure it will be a based on Method 1 or 2.</p>
+<p>If you don't understand something, let me know, I'll try to make it clear updating this doc. </p>
+<p>The order in which you make your collide test is very important! On Method 3 for example, since you are pretty sure X pos is correct (because on the same column), test the Y first! </p>
+
+
+</td>
+        </tr>
+    </tbody></table></td>
+    <td valign="top"><table border="0" cellpadding="0" cellspacing="0" width="154">
+        <tbody><tr>
+          <td valign="top"><img name="kaneda_r3_c4" src="./SpritesMind _ Home of Sega Megadrive _ Genesis development_files/kaneda_r3_c4.jpg" width="154" height="114" border="0"></td>
+        </tr>
+    </tbody></table></td>
+  </tr>
+</tbody></table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5776716-2");
+pageTracker._trackPageview();
+</script>
+
+
+
+	
+   </body></html>
