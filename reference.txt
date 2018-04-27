@@ -1773,6 +1773,355 @@ The inclusion of the unordered condition in floating-point branches destroys the
 │                 │                     │                     │                                                                                          │
 └─────────────────┴─────────────────────┴─────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
 
+# Directives
+
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃   Directive     ┃         Syntax            ┃                                     Operation                                            ┃
+┣━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+│ ABCD            │  <label> EQU <number>     │ Equate a value to a label. The EQU directive associates a given value specified by a     │
+│                 │                           │ number or numeric equation with a required label. Using this label in subsequent code    │
+│                 │                           │ will result in a direct subst- itution of the associated value. Note that a label must   │
+│                 │                           │ be defined within a file before it is used. Once defined with an EQU statement, a label  │
+│                 │                           │ cannot be redefined.                                                                     │
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ RS              │ symbol name RS.size count │ This directive, together with the following two associated directives, operate on        │
+│                 │                           │ or with the Assembler variable, __RS, which contains the current offset.                 │
+│                 │ where .size is            │                                                                                          │
+│                 │        .b byte            │ When the Automatic Even assembler option (/AE) is in force, RS directives for word       │
+│                 │        .w word            │ and long word ensure that the __RS variable is aligned to the next word boundary.        │
+│                 │        .l long word       │                                                                                          │
+│                 │ (if .size is not          │ Examples                                                                                 │
+│                 │  specified, .w is         │               RSRESET                                                                    │
+│                 │ assumed)                  │     Icon_no:  RS.B 1                                                                     │
+│                 │                           │     Dropcode: RS.W 1                                                                     │
+│                 │                           │     Actcode:  RS.W 1                                                                     │
+│                 │                           │     Actname:  RS.B 10                                                                    │
+│                 │                           │     Objpos:   RS.L 1                                                                     │
+│                 │                           │     Artlen:   RS.B 0                                                                     │
+│                 │                           │                                                                                          │
+│                 │                           │ After each of the first five RS equates, the __RS pointer is advanced; the values for    │
+│                 │                           │ each equate are as follows:                                                              │
+│                 │                           │                                                                                          │  
+│                 │                           │  Icon_no  0 (set to zero by RSRESET)                                                     │ 
+│                 │                           │  Dropcode 1                                                                              │
+│                 │                           │  Actcode  4 (Automatic Even set, advances the pointer to even boundary)                  │
+│                 │                           │  Actname  6                                                                              │
+│                 │                           │  Objpos   16                                                                             │
+│                 │                           │  Artlen   20                                                                             │
+│                 │                           │                                                                                          │
+│                 │                           │                __rs = 0                                                                  │
+│                 │                           │                         + 1B                                                             │
+│                 │                           │                __rs = 1                                                                  │
+│                 │                           │                         + 2B                                                             │
+│                 │                           │                __rs = 3 + 1B (to keep on even boundary)                                  │
+│                 │                           │                __rs = 4                                                                  │
+│                 │                           │                         + 2B                                                             │
+│                 │                           │                __rs = 6                                                                  │
+│                 │                           │                         + 10B                                                            │
+│                 │                           │                __rs = 16                                                                 │
+│                 │                           │                         + 1L                                                             │
+│                 │                           │                __rs = 20                                                                 │
+│                 │                           │                                                                                          │
+│                 │                           │                                                                                          │
+│                 │                           │  The last rs.b does not advance the __RS pointer, since a count of zero is equivalent    │
+│                 │                           │  to an EQUATE to the __RS variable.                                                      │
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ RSRESET         │ Syntax RSRESET [value]    │ Description Sets the __RS variable to zero.                                              │
+│                 │                           │                                                                                          │
+│                 │                           │ * Using this directive is the normal way to initialise the __RS counter at the start of  │
+│                 │                           │   a new data structure.                                                                  │
+│                 │                           │ * The optional parameter is provided for compatibility with other assemblers;            │
+│                 │                           │   if present, RSRESET behaves like the RESET directive.                                  │
+│                 │                           │                                                                                          │
+│                 │                           │ Examples See the RS directive                                                            │
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ RSSET           │ RSSET value               │ Assigns the specified value to __RS variable                                             │
+│                 │                           │ This directive is normally used when the offsets are to start at a value other than zero.│
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│ DC              │ [<label>] DC.B <string>   │ Operation:                                                                               │ 
+│                 │ [<label>] DC.B <data list>│     Define constant. The DC directive places the specified data or string within the     │
+│                 │ [<label>] DC.W <data list>│     instruction stream.  The relative address of the first piece of data defined by a DC │
+│                 │ [<label>] DC.L <data list>│     statement can be referenced by an optional label.  If a length extension             │
+│                 │                           │     (.B, .W, or .L) is not specified, the byte value is used for strings and the word    │
+│                 │                           │     value for numeric data. All data will be rounded to word size.  This means that an   │
+│                 │                           │     extra byte will be added to the end of a constant DC.B declaration if the string or  │
+│                 │                           │     numeric list have an odd number items.                                               │
+│                 │                           │                                                                                          │
+│                 │                           │ Strings:                                                                                 │ 
+│                 │                           │    A string is represented by a sequence of characters enclosed in quotes ("). Several   │
+│                 │                           │    escape sequences, beginning with a backslash (\\) may also be specified within a      │
+│                 │                           │    string.  \\\\ backslash \\r return character \\n newline character \\p pascal string  │
+│                 │                           │    (leading length byte) \\c c-string (following null byte) All strings will have no     │
+│                 │                           │    following or leading bytes unless specified.                                          │
+│                 │                           │                                                                                          │
+│                 │                           │ Data List:                                                                               │
+│                 │                           │    A data list consists of a sequence of numbers or numeric equations separated by       │
+│                 │                           │    commas.  .300302                                                                      │
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+│                 │                           │                                                                                          │
+├─────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────┤
+│                 │                           │                                                                                          │
+│                 │                           │                                                                                          │
+└─────────────────┴───────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
+
+# Special Parameters
+    There are a number of special parameter formats available in macros, as follows:
+
+## Converting Integers to Text
+    The parameters \# and \$ replace the decimal (#) or hex ($) value of the symbol following them,
+    with their character representation. (& allows multi line strings)
+    Commonly, this technique is used to access Run Date and Time:
+
+    Example 
+        org $1006
+        RunTime dc.b "\#_hours:\#_minutes:&
+        \#_seconds"
+
+        this expands to the form hh:mm:ss, as follows
+        RunTime dc.b "21:08:49"
+
+## Generating Unique Labels
+    The parameter \@ can be used as the last characters of a label name in a macro.
+    When the macro is invoked, this will be expanded to an underscore followed by a decimal number; 
+    this number is increased on each subsequent invocation to give a unique label.
+
+    Example 
+        Slots MACRO
+            MOVEQ #0,d0
+            MOVE.1 r1,\1
+            BEQ.S dun@
+        next\@ ADDQ.w #1, d0
+
+            bGT.S
+        dun\@ MOVE.w d0,2
+            ENDM
+            ...
+            Slots freeob1,numslot1w
+
+    Each time the Slots macro is used, new labels in the form next_001 and dun_001 will
+    be generated.
+
+## Entire Parameter
+    If the special parameter \_ (backslash underscore) is encountered in a macro, it is expanded to the complete
+    argument specified on the macro invocation statement.
+
+    Examples 
+    All MACRO
+        DC.B \_
+        ENDM
+        ...
+        All 1,2,3,4
+
+    Will generate
+    DB 1,2,3,4
+
+# Syntax and Scope
+    Syntax
+        * Local Labels are preceded by a local label signifier. By default, this is an @ sign;
+          however, any other character may declared by using the l option in an OPT
+          directive or on the Assembler command line - see Assembler Options chapter 3.
+        * Local label names follow the general label rules, as specified in chapter 4.
+        * Local labels are not de-scoped by the expansion of a macro.
+    Scope 
+        The region of code within which a Local Label is effective is called its Scope. Outside this area, the label name can be re-used.
+        There are three methods of defining the scope of a Local Label:
+        * The scope of a local label is implicitly defined between two non-local labels.
+          Setting a variable, defining an equate or RS value does not de-scope current local
+          labels, unless the d option has been used in an OPT directive or on the Assembler command line.
+        * The scope of a Local Label can also, and more normally, be defined by the directives MODULE and MODEND.
+        * To define labels (or any other symbol type) for local use in a macro, the LOCAL directive can be used.
+
+        Examples 
+            plot2 move.b comp\w,d3
+                ...
+                 cmp.w #-84,d3
+                 bge.s @chk1
+                 add.w #168,d3
+                 bra.s @ret
+            @chk1 cmp.w #83,d3
+                 ...
+                 jsr lcolour
+                 move.w d3,d0
+            SetX set x+1
+                @ret rts
+            plot3 movem.w d6-d7,-(sp)
+                ...
+                @ret rts
+
+        The code above shows a typical use for Local Labels, as "place markers" within a self-contained sub-routine. 
+        The scope is defined by the non-local labels, Plot2 and Plot3; 
+        the SET statement does not de-scope the routine. The labels @chk1 and @ret are re-usable.
+
+        plot2 move.b comp\w,d3
+            moveq chrbit-1,d2
+             cmp.w #-84,d3
+             bge.s @chk1
+             add.w #168,d3
+             bra.s setplot
+        @chk1 cmp.w #83,d3
+            move.w d3,d0
+        setplot set x+1
+            ...
+            dbra d2,@chk1
+
+        In the example, the final branch will cause an error, since it is outside the scope of
+        @chk1.
+
+
+# Integer Constants
+    Integer constants are normally evaluated as decimal, the default base, unless one of the following pertains:
+    * The RADIX directive changes the base - see chapter 3.
+    * $, as the first character of an integer, signifies a Hex number; % signifies a Binary number.
+    * If a character is preceded by a backslash and up arrow (\^), the corresponding control character is substituted.
+    * The AN Assembler option allows numbers to be defined as Intel and Zilog integers. That is, the number must start with a numeric character and end with one of:
+        D for Decimal; H for Hexadecimal; B for Binary
+
+# Special Constants
+    The following pre-defined constants are available in the Assemblers.
+        _year As a two digit number, e.g. 95
+        _month 1 = January; 12 = December
+        _day 1 = 1st day of month
+        _weekday 0 = Sunday; 6 = Saturday
+        _hours 00 - 23
+        _minutes 00 - 59
+        _seconds 00 - 59
+        * Contains the current value of the Location Counter.
+        @ Contains the actual PC value at which the current value will be stored - see below.
+        narg Contains the number of parameters in the current macro argument.
+        __rs Contains the current value of RS Counter.
+        _filename A pre-defined string containing the name of the primary file undergoing assembly.
+
+    Remarks Time and Date Constants:
+        Time and Date constants are set to the start of assembly; they are not updated during the assembly process.
+        Example 
+            RunTime dc.b "\#_hours:\#_minutes:&
+                \#_seconds"
+        This expands to the form hh:mm:ss, as follows
+        RunTime dc.b "21:08:49"
+        Note This example uses the special macro parameter, \#.
+
+# Location Counter constants:
+    The current value of the program pointer can be used as a constant. 
+    To substitute the value of the location counter at the current position, an asterisk (*) is used:
+            section Bss,g_bss
+        Firstbss equ *
+
+    Since * gives the address of the start of the line,
+        org $100
+        dc.l *,*,*
+        defines $100 three times.
+
+    An @, when used on its own as a constant, substitutes the value of the location counter, 
+    pointing to an address at which the current value will be stored.
+        org $100
+        dc.l @,@,@
+        defines $100,$104,$108.
+
+
+
+# MACRO, ENDM, MEXIT
+    Description A macro consists of the source lines and parameter place markers between the MACRO directive and the ENDM.
+    The label field is the symbolic name by which the macro is invoked; the operand allows the entry of a string of parameter data names.
+    When the assembler encounters a directive consisting of the label and optional parameters, 
+    the source lines are pulled into the main program and expanded by substituting the place markers with the invocation parameters.
+    The expansion of the macro is stopped immediately if the assembler encounters a MEXIT directive.
+
+    Syntax 
+        Label MACRO [symbol,..symbol]
+        ...
+        MEXIT
+        ...
+        ENDM
+
+    Remarks
+        * Note that the invocation parameter string effectively starts at the character after the macro name, that is, the dot (.) character. Text strings, as well as .b, .w and .l are permissible parameters - see Parameters below.
+        * Control structures within macros must be complete. Structures started in the macro must finish before the ENDM; similarly, a structure started externally must not be terminated within the macro. To imitate a simple control structure from another assembler, a short macro might be used - see MACROS below.
+    Examples 
+        remove macro
+             dc.w -2,0,0
+          endm
+
+        Form macro
+             if strcmp('\1','0')
+                 dc.w 0
+             else
+                 dc.w \1-FormBase
+             endif
+         endm
+
+
+## Macro Parameters 
+
+### Parameters Macro 
+    parameters obey the following rules:
+* The parameters listed on the macro invocation line may appear at any point in the code declared between the MACRO and ENDM statements. Each parameter is introduced by a backslash (\); where this may be confused with text from an EQUS, a backslash may also follow the parameter.
+* Up to thirty two different parameters are allowed, numbered \0 to \31. \0 is a special parameter which gives the contents of the size field of the macro directive when it was invoked, that is, the text after the point symbol (.) This includes not only .b, .h or .w, but also any text: 
+    Example 
+        zed macro \0
+            endm
+            ...
+            zed.nop
+    will generate a NOP instruction.
+
+Instead of the \0 to \31 format, parameters can be given symbolic names, by their inclusion as operands to the MACRO directive. The preceding backslash (\) is not mandatory; however, if there is the possibility of confusion with the surrounding text, a backslash may be used before and after the symbol name to ensure the expression is expanded correctly:
+    Example 
+        Position macro A,B,C,Pos,Time
+            dc.w \Time*(\A*\Pos+\B*\Pos+\C*\Pos)
+            endm
+
+Surrounding the operand of an invoked macro with greater than and less than signs (<...>), allows the use of comma and space characters. This does not apply to Assemblers which use angle brackets as address mode specifiers; in these instances, backward single quote is used.
+
+    Example 
+        Credits macro
+            dc.w \1,\2
+            dc.b \3
+            dc.b 0
+            even
+            endm
+        ...
+        Credits 11,10,<Psy-Q, from Psygnosis>
+
+• Continuation Lines - when invoking a macro, it is possible that the parameter list will become overlong. As with any directive statement, the line can be terminated by an ampersand (&) and continued on the next line to improve readability.
+    Example 
+        chstr macro
+             rept narg
+             dc.b k_\1
+             shift
+             endr
+             dc.b 0
+             even
+             endm
+            ...
+            cheatstr chstr i,c,a,n,b,a,r,e,l,y,&
+            s,t,a,n,d,i,t
+
+
+
+
+
+
 # Glossary
 CCR: Condition Code Register
 cc: carry clear
@@ -1803,3 +2152,5 @@ UN: unordered
 * https://en.wikibooks.org/wiki/68000_Assembly
 * http://info.sonicretro.org/Redhotsonic
 * http://mrjester.hapisan.com/04_MC68/ 
+* http://www.easy68k.com/paulrsm/doc/trick68k.htm
+* https://antime.kapsi.fi/sega/files/SATMAN.pdf
