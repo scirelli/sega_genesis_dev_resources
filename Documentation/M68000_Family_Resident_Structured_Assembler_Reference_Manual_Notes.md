@@ -164,7 +164,7 @@ d(PC, R<sub>i</sub>) Program counter with index (R<sub>i</sub>) plus displacemen
      JMP      TAG(PC,A2.W)      Forces evalucation of TAG to be PC-relative with index.
      ```
       
-  3. Absolute           <absolute>              Expression must be forward
+  3. Absolute           <absolute>              Expression must be
      (16- or 32-bit)    <complex>               forward reference or
                         <simple>                not in current program section.
 
