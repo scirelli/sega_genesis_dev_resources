@@ -1,2 +1,4 @@
 # Sega Genesis
-[Notes](notes)
+## [Notes](notes)
+* [Genesis Software Manual - Sega Enterprises](notes_genesis_software_manual)
+
